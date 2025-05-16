@@ -49,6 +49,42 @@
       color: #00bcd4;
     }
 
+    .btn-order,
+    .btn-wallpaper {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.7rem 1.4rem;
+      background: #e91e63;   /* Змінено колір */
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+      margin-right: 1rem;
+    }
+
+    .btn-order:hover,
+    .btn-wallpaper:hover {
+      background: #ad1457;   /* Змінено колір при ховері */
+    }
+
+    .resume-btn {
+      display: inline-block;
+      margin-top: 3rem;
+      padding: 1rem 2rem;
+      background: #ff5722;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+
+    .resume-btn:hover {
+      background: #e64a19;
+    }
+
     .toggle-btn {
       margin-top: 1rem;
       padding: 0.5rem 1rem;
@@ -70,21 +106,39 @@
       padding-left: 1rem;
     }
 
-    .skills {
+    .skills,
+    .experience-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
     }
 
-    .skill {
+    .skill,
+    .exp-block {
       padding: 1rem 1.5rem;
-      background: #000;
-      color: #0f0;
       font-weight: bold;
       font-family: monospace;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       border-radius: 10px;
+      box-shadow: 0 0 10px;
+    }
+
+    .skill {
+      background: #000;
+      color: #0f0;
       box-shadow: 0 0 10px #0f0;
+    }
+
+    .exp-block:nth-child(odd) {
+      background: #002b36;
+      color: #2aa198;
+      box-shadow: 0 0 10px #2aa198;
+    }
+
+    .exp-block:nth-child(even) {
+      background: #1b1b2f;
+      color: #f67280;
+      box-shadow: 0 0 10px #f67280;
     }
 
     .portfolio {
@@ -93,8 +147,7 @@
       gap: 2rem;
     }
 
-    .video-embed,
-    .drive-video {
+    .video-embed {
       flex: 1 1 45%;
       height: 300px;
       border: none;
@@ -106,9 +159,22 @@
       line-height: 1.6;
     }
 
+    .pricing {
+      font-weight: bold;
+      margin-top: 2rem;
+      color: #f39c12;
+      font-size: 1.1rem;
+    }
+
     @media (max-width: 768px) {
       .portfolio {
         flex-direction: column;
+      }
+
+      .btn-order,
+      .btn-wallpaper {
+        display: block;
+        margin-bottom: 0.5rem;
       }
     }
   </style>
@@ -117,7 +183,11 @@
 <body>
   <div class="container">
     <header>
-      <div class="title">ego1stik — Motion Designer</div>
+      <div>
+        <div class="title">ego1stik — Motion Designer</div>
+        <a href="https://t.me/kostia19s" target="_blank" class="btn-order">Order animation</a>
+        <a href="https://discord.com/users/1003000637564407940" target="_blank" class="btn-wallpaper">Buy wallpaper animation</a>
+      </div>
       <div class="socials">
         <a href="https://t.me/kostia19s" target="_blank"><i class="fab fa-telegram"></i></a>
         <a href="https://www.tiktok.com/@depressions.music" target="_blank"><i class="fab fa-tiktok"></i></a>
@@ -130,14 +200,16 @@
     <section class="section" id="skills">
       <h2>Skills</h2>
       <div class="skills">
-        <div class="skill" style="color:#0ff">Adobe After Effects</div>
-        <div class="skill" style="color:#f0f">Adobe Premiere Pro</div>
-        <div class="skill" style="color:#ff0">Adobe Photoshop</div>
-        <div class="skill" style="color:#f90">2D Motion Design</div>
-        <div class="skill" style="color:#09f">Video Editing</div>
-        <div class="skill" style="color:#f33">Kinetic Typography</div>
-        <div class="skill" style="color:#3f3">YouTube Shorts</div>
-        <div class="skill" style="color:#c0f">Social Media Content</div>
+        <div class="skill">Adobe After Effects</div>
+        <div class="skill">Adobe Premiere Pro</div>
+        <div class="skill">Adobe Photoshop</div>
+        <div class="skill">2D Motion Design</div>
+        <div class="skill">Video Editing & Montage</div>
+        <div class="skill">Kinetic Typography</div>
+        <div class="skill">YouTube Shorts</div>
+        <div class="skill">Social Media Content</div>
+        <div class="skill">Logo Animation</div>
+        <div class="skill">GEOlayers 3</div>
       </div>
     </section>
 
@@ -146,28 +218,46 @@
       <div class="portfolio">
         <iframe class="video-embed" src="https://www.youtube.com/embed/_0Nze69gRWY" allowfullscreen></iframe>
         <iframe class="video-embed" src="https://www.youtube.com/embed/0MRRb2UnHT0" allowfullscreen></iframe>
-        <video class="drive-video" autoplay loop muted>
-          <source src="https://drive.google.com/uc?id=1lb55Fmwm82fOQyWlp6KR4z_gGjUOITg_&export=download" type="video/mp4" />
-        </video>
-        <video class="drive-video" autoplay loop muted>
-          <source src="https://drive.google.com/uc?id=1btLqfMQstF0ZoOpXnb3W31PQrqxTymMP&export=download" type="video/mp4" />
-        </video>
-        <video class="drive-video" autoplay loop muted>
-          <source src="https://drive.google.com/uc?id=1fl6ABYcNELi4_JBgwEW148jzDV33HkK9&export=download" type="video/mp4" />
-        </video>
-        <video class="drive-video" autoplay loop muted>
-          <source src="https://drive.google.com/uc?id=1QnqTXNeyox6qKQWgoFcApjsq5We7q13F&export=download" type="video/mp4" />
-        </video>
+        <iframe class="video-embed" src="https://www.youtube.com/embed/wNAd77sUrEs" allowfullscreen></iframe>
+        <iframe class="video-embed" src="https://www.youtube.com/embed/m2z46SmPQjw" allowfullscreen></iframe>
+      </div>
+      <p style="margin-top:1rem;">
+        🔗 <a href="https://steamcommunity.com/profiles/76561199469322046/myworkshopfiles/" target="_blank">
+          View Wallpapers
+        </a>
+      </p>
+    </section>
+
+    <section class="section" id="experience">
+      <h2>Experience</h2>
+      <div class="experience-grid">
+        <div class="exp-block">Freelance Motion Designer & Animator (Sep 2022 – Present)</div>
+        <div class="exp-block">• Created 2D animations using After Effects (DUIK, Joysticks'n Sliders)</div>
+        <div class="exp-block">• Animated logos, wallpapers, UI elements</div>
+        <div class="exp-block">• TikTok/Instagram video content creation</div>
+        <div class="exp-block">• GEOlayers 3 animated map scenes</div>
+        <div class="exp-block">• Video/audio editing, color correction</div>
+        <div class="exp-block">• Client communication and feedback integration</div>
       </div>
     </section>
 
-    <section class="section" id="about">
+    <section class="section about" id="about">
       <h2>About Me</h2>
-      <p class="about">
+      <p>
         I'm a passionate motion designer focused on short-form dynamic content for TikTok, YouTube Shorts, and other platforms.
-        I specialize in kinetic typography, motion graphics, and engaging visual storytelling. Always exploring new styles and pushing creativity forward.
+        I specialize in kinetic typography, motion graphics, editing, and engaging visual storytelling. Always exploring new styles and pushing creativity forward.
       </p>
     </section>
+
+    <div class="section" style="text-align:center;">
+      <a class="resume-btn" href="https://drive.google.com/file/d/12AEtk5Ny1Au9ipA9jL4vMRwBYGHb3SnR/view?usp=sharing" target="_blank">
+        View Full Resume (PDF)
+      </a>
+    </div>
+
+    <div class="pricing">
+      Pricing is negotiable depending on the project scope and timeline.
+    </div>
   </div>
 
   <script>
