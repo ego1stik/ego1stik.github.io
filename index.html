@@ -5,86 +5,167 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ego1stik | Motion Designer</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+    :root {
+      --bg-light: #f0f0f0;
+      --bg-dark: #1e1e1e;
+      --text-light: #333;
+      --text-dark: #f0f0f0;
+      --accent: #00b894;
+      --accent-hover: #00cec9;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
       margin: 0;
       padding: 0;
-      color: #333;
+      font-family: 'Orbitron', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: all 0.3s ease;
     }
-    header {
-      background: #fff;
-      padding: 2rem;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
-    header p {
-      font-size: 1.2rem;
-    }
-    section {
+
+    header, section, footer {
       padding: 2rem;
       max-width: 1000px;
       margin: auto;
     }
-    .videos iframe {
-      width: 100%;
-      height: 315px;
-      margin-bottom: 2rem;
-      border: none;
+
+    header {
+      text-align: center;
+      animation: fadeDown 1.2s ease;
     }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p, li {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
     .button {
       display: inline-block;
       padding: 0.75rem 1.5rem;
-      background: #333;
-      color: #fff;
+      background: var(--accent);
+      color: white;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 30px;
+      font-weight: bold;
       transition: 0.3s;
     }
+
     .button:hover {
-      background: #000;
+      background: var(--accent-hover);
+      transform: scale(1.05);
     }
-    footer {
-      background: #eee;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
+
+    iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
     }
+
     .socials a {
       margin: 0 10px;
       text-decoration: none;
-      color: #333;
+      color: inherit;
+      font-weight: bold;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 100;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
+  <div id="particles-js"></div>
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
   <header>
     <h1>ego1stik</h1>
-    <p>Motion Designer</p>
+    <p>Motion Designer | Visual Storyteller | Anime Editor</p>
   </header>
 
   <section>
     <h2>About Me</h2>
-    <p>I'm a freelance motion designer passionate about clean visuals, smooth edits and impactful stories. My work is inspired by anime, music, and digital culture.</p>
+    <p>Hello! I'm <strong>ego1stik</strong>, a passionate motion designer who brings stories to life through rhythm, movement, and emotion. I create unique edits that blend anime, music, and digital culture into powerful visuals.</p>
   </section>
 
-  <section class="videos">
-    <h2>My Work</h2>
+  <section>
+    <h2>My Skills</h2>
+    <ul>
+      <li>Motion Design (2D animation, kinetic typography, transitions)</li>
+      <li>Character Animation (anime-style rigging, dynamic movement, facial animation)</li>
+      <li>Anime Character Animation from games and fan art</li>
+      <li>Animated wallpapers and loopable visual scenes</li>
+      <li>Adobe After Effects (advanced level, rigging tools like DUIK/Joysticks'n Sliders)</li>
+      <li>Adobe Premiere Pro (editing, syncing, effects)</li>
+      <li>Figma (interface animation previews, design support)</li>
+      <li>Beat-based editing and music synchronization</li>
+      <li>Creative storytelling and visual rhythm</li>
+      <li>Concept development and animation direction</li>
+      <li>Adaptation for social media (TikTok, Reels, Shorts)</li>
+      <li>Strong communication and feedback handling</li>
+      <li>Deadline-oriented workflow</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Portfolio</h2>
     <iframe src="https://www.youtube.com/embed/0MRRb2UnHT0" allowfullscreen></iframe>
     <iframe src="https://www.youtube.com/embed/_0Nze69gRWY" allowfullscreen></iframe>
-    <p>
-      <a class="button" href="https://steamcommunity.com/profiles/76561199469322046/myworkshopfiles/" target="_blank">View My Wallpaper</a>
-    </p>
+    <p><a class="button" href="https://steamcommunity.com/profiles/76561199469322046/myworkshopfiles/" target="_blank">🎮 View My Wallpaper</a></p>
   </section>
 
   <section>
     <h2>Reviews</h2>
-    <p>"Super clean work and fast delivery!" – Client A</p>
-    <p>"Amazing animation – will definitely order again!" – Client B</p>
+    <p>⭐️ "Incredible edit quality and very responsive communication!" – Client A</p>
+    <p>⭐️ "Perfect motion sync and aesthetic! 10/10" – Client B</p>
   </section>
 
   <section>
@@ -101,7 +182,16 @@
       <a href="#">Discord</a>
       <a href="#">TikTok</a>
     </div>
-    <p>&copy; 2025 ego1stik</p>
+    <p>&copy; 2025 ego1stik — All rights reserved.</p>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script>
+    particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/particles.json');
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
 </body>
 </html>
