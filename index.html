@@ -1,326 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ego1stik | Motion Designer Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ego1stik | Motion Designer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f1f1f1;
+      color: #222;
+      transition: background 0.3s, color 0.3s;
+    }
 
-<!-- FontAwesome для іконок соцмереж -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  rel="stylesheet"
-/>
+    body.dark {
+      background: #121212;
+      color: #f1f1f1;
+    }
 
-<style>
-  /* Загальні стилі */
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #222 0%, #444 100%);
-    color: #eee;
-    transition: background-color 0.4s ease, color 0.4s ease;
-  }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+    }
 
-  body.light {
-    background: #f9f9f9;
-    color: #222;
-  }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-  /* Контейнер */
-  .container {
-    max-width: 1000px;
-    margin: 30px auto 60px auto;
-    padding: 20px 25px;
-    background: rgba(30, 30, 30, 0.8);
-    border-radius: 15px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
-  }
+    .title {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
 
-  body.light .container {
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-  }
+    .socials a {
+      margin-left: 1rem;
+      font-size: 1.5rem;
+      color: inherit;
+      transition: color 0.2s;
+    }
 
-  h1, h2 {
-    text-align: center;
-    margin-bottom: 0.8rem;
-    font-weight: 700;
-  }
+    .socials a:hover {
+      color: #00bcd4;
+    }
 
-  h1 {
-    font-size: 3rem;
-    color: #e91e63;
-  }
+    .toggle-btn {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #00bcd4;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-  body.light h1 {
-    color: #d81b60;
-  }
+    .section {
+      margin-top: 3rem;
+    }
 
-  h2 {
-    font-size: 2.2rem;
-    margin-top: 2rem;
-    color: #f48fb1;
-  }
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #00bcd4;
+      padding-left: 1rem;
+    }
 
-  body.light h2 {
-    color: #880e4f;
-  }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
 
-  /* About Me */
-  #about {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    max-width: 900px;
-    margin: 0 auto 2.5rem auto;
-  }
-
-  /* Skills */
-  #skills {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
-    margin-bottom: 2.8rem;
-  }
-
-  .skill {
-    background: #e91e63;
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 25px;
-    font-weight: 600;
-    box-shadow: 0 5px 12px rgba(233, 30, 99, 0.6);
-    flex: 1 1 220px;
-    max-width: 280px;
-    text-align: center;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-    user-select: none;
-  }
-
-  body.light .skill {
-    background: #880e4f;
-    box-shadow: 0 5px 12px rgba(136, 14, 79, 0.5);
-  }
-
-  .skill:hover {
-    background: #c2185b;
-  }
-
-  body.light .skill:hover {
-    background: #6a0b4a;
-  }
-
-  /* Portfolio Videos */
-  #portfolio-videos {
-    max-width: 900px;
-    margin: 0 auto 3rem auto;
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-  }
-
-  .video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    height: 0;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-  }
-
-  .video-container iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    border: none;
-    border-radius: 15px;
-  }
-
-  /* Wallpapers */
-  #portfolio-wallpapers {
-    max-width: 900px;
-    margin: 0 auto 3rem auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-    gap: 20px;
-  }
-
-  #portfolio-wallpapers a {
-    display: block;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-    transition: transform 0.25s ease;
-  }
-
-  #portfolio-wallpapers a:hover {
-    transform: scale(1.07);
-  }
-
-  #portfolio-wallpapers img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  /* Social Links */
-  #social-links {
-    text-align: center;
-    margin-bottom: 3.5rem;
-  }
-
-  #social-links a {
-    margin: 0 18px;
-    color: #e91e63;
-    font-size: 2.8rem;
-    transition: color 0.3s ease;
-  }
-
-  #social-links a:hover {
-    color: #c2185b;
-  }
-
-  body.light #social-links a {
-    color: #880e4f;
-  }
-
-  body.light #social-links a:hover {
-    color: #d81b60;
-  }
-
-  /* Theme Toggle Button */
-  #theme-toggle {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: #e91e63;
-    border: none;
-    color: white;
-    padding: 14px 22px;
-    font-size: 1.1rem;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 0 5px 20px rgba(233, 30, 99, 0.8);
-    transition: background-color 0.3s ease;
-    z-index: 9999;
-    user-select: none;
-  }
-
-  #theme-toggle:hover {
-    background: #c2185b;
-  }
-
-  /* Адаптивність */
-  @media (max-width: 650px) {
     .skill {
-      flex: 1 1 100%;
-      max-width: 100%;
+      padding: 1rem 1.5rem;
+      background: #000;
+      color: #0f0;
+      font-weight: bold;
+      font-family: monospace;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #0f0;
     }
-    #social-links a {
-      font-size: 2.2rem;
-      margin: 0 12px;
+
+    .portfolio {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
     }
-    #theme-toggle {
-      padding: 12px 18px;
-      font-size: 1rem;
+
+    .video-embed,
+    .drive-video {
+      flex: 1 1 45%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
     }
-  }
-</style>
+
+    .about {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .portfolio {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="container">
+    <header>
+      <div class="title">ego1stik — Motion Designer</div>
+      <div class="socials">
+        <a href="https://t.me/kostia19s" target="_blank"><i class="fab fa-telegram"></i></a>
+        <a href="https://www.tiktok.com/@depressions.music" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.linkedin.com/in/kostiantin-mazurak-b34226363/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </header>
 
-<div class="container">
-  <h1>ego1stik</h1>
-  <h2>Motion Designer Portfolio</h2>
+    <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Hi! I’m <strong>ego1stik</strong> — a passionate Motion Designer specializing in anime-style animations and dynamic motion graphics.
-      With extensive experience in 2D animation, kinetic typography, and character rigging, I bring stories and visuals to life with creativity and precision.
-      My goal is to help brands and creators stand out through unique, engaging animations tailored for social media, games, and digital content.
-      Ready to elevate your project? Check out my portfolio below, explore my wallpapers, and feel free to contact me for collaboration or commissions!
-    </p>
-  </section>
+    <section class="section" id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="skill" style="color:#0ff">Adobe After Effects</div>
+        <div class="skill" style="color:#f0f">Adobe Premiere Pro</div>
+        <div class="skill" style="color:#ff0">Adobe Photoshop</div>
+        <div class="skill" style="color:#f90">2D Motion Design</div>
+        <div class="skill" style="color:#09f">Video Editing</div>
+        <div class="skill" style="color:#f33">Kinetic Typography</div>
+        <div class="skill" style="color:#3f3">YouTube Shorts</div>
+        <div class="skill" style="color:#c0f">Social Media Content</div>
+      </div>
+    </section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skill">Motion Design (2D animation, kinetic typography, transitions)</div>
-    <div class="skill">Character Animation (anime-style rigging, dynamic movement, facial animation)</div>
-    <div class="skill">Anime Character Animation from games and fan art</div>
-    <div class="skill">Animated wallpapers and loopable visual scenes</div>
-    <div class="skill">Adobe After Effects (advanced level, rigging tools like DUIK/Joysticks'n Sliders)</div>
-    <div class="skill">Adobe Premiere Pro (editing, syncing, effects)</div>
-    <div class="skill">Figma (interface animation previews, design support)</div>
-    <div class="skill">Beat-based editing and music synchronization</div>
-    <div class="skill">Creative storytelling and visual rhythm</div>
-    <div class="skill">Concept development and animation direction</div>
-    <div class="skill">Adaptation for social media (TikTok, Reels, Shorts)</div>
-    <div class="skill">Strong communication and feedback handling</div>
-    <div class="skill">Deadline-oriented workflow</div>
-  </section>
+    <section class="section" id="portfolio">
+      <h2>Portfolio</h2>
+      <div class="portfolio">
+        <iframe class="video-embed" src="https://www.youtube.com/embed/_0Nze69gRWY" allowfullscreen></iframe>
+        <iframe class="video-embed" src="https://www.youtube.com/embed/0MRRb2UnHT0" allowfullscreen></iframe>
+        <video class="drive-video" autoplay loop muted>
+          <source src="https://drive.google.com/uc?id=1lb55Fmwm82fOQyWlp6KR4z_gGjUOITg_&export=download" type="video/mp4" />
+        </video>
+        <video class="drive-video" autoplay loop muted>
+          <source src="https://drive.google.com/uc?id=1btLqfMQstF0ZoOpXnb3W31PQrqxTymMP&export=download" type="video/mp4" />
+        </video>
+        <video class="drive-video" autoplay loop muted>
+          <source src="https://drive.google.com/uc?id=1fl6ABYcNELi4_JBgwEW148jzDV33HkK9&export=download" type="video/mp4" />
+        </video>
+        <video class="drive-video" autoplay loop muted>
+          <source src="https://drive.google.com/uc?id=1QnqTXNeyox6qKQWgoFcApjsq5We7q13F&export=download" type="video/mp4" />
+        </video>
+      </div>
+    </section>
 
-  <section id="portfolio-videos">
-    <h2>Portfolio Videos</h2>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/0MRRb2UnHT0" allowfullscreen></iframe>
-    </div>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/_0Nze69gRWY" allowfullscreen></iframe>
-    </div>
-  </section>
+    <section class="section" id="about">
+      <h2>About Me</h2>
+      <p class="about">
+        I'm a passionate motion designer focused on short-form dynamic content for TikTok, YouTube Shorts, and other platforms.
+        I specialize in kinetic typography, motion graphics, and engaging visual storytelling. Always exploring new styles and pushing creativity forward.
+      </p>
+    </section>
+  </div>
 
-  <section id="portfolio-wallpapers">
-    <h2>Wallpapers</h2>
-    <a href="https://steamcommunity.com/profiles/76561199469322046/myworkshopfiles/" target="_blank" rel="noopener noreferrer">
-      <img src="https://steamuserimages-a.akamaihd.net/ugc/1752241133566465126/2994E38B84D3F3ED1E4B70A8F3F09C5E5B097A91/" alt="Wallpaper example 1" />
-    </a>
-    <a href="https://steamcommunity.com/profiles/76561199469322046/myworkshopfiles/" target="_blank" rel="noopener noreferrer">
-      <img src="https://steamuserimages-a.akamaihd.net/ugc/1752241133566465104/867D3F7C7BFD1E796015B177F350DD60AD9BDE0A/" alt="Wallpaper example 2" />
-    </a>
-  </section>
-
-  <section id="social-links">
-    <h2>Connect with Me</h2>
-    <a href="https://www.linkedin.com/in/ego1stik" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-      <i class="fab fa-linkedin"></i>
-    </a>
-    <a href="https://t.me/ego1stik" target="_blank" rel="noopener noreferrer" title="Telegram">
-      <i class="fab fa-telegram"></i>
-    </a>
-    <a href="https://discord.com/users/ego1stik" target="_blank" rel="noopener noreferrer" title="Discord">
-      <i class="fab fa-discord"></i>
-    </a>
-    <a href="https://www.tiktok.com/@kazuno_edit" target="_blank" rel="noopener noreferrer" title="TikTok">
-      <i class="fab fa-tiktok"></i>
-    </a>
-  </section>
-</div>
-
-<button id="theme-toggle" aria-label="Toggle Light/Dark Theme">Toggle Theme</button>
-
-<script>
-  const btn = document.getElementById('theme-toggle');
-  const body = document.body;
-
-  btn.addEventListener('click', () => {
-    body.classList.toggle('light');
-    // Запам'ятати вибір в localStorage
-    if (body.classList.contains('light')) {
-      localStorage.setItem('theme', 'light');
-    } else {
-      localStorage.setItem('theme', 'dark');
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
     }
-  });
-
-  // Відновити тему з localStorage при завантаженні
-  window.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('theme') === 'light') {
-      body.classList.add('light');
-    }
-  });
-</script>
-
+  </script>
 </body>
+
 </html>
