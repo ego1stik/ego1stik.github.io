@@ -1,213 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ego1stik | Motion Designer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      color: white;
-      background-image: url('https://i.pinimg.com/originals/e0/90/5e/e0905e4ef208ed9635ed05d0c33a2eb2.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      transition: background-image 0.5s ease-in-out;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ego1stik | Motion Designer Portfolio</title>
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
+<!-- FontAwesome для іконок соцмереж -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  rel="stylesheet"
+/>
 
-    .logo {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #ffffff;
-    }
+<style>
+  /* Загальні стилі */
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #222 0%, #444 100%);
+    color: #eee;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
 
-    .switch-btn {
-      padding: 0.5rem 1rem;
-      background: #ff69b4;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      border-radius: 8px;
-    }
+  body.light {
+    background: #f9f9f9;
+    color: #222;
+  }
 
-    section {
-      padding: 4rem 2rem;
-    }
+  /* Контейнер */
+  .container {
+    max-width: 1000px;
+    margin: 30px auto 60px auto;
+    padding: 20px 25px;
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+  }
 
-    .about {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
+  body.light .container {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  }
 
-    .about img {
-      width: 200px;
-      border-radius: 50%;
-      border: 4px solid #fff;
-    }
+  h1, h2 {
+    text-align: center;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+  }
 
-    .about-text {
-      max-width: 600px;
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
+  h1 {
+    font-size: 3rem;
+    color: #e91e63;
+  }
 
-    .skills {
-      margin-top: 2rem;
-    }
+  body.light h1 {
+    color: #d81b60;
+  }
 
-    .skills h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
+  h2 {
+    font-size: 2.2rem;
+    margin-top: 2rem;
+    color: #f48fb1;
+  }
 
-    .skills-list span {
-      display: block;
-      font-size: 1.1rem;
-      font-weight: bold;
-      padding: 5px 0;
-    }
+  body.light h2 {
+    color: #880e4f;
+  }
 
-    .colored-skill:nth-child(1) { color: #FF6B6B; }
-    .colored-skill:nth-child(2) { color: #FFD93D; }
-    .colored-skill:nth-child(3) { color: #6BCB77; }
-    .colored-skill:nth-child(4) { color: #4D96FF; }
-    .colored-skill:nth-child(5) { color: #D67AB1; }
-    .colored-skill:nth-child(6) { color: #FF9F1C; }
-    .colored-skill:nth-child(7) { color: #3FA7D6; }
-    .colored-skill:nth-child(8) { color: #E76F51; }
-    .colored-skill:nth-child(9) { color: #F4A261; }
-    .colored-skill:nth-child(10) { color: #2A9D8F; }
-    .colored-skill:nth-child(11) { color: #264653; }
-    .colored-skill:nth-child(12) { color: #A78BFA; }
-    .colored-skill:nth-child(13) { color: #FF6B6B; }
-    .colored-skill:nth-child(14) { color: #00B4D8; }
+  /* About Me */
+  #about {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    max-width: 900px;
+    margin: 0 auto 2.5rem auto;
+  }
 
-    .wallpapers, .videos, .socials {
-      margin-top: 4rem;
-    }
+  /* Skills */
+  #skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 2.8rem;
+  }
 
-    .wallpapers a, .socials a {
-      display: block;
-      margin-bottom: 1rem;
-      color: #90cdf4;
-      text-decoration: none;
-      font-size: 1.1rem;
-    }
+  .skill {
+    background: #e91e63;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: 0 5px 12px rgba(233, 30, 99, 0.6);
+    flex: 1 1 220px;
+    max-width: 280px;
+    text-align: center;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
 
-    iframe {
-      width: 100%;
-      max-width: 800px;
-      height: 450px;
-      border: none;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-    }
+  body.light .skill {
+    background: #880e4f;
+    box-shadow: 0 5px 12px rgba(136, 14, 79, 0.5);
+  }
 
-    .social-icons a {
-      margin-right: 1rem;
-      font-size: 2rem;
-      color: white;
-      transition: color 0.3s ease;
-    }
+  .skill:hover {
+    background: #c2185b;
+  }
 
-    .social-icons a:hover {
-      color: #ff69b4;
-    }
+  body.light .skill:hover {
+    background: #6a0b4a;
+  }
 
-    @media screen and (max-width: 768px) {
-      .about {
-        flex-direction: column;
-        text-align: center;
-      }
-      iframe {
-        height: 250px;
-      }
+  /* Portfolio Videos */
+  #portfolio-videos {
+    max-width: 900px;
+    margin: 0 auto 3rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+    border-radius: 15px;
+  }
+
+  /* Wallpapers */
+  #portfolio-wallpapers {
+    max-width: 900px;
+    margin: 0 auto 3rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 20px;
+  }
+
+  #portfolio-wallpapers a {
+    display: block;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.25s ease;
+  }
+
+  #portfolio-wallpapers a:hover {
+    transform: scale(1.07);
+  }
+
+  #portfolio-wallpapers img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Social Links */
+  #social-links {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  #social-links a {
+    margin: 0 18px;
+    color: #e91e63;
+    font-size: 2.8rem;
+    transition: color 0.3s ease;
+  }
+
+  #social-links a:hover {
+    color: #c2185b;
+  }
+
+  body.light #social-links a {
+    color: #880e4f;
+  }
+
+  body.light #social-links a:hover {
+    color: #d81b60;
+  }
+
+  /* Theme Toggle Button */
+  #theme-toggle {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #e91e63;
+    border: none;
+    color: white;
+    padding: 14px 22px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(233, 30, 99, 0.8);
+    transition: background-color 0.3s ease;
+    z-index: 9999;
+    user-select: none;
+  }
+
+  #theme-toggle:hover {
+    background: #c2185b;
+  }
+
+  /* Адаптивність */
+  @media (max-width: 650px) {
+    .skill {
+      flex: 1 1 100%;
+      max-width: 100%;
     }
-  </style>
+    #social-links a {
+      font-size: 2.2rem;
+      margin: 0 12px;
+    }
+    #theme-toggle {
+      padding: 12px 18px;
+      font-size: 1rem;
+    }
+  }
+</style>
 </head>
 <body>
-  <header>
-    <div class="logo">ego1stik</div>
-    <button class="switch-btn" onclick="switchBackground()">Change Mood</button>
-  </header>
 
-  <section class="about">
-    <img src="https://i.pinimg.com/originals/2e/56/9b/2e569bcb89ae90df391389dc3349eae2.jpg" alt="ego1stik avatar" />
-    <div class="about-text">
-      <h2>Motion Designer</h2>
-      <p>
-        I’m a passionate 2D motion designer focused on anime-inspired animation and character-driven visuals.
-        I enjoy bringing static artwork to life and creating emotional stories through movement.
-        Always open to new creative challenges, I’m constantly learning and exploring new tools to improve my craft.
-      </p>
-    </div>
+<div class="container">
+  <h1>ego1stik</h1>
+  <h2>Motion Designer Portfolio</h2>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hi! I’m <strong>ego1stik</strong> — a passionate Motion Designer specializing in anime-style animations and dynamic motion graphics.
+      With extensive experience in 2D animation, kinetic typography, and character rigging, I bring stories and visuals to life with creativity and precision.
+      My goal is to help brands and creators stand out through unique, engaging animations tailored for social media, games, and digital content.
+      Ready to elevate your project? Check out my portfolio below, explore my wallpapers, and feel free to contact me for collaboration or commissions!
+    </p>
   </section>
 
-  <section class="wallpapers">
-    <h2>Wallpapers</h2>
-    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3472694189" target="_blank">Wallpaper 1</a>
-    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3474665186" target="_blank">Wallpaper 2</a>
-  </section>
-
-  <section class="skills">
+  <section id="skills">
     <h2>Skills</h2>
-    <div class="skills-list">
-      <span class="colored-skill">Motion Design (2D animation, kinetic typography, transitions)</span>
-      <span class="colored-skill">Character Animation (anime-style rigging, dynamic movement, facial animation)</span>
-      <span class="colored-skill">Anime Character Animation from games and fan art</span>
-      <span class="colored-skill">Animated wallpapers and loopable visual scenes</span>
-      <span class="colored-skill">Adobe After Effects (advanced level, rigging tools like DUIK/Joysticks'n Sliders)</span>
-      <span class="colored-skill">Adobe Premiere Pro (editing, syncing, effects)</span>
-      <span class="colored-skill">Figma (interface animation previews, design support)</span>
-      <span class="colored-skill">Beat-based editing and music synchronization</span>
-      <span class="colored-skill">Creative storytelling and visual rhythm</span>
-      <span class="colored-skill">Concept development and animation direction</span>
-      <span class="colored-skill">Adaptation for social media (TikTok, Reels, Shorts)</span>
-      <span class="colored-skill">Strong communication and feedback handling</span>
-      <span class="colored-skill">Deadline-oriented workflow</span>
+    <div class="skill">Motion Design (2D animation, kinetic typography, transitions)</div>
+    <div class="skill">Character Animation (anime-style rigging, dynamic movement, facial animation)</div>
+    <div class="skill">Anime Character Animation from games and fan art</div>
+    <div class="skill">Animated wallpapers and loopable visual scenes</div>
+    <div class="skill">Adobe After Effects (advanced level, rigging tools like DUIK/Joysticks'n Sliders)</div>
+    <div class="skill">Adobe Premiere Pro (editing, syncing, effects)</div>
+    <div class="skill">Figma (interface animation previews, design support)</div>
+    <div class="skill">Beat-based editing and music synchronization</div>
+    <div class="skill">Creative storytelling and visual rhythm</div>
+    <div class="skill">Concept development and animation direction</div>
+    <div class="skill">Adaptation for social media (TikTok, Reels, Shorts)</div>
+    <div class="skill">Strong communication and feedback handling</div>
+    <div class="skill">Deadline-oriented workflow</div>
+  </section>
+
+  <section id="portfolio-videos">
+    <h2>Portfolio Videos</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/0MRRb2UnHT0" allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/_0Nze69gRWY" allowfullscreen></iframe>
     </div>
   </section>
 
-  <section class="videos">
-    <h2>My Videos</h2>
-    <iframe src="https://www.youtube.com/embed/_0Nze69gRWY" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/0MRRb2UnHT0" allowfullscreen></iframe>
+  <section id="portfolio-wallpapers">
+    <h2>Wallpapers</h2>
+    <a href="https://steamcommunity.com/profiles/76561199469322046/myworkshopfiles/" target="_blank" rel="noopener noreferrer">
+      <img src="https://steamuserimages-a.akamaihd.net/ugc/1752241133566465126/2994E38B84D3F3ED1E4B70A8F3F09C5E5B097A91/" alt="Wallpaper example 1" />
+    </a>
+    <a href="https://steamcommunity.com/profiles/76561199469322046/myworkshopfiles/" target="_blank" rel="noopener noreferrer">
+      <img src="https://steamuserimages-a.akamaihd.net/ugc/1752241133566465104/867D3F7C7BFD1E796015B177F350DD60AD9BDE0A/" alt="Wallpaper example 2" />
+    </a>
   </section>
 
-  <section class="socials">
+  <section id="social-links">
     <h2>Connect with Me</h2>
-    <div class="social-icons">
-      <a href="https://www.tiktok.com/@depressions.music" target="_blank"><i class="fab fa-tiktok"></i></a>
-      <a href="https://t.me/kostia19s" target="_blank"><i class="fab fa-telegram"></i></a>
-      <a href="https://www.linkedin.com/in/kostiantin-mazurak-b34226363/" target="_blank"><i class="fab fa-linkedin"></i></a>
-    </div>
+    <a href="https://www.linkedin.com/in/ego1stik" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://t.me/ego1stik" target="_blank" rel="noopener noreferrer" title="Telegram">
+      <i class="fab fa-telegram"></i>
+    </a>
+    <a href="https://discord.com/users/ego1stik" target="_blank" rel="noopener noreferrer" title="Discord">
+      <i class="fab fa-discord"></i>
+    </a>
+    <a href="https://www.tiktok.com/@kazuno_edit" target="_blank" rel="noopener noreferrer" title="TikTok">
+      <i class="fab fa-tiktok"></i>
+    </a>
   </section>
+</div>
 
-  <script>
-    const backgrounds = [
-      'https://i.pinimg.com/originals/e0/90/5e/e0905e4ef208ed9635ed05d0c33a2eb2.jpg',
-      'https://i.pinimg.com/originals/2e/35/1f/2e351f6e07a759b05d6594e4ea5e8db8.gif'
-    ];
-    let current = 0;
+<button id="theme-toggle" aria-label="Toggle Light/Dark Theme">Toggle Theme</button>
 
-    function switchBackground() {
-      current = (current + 1) % backgrounds.length;
-      document.body.style.backgroundImage = `url('${backgrounds[current]}')`;
+<script>
+  const btn = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  btn.addEventListener('click', () => {
+    body.classList.toggle('light');
+    // Запам'ятати вибір в localStorage
+    if (body.classList.contains('light')) {
+      localStorage.setItem('theme', 'light');
+    } else {
+      localStorage.setItem('theme', 'dark');
     }
-  </script>
+  });
+
+  // Відновити тему з localStorage при завантаженні
+  window.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('theme') === 'light') {
+      body.classList.add('light');
+    }
+  });
+</script>
+
 </body>
 </html>
-
