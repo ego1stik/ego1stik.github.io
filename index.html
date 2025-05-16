@@ -1,137 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ego1stik Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <title>ego1stik | Motion Designer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
-    }
-
     body {
-      background-image: url('https://i.pinimg.com/originals/7c/00/6f/7c006faecb8c560f4139c240fcb1ed25.gif');
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      background: url('https://i.pinimg.com/originals/3b/38/8d/3b388dfc3cfb0979a5f03ad7a4b41075.gif') no-repeat center center fixed;
       background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-      color: white;
+      transition: background 1s;
     }
 
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      background-color: rgba(255,255,255,0.2);
-      color: white;
-      cursor: pointer;
+    .container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
     }
 
-    header {
-      text-align: center;
-      padding: 100px 20px 40px;
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
     }
 
-    header h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
+    h2 {
+      font-size: 2rem;
+      margin-top: 3rem;
     }
 
-    header h2 {
-      font-size: 24px;
+    .subtitle {
+      font-size: 1.2rem;
       color: #ccc;
     }
 
-    section {
-      padding: 50px 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
     .wallpapers img {
-      max-width: 100%;
-      border-radius: 16px;
-      margin-bottom: 20px;
-      transition: transform 0.3s;
-    }
-
-    .wallpapers img:hover {
-      transform: scale(1.05);
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 1rem;
+      border-radius: 12px;
     }
 
     .skills {
-      font-size: 18px;
       background: black;
-      padding: 20px;
+      padding: 1rem;
       border-radius: 12px;
-      margin-top: 20px;
+      margin-top: 1rem;
       color: #00ffcc;
-      line-height: 1.8;
-      text-shadow: 0 0 10px #00ffcc;
+      font-size: 1rem;
       white-space: pre-line;
+      box-shadow: 0 0 20px #00ffcc;
     }
 
     .about {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 2rem;
+      margin-top: 2rem;
     }
 
     .about img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
+      width: 200px;
+      border-radius: 12px;
+    }
+
+    .about p {
+      flex: 1;
     }
 
     .socials {
-      text-align: center;
-      margin-top: 30px;
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
     }
 
     .socials a {
-      margin: 0 10px;
-      font-size: 30px;
+      text-decoration: none;
       color: white;
-      transition: color 0.3s;
-    }
-
-    .socials a:hover {
-      color: #00ffcc;
+      font-size: 2rem;
     }
 
     iframe {
       width: 100%;
       max-width: 600px;
       height: 340px;
+      margin-top: 2rem;
+      border-radius: 12px;
+    }
+
+    .toggle-btn {
+      background: #222;
+      color: #fff;
+      padding: 0.5rem 1rem;
       border: none;
-      margin-top: 20px;
+      cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #fff;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .about {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about img {
+        width: 150px;
+      }
     }
   </style>
 </head>
+
 <body>
-
-  <button class="theme-toggle" onclick="toggleTheme()">Switch Background</button>
-
-  <header>
+  <div class="container">
     <h1>ego1stik</h1>
-    <h2>Motion Designer</h2>
-  </header>
+    <div class="subtitle">Motion Designer</div>
 
-  <section class="wallpapers">
-    <img src="https://steamuserimages-a.akamaihd.net/ugc/2327858990457176081/C6BCF2C57E81F3DD3FA17411ED00545B7234D5A1/" alt="Wallpaper 1">
-    <img src="https://steamuserimages-a.akamaihd.net/ugc/2327859152558552383/DAF2D870A81E08F798D7B1369A385A262356D37C/" alt="Wallpaper 2">
-  </section>
+    <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
 
-  <section class="skills">
+    <h2>Wallpapers</h2>
+    <div class="wallpapers">
+      <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3472694189" target="_blank">
+        <img src="https://steamuserimages-a.akamaihd.net/ugc/2411090669297469316/D9C07006AA47F6FF419A15B2411A1C891B36C62F/?imw=512&imh=288&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Wallpaper 1" />
+      </a>
+      <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3474665186" target="_blank">
+        <img src="https://steamuserimages-a.akamaihd.net/ugc/2411090669299683281/32E8C85B16D958760404FCDAF1F1465F4E36FAE5/?imw=512&imh=288&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Wallpaper 2" />
+      </a>
+    </div>
+
+    <h2>Skills</h2>
+    <div class="skills">
 Motion Design (2D animation, kinetic typography, transitions)
 Character Animation (anime-style rigging, dynamic movement, facial animation)
 Anime Character Animation from games and fan art
@@ -145,37 +147,39 @@ Concept development and animation direction
 Adaptation for social media (TikTok, Reels, Shorts)
 Strong communication and feedback handling
 Deadline-oriented workflow
-  </section>
-
-  <section class="about">
-    <img src="https://i.pinimg.com/564x/91/17/d8/9117d845293f7a1ff82b59c9a421c02d.jpg" alt="ego1stik">
-    <div>
-      <h3>About Me</h3>
-      <p>I’m a passionate motion designer focusing on anime-style visuals, character animation, and high-energy edits synced to music. I create animated wallpapers, unique edits for TikTok, and stylized visual stories. My goal is to bring your vision to life through motion.</p>
     </div>
-  </section>
 
-  <section class="socials">
-    <a href="https://t.me/kostia19s" target="_blank"><i class="ri-telegram-line"></i></a>
-    <a href="https://www.tiktok.com/@depressions.music" target="_blank"><i class="ri-tiktok-line"></i></a>
-    <a href="https://www.linkedin.com/in/kostiantin-mazurak-b34226363/" target="_blank"><i class="ri-linkedin-box-line"></i></a>
-  </section>
+    <h2>About Me</h2>
+    <div class="about">
+      <img src="https://i.pinimg.com/736x/4b/f3/ba/4bf3ba64ae9e370bacc8fdafc6b1b00b.jpg" alt="Avatar">
+      <p>
+        I'm a creative motion designer focused on anime-inspired animation, storytelling, and clean visual rhythm. I create animated wallpapers, character motion from fan art, and impactful social media edits. My goal is to deliver high-quality visuals that connect with emotion and energy.
+      </p>
+    </div>
 
-  <section class="youtube">
-    <iframe src="https://www.youtube.com/embed/_0Nze69gRWY" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/0MRRb2UnHT0" allowfullscreen></iframe>
-  </section>
+    <h2>Social Links</h2>
+    <div class="socials">
+      <a href="https://www.tiktok.com/@depressions.music" target="_blank">📱</a>
+      <a href="https://t.me/kostia19s" target="_blank">💬</a>
+      <a href="https://www.linkedin.com/in/kostiantin-mazurak-b34226363/" target="_blank">💼</a>
+    </div>
+
+    <h2>YouTube Portfolio</h2>
+    <iframe src="https://www.youtube.com/embed/_0Nze69gRWY" title="YouTube video"></iframe>
+    <iframe src="https://www.youtube.com/embed/0MRRb2UnHT0" title="YouTube short"></iframe>
+  </div>
 
   <script>
-    let dark = true;
+    let toggled = false;
     function toggleTheme() {
-      document.body.style.backgroundImage = dark ?
-        "url('https://i.pinimg.com/originals/7c/00/6f/7c006faecb8c560f4139c240fcb1ed25.gif')" :
-        "url('https://i.pinimg.com/originals/59/62/2e/59622e09ff1980f6e7aeb368de5a179e.gif')";
-      dark = !dark;
+      toggled = !toggled;
+      document.body.style.background = toggled
+        ? "url('https://i.pinimg.com/originals/9e/b1/c2/9eb1c2dc66d6b5f02cd77c45a18ad963.gif') no-repeat center center fixed"
+        : "url('https://i.pinimg.com/originals/3b/38/8d/3b388dfc3cfb0979a5f03ad7a4b41075.gif') no-repeat center center fixed";
+      document.body.style.backgroundSize = 'cover';
     }
   </script>
-
 </body>
+
 </html>
 
