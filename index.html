@@ -10,14 +10,14 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f1f1f1;
-      color: #222;
+      background: #121212;
+      color: #f1f1f1;
       transition: background 0.3s, color 0.3s;
     }
 
-    body.dark {
-      background: #121212;
-      color: #f1f1f1;
+    body.light {
+      background: #f1f1f1;
+      color: #222;
     }
 
     .container {
@@ -38,8 +38,13 @@
       font-weight: bold;
     }
 
+    .socials {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
     .socials a {
-      margin-left: 1rem;
       font-size: 1.5rem;
       color: inherit;
       transition: color 0.2s;
@@ -50,49 +55,75 @@
     }
 
     .btn-order,
-    .btn-wallpaper {
+    .btn-wallpaper,
+    .btn-view-wallpapers {
       display: inline-block;
       margin-top: 1rem;
       padding: 0.7rem 1.4rem;
-      background: #e91e63;   /* Змінено колір */
-      color: white;
+      background: #00ff00;
+      color: #000;
       font-weight: bold;
       text-decoration: none;
       border-radius: 8px;
-      transition: background 0.3s;
+      transition: all 0.3s;
       margin-right: 1rem;
+      box-shadow: 0 0 10px #00ff00;
+      border: 1px solid #00ff00;
     }
 
     .btn-order:hover,
-    .btn-wallpaper:hover {
-      background: #ad1457;   /* Змінено колір при ховері */
+    .btn-wallpaper:hover,
+    .btn-view-wallpapers:hover {
+      background: #000;
+      color: #00ff00;
+      box-shadow: 0 0 15px #00ff00;
     }
 
-    .resume-btn {
+    .btn-resume,
+    .btn-contact {
       display: inline-block;
-      margin-top: 3rem;
-      padding: 1rem 2rem;
-      background: #ff5722;
-      color: white;
-      font-size: 1.2rem;
+      padding: 0.8rem 1.5rem;
       font-weight: bold;
       text-decoration: none;
-      border-radius: 10px;
-      transition: background 0.3s;
+      border-radius: 8px;
+      transition: all 0.3s;
+      margin: 0 0.5rem;
     }
 
-    .resume-btn:hover {
-      background: #e64a19;
+    .btn-resume {
+      background: transparent;
+      color: #00bcd4;
+      border: 2px solid #00bcd4;
+    }
+
+    .btn-resume:hover {
+      background: rgba(0, 188, 212, 0.1);
+      box-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+    }
+
+    .btn-contact {
+      background: transparent;
+      color: #e91e63;
+      border: 2px solid #e91e63;
+    }
+
+    .btn-contact:hover {
+      background: rgba(233, 30, 99, 0.1);
+      box-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
     }
 
     .toggle-btn {
-      margin-top: 1rem;
       padding: 0.5rem 1rem;
       background: #00bcd4;
       color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background: #008ba3;
     }
 
     .section {
@@ -113,20 +144,68 @@
       gap: 1rem;
     }
 
-    .skill,
-    .exp-block {
+    .skill {
       padding: 1rem 1.5rem;
       font-weight: bold;
       font-family: monospace;
       font-size: 1.1rem;
       border-radius: 10px;
       box-shadow: 0 0 10px;
+      color: #fff;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
     }
 
-    .skill {
-      background: #000;
-      color: #0f0;
-      box-shadow: 0 0 10px #0f0;
+    .skill:nth-child(1) {
+      background: #ff0000;
+      box-shadow: 0 0 15px #ff0000;
+    }
+    .skill:nth-child(2) {
+      background: #00ff00;
+      box-shadow: 0 0 15px #00ff00;
+      color: #000;
+    }
+    .skill:nth-child(3) {
+      background: #0000ff;
+      box-shadow: 0 0 15px #0000ff;
+    }
+    .skill:nth-child(4) {
+      background: #ffff00;
+      box-shadow: 0 0 15px #ffff00;
+      color: #000;
+    }
+    .skill:nth-child(5) {
+      background: #ff00ff;
+      box-shadow: 0 0 15px #ff00ff;
+    }
+    .skill:nth-child(6) {
+      background: #00ffff;
+      box-shadow: 0 0 15px #00ffff;
+      color: #000;
+    }
+    .skill:nth-child(7) {
+      background: #ff9900;
+      box-shadow: 0 0 15px #ff9900;
+    }
+    .skill:nth-child(8) {
+      background: #9900ff;
+      box-shadow: 0 0 15px #9900ff;
+    }
+    .skill:nth-child(9) {
+      background: #ff0099;
+      box-shadow: 0 0 15px #ff0099;
+    }
+    .skill:nth-child(10) {
+      background: #00ff99;
+      box-shadow: 0 0 15px #00ff99;
+      color: #000;
+    }
+
+    .exp-block {
+      padding: 1rem 1.5rem;
+      font-weight: bold;
+      font-family: monospace;
+      font-size: 1.1rem;
+      border-radius: 10px;
     }
 
     .exp-block:nth-child(odd) {
@@ -157,13 +236,30 @@
     .about {
       font-size: 1.1rem;
       line-height: 1.6;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      border-left: 4px solid #00ff00;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
     }
 
-    .pricing {
-      font-weight: bold;
-      margin-top: 2rem;
-      color: #f39c12;
+    .pricing-block {
       font-size: 1.1rem;
+      line-height: 1.6;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      border-left: 4px solid #f39c12;
+      box-shadow: 0 0 15px rgba(243, 156, 18, 0.2);
+      margin-top: 2rem;
+    }
+
+    .buttons-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
     }
 
     @media (max-width: 768px) {
@@ -172,30 +268,36 @@
       }
 
       .btn-order,
-      .btn-wallpaper {
+      .btn-wallpaper,
+      .btn-view-wallpapers {
         display: block;
         margin-bottom: 0.5rem;
+      }
+
+      .buttons-container {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
 </head>
 
-<body>
+<body class="dark">
   <div class="container">
     <header>
       <div>
         <div class="title">ego1stik — Motion Designer</div>
         <a href="https://t.me/kostia19s" target="_blank" class="btn-order">Order animation</a>
         <a href="https://discord.com/users/1003000637564407940" target="_blank" class="btn-wallpaper">Buy wallpaper animation</a>
+        <a href="https://steamcommunity.com/profiles/76561199469322046/myworkshopfiles/" target="_blank" class="btn-view-wallpapers">View Wallpapers</a>
       </div>
       <div class="socials">
+        <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
         <a href="https://t.me/kostia19s" target="_blank"><i class="fab fa-telegram"></i></a>
         <a href="https://www.tiktok.com/@depressions.music" target="_blank"><i class="fab fa-tiktok"></i></a>
         <a href="https://www.linkedin.com/in/kostiantin-mazurak-b34226363/" target="_blank"><i class="fab fa-linkedin"></i></a>
       </div>
     </header>
-
-    <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
 
     <section class="section" id="skills">
       <h2>Skills</h2>
@@ -221,11 +323,6 @@
         <iframe class="video-embed" src="https://www.youtube.com/embed/wNAd77sUrEs" allowfullscreen></iframe>
         <iframe class="video-embed" src="https://www.youtube.com/embed/m2z46SmPQjw" allowfullscreen></iframe>
       </div>
-      <p style="margin-top:1rem;">
-        🔗 <a href="https://steamcommunity.com/profiles/76561199469322046/myworkshopfiles/" target="_blank">
-          View Wallpapers
-        </a>
-      </p>
     </section>
 
     <section class="section" id="experience">
@@ -244,25 +341,27 @@
     <section class="section about" id="about">
       <h2>About Me</h2>
       <p>
-        I'm a passionate motion designer focused on short-form dynamic content for TikTok, YouTube Shorts, and other platforms.
-        I specialize in kinetic typography, motion graphics, editing, and engaging visual storytelling. Always exploring new styles and pushing creativity forward.
+        I specialize in bringing anime characters and logos to life through dynamic animation. My expertise ranges from detailed rigging and fluid movement to expressive facial animation that captures the essence of each character. I also create impactful animated logos that enhance brand identity.
+      </p>
+      <p>
+        Whether you need captivating character animations for games or fan projects, or a memorable animated logo, I deliver visually engaging results with a strong sense of rhythm and storytelling. I work efficiently, using tools like After Effects and Premiere Pro, and prioritize clear communication to ensure your specific needs are met.
       </p>
     </section>
 
-    <div class="section" style="text-align:center;">
-      <a class="resume-btn" href="https://drive.google.com/file/d/12AEtk5Ny1Au9ipA9jL4vMRwBYGHb3SnR/view?usp=sharing" target="_blank">
-        View Full Resume (PDF)
-      </a>
+    <div class="section pricing-block">
+      <h2>Pricing</h2>
+      <p>Project costs vary depending on complexity, scope, and deadlines. To receive a personalized quote tailored to your specific animation needs, please get in touch with the details of your project. Let's discuss how I can bring your vision to life!</p>
     </div>
 
-    <div class="pricing">
-      Pricing is negotiable depending on the project scope and timeline.
+    <div class="buttons-container">
+      <a href="https://drive.google.com/file/d/12AEtk5Ny1Au9ipA9jL4vMRwBYGHb3SnR/view?usp=sharing" target="_blank" class="btn-resume">View Full Resume</a>
+      <a href="https://t.me/kostia19s" target="_blank" class="btn-contact">Contact Me</a>
     </div>
   </div>
 
   <script>
     function toggleTheme() {
-      document.body.classList.toggle('dark');
+      document.body.classList.toggle('light');
     }
   </script>
 </body>
