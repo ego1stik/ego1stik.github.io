@@ -1,197 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ego1stik | Motion Designer</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ego1stik - Motion Designer Portfolio</title>
+<style>
+  /* Базові стилі та скидання */
+  * {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  body {
+    min-height: 100vh;
+    background: url('https://i.gifer.com/7efs.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: #eee;
+    padding: 20px;
+    overflow-x: hidden;
+  }
+  body.dark-mode {
+    background-color: #121212;
+    background-image: url('https://i.gifer.com/origin/19/19118c3c92de3f89de87ee09dba04bfa_w200.gif');
+    color: #ddd;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 8px rgba(0,0,0,0.8);
+  }
+  header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.3em;
+    color: #ff4081;
+  }
+  header p {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff;
+  }
 
-    :root {
-      --bg-light: #f0f0f0;
-      --bg-dark: #1e1e1e;
-      --text-light: #333;
-      --text-dark: #f0f0f0;
-      --accent: #00b894;
-      --accent-hover: #00cec9;
+  /* About Me */
+  .about-me {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    background: rgba(0,0,0,0.6);
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #ff4081;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #fff;
+  }
+  .about-me img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ff4081;
+    object-fit: cover;
+  }
+  .about-me p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  /* Соцмережі після About Me */
+  .social-links {
+    max-width: 700px;
+    margin: 15px auto 40px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+  }
+  .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #ff4081;
+    color: white;
+    font-size: 1.7rem;
+    box-shadow: 0 4px 10px rgba(255,64,129,0.7);
+    transition: background-color 0.3s ease;
+  }
+  .social-links a:hover {
+    background-color: #e040fb;
+  }
+
+  /* Відео */
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto 40px;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    background: #000;
+  }
+  .video-wrapper iframe {
+    position: absolute;
+    top:0; left:0;
+    width: 100%; height: 100%;
+    border: none;
+    border-radius: 15px;
+  }
+
+  /* Skills з LED підсвіткою */
+  section.skills {
+    max-width: 700px;
+    margin: 0 auto 60px;
+    background: rgba(0,0,0,0.7);
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #ff4081;
+    color: #fff;
+    font-weight: 600;
+  }
+  section.skills h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #ff4081;
+    padding-bottom: 6px;
+    text-shadow:
+      0 0 5px #ff4081,
+      0 0 15px #ff4081,
+      0 0 20px #ff80bf;
+  }
+  section.skills ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 15px;
+  }
+  section.skills ul li {
+    padding: 8px 15px;
+    border-radius: 12px;
+    text-shadow: 0 0 3px #000;
+    box-shadow: 0 0 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Різнокольорові LED стилі для скілів */
+  section.skills ul li:nth-child(odd) {
+    background: #ff4081;
+    box-shadow: 0 0 10px #ff4081, 0 0 20px #ff80bf;
+  }
+  section.skills ul li:nth-child(even) {
+    background: #40c4ff;
+    box-shadow: 0 0 10px #40c4ff, 0 0 20px #80d8ff;
+  }
+  section.skills ul li:nth-child(3n) {
+    background: #ffea00;
+    color: #000;
+    box-shadow: 0 0 10px #ffea00, 0 0 20px #ffff72;
+  }
+  section.skills ul li:hover {
+    transform: scale(1.05);
+    box-shadow:
+      0 0 20px #fff,
+      0 0 30px #ff4081,
+      0 0 40px #ff80bf;
+    cursor: default;
+  }
+
+  /* Кнопка "Switch Vibe" */
+  .theme-toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #ff4081;
+    border: none;
+    padding: 14px 24px;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(255,64,129,0.75);
+    transition: background-color 0.3s ease;
+    z-index: 10000;
+  }
+  .theme-toggle-btn:hover {
+    background-color: #e040fb;
+  }
+
+  /* Падаючі зірки */
+  .star {
+    position: fixed;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  @keyframes fall {
+    0% {
+      transform: translateY(-10px);
+      opacity: 1;
     }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-light);
-      transition: all 0.3s ease;
+    100% {
+      transform: translateY(110vh);
+      opacity: 0;
     }
+  }
 
-    body.dark {
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
+  /* Адаптивність */
+  @media (max-width: 640px) {
+    header h1 {
+      font-size: 2.2rem;
     }
-
-    #particles-js {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    header, section, footer {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    header {
+    .about-me {
+      flex-direction: column;
       text-align: center;
-      animation: fadeDown 1.2s ease;
     }
+    .about-me img {
+      margin-bottom: 15px;
+    }
+    section.skills ul {
+      grid-template-columns: 1fr;
+    }
+    .social-links {
+      gap: 15px;
+    }
+    .social-links a {
+      width: 38px;
+      height: 38px;
+      font-size: 1.4rem;
+    }
+  }
+</style>
 
-    h1 {
-      font-size: 3rem;
-      margin: 0;
-    }
+<!-- Іконки соцмереж (FontAwesome) -->
+<script src="https://kit.fontawesome.com/a81368914c.js" crossorigin="anonymous"></script>
 
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    p, li {
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background: var(--accent);
-      color: white;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .button:hover {
-      background: var(--accent-hover);
-      transform: scale(1.05);
-    }
-
-    iframe {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-      margin-bottom: 2rem;
-    }
-
-    .socials a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: inherit;
-      font-weight: bold;
-    }
-
-    .theme-toggle {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      padding: 10px 20px;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      z-index: 100;
-    }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2rem; }
-      h2 { font-size: 1.5rem; }
-    }
-  </style>
 </head>
 <body>
-  <div id="particles-js"></div>
-  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
 
-  <header>
-    <h1>ego1stik</h1>
-    <p>Motion Designer | Visual Storyteller | Anime Editor</p>
-  </header>
+<button class="theme-toggle-btn" onclick="toggleTheme()">Switch Vibe</button>
 
-  <section>
-    <h2>About Me</h2>
-    <p>Hello! I'm <strong>ego1stik</strong>, a passionate motion designer who brings stories to life through rhythm, movement, and emotion. I create unique edits that blend anime, music, and digital culture into powerful visuals.</p>
-  </section>
+<header>
+  <h1>ego1stik</h1>
+  <p>Motion Designer</p>
+</header>
 
-  <section>
-    <h2>My Skills</h2>
-    <ul>
-      <li>Motion Design (2D animation, kinetic typography, transitions)</li>
-      <li>Character Animation (anime-style rigging, dynamic movement, facial animation)</li>
-      <li>Anime Character Animation from games and fan art</li>
-      <li>Animated wallpapers and loopable visual scenes</li>
-      <li>Adobe After Effects (advanced level, rigging tools like DUIK/Joysticks'n Sliders)</li>
-      <li>Adobe Premiere Pro (editing, syncing, effects)</li>
-      <li>Figma (interface animation previews, design support)</li>
-      <li>Beat-based editing and music synchronization</li>
-      <li>Creative storytelling and visual rhythm</li>
-      <li>Concept development and animation direction</li>
-      <li>Adaptation for social media (TikTok, Reels, Shorts)</li>
-      <li>Strong communication and feedback handling</li>
-      <li>Deadline-oriented workflow</li>
-    </ul>
-  </section>
+<section class="about-me">
+  <img src="https://i.imgur.com/0y0A5dr.jpg" alt="ego1stik avatar" />
+  <p>Hi! I'm ego1stik, passionate motion designer specializing in anime edits and creative motion graphics. Let's create some magic!</p>
+</section>
 
-  <section>
-    <h2>Portfolio</h2>
-    <iframe src="https://www.youtube.com/embed/0MRRb2UnHT0" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/_0Nze69gRWY" allowfullscreen></iframe>
-    <p><a class="button" href="https://steamcommunity.com/profiles/76561199469322046/myworkshopfiles/" target="_blank">🎮 View My Wallpaper</a></p>
-  </section>
+<section class="social-links">
+  <a href="https://www.linkedin.com/in/ego1stik" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+  <a href="https://www.tiktok.com/@kazuno_edit" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+  <a href="https://discord.gg/yourdiscord" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+  <a href="https://t.me/ego1stik" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+</section>
 
-  <section>
-    <h2>Reviews</h2>
-    <p>⭐️ "Incredible edit quality and very responsive communication!" – Client A</p>
-    <p>⭐️ "Perfect motion sync and aesthetic! 10/10" – Client B</p>
-  </section>
+<div class="video-wrapper">
+  <iframe src="https://www.youtube.com/embed/_0Nze69gRWY" title="ego1stik portfolio video" allowfullscreen></iframe>
+</div>
 
-  <section>
-    <h2>Contacts</h2>
-    <p>Email: <a href="mailto:your@email.com">your@email.com</a></p>
-    <p>Telegram: @yourTelegram</p>
-    <p>Discord: yourDiscord#1234</p>
-  </section>
+<section class="skills">
+  <h2>My Skills</h2>
+  <ul>
+    <li>Motion Design</li>
+    <li>Adobe After Effects</li>
+    <li>Adobe Premiere Pro</li>
+    <li>Anime Editing</li>
+    <li>Photoshop</li>
+    <li>Illustrator</li>
+    <li>2D Animation</li>
+    <li>Video Editing</li>
+    <li>Visual Effects</li>
+  </ul>
+</section>
 
-  <footer>
-    <div class="socials">
-      <a href="#">LinkedIn</a>
-      <a href="#">Telegram</a>
-      <a href="#">Discord</a>
-      <a href="#">TikTok</a>
-    </div>
-    <p>&copy; 2025 ego1stik — All rights reserved.</p>
-  </footer>
+<script>
+  // Темна/світла тема
+  function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+  }
 
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <script>
-    particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/particles.json');
+  // Генерація падаючих зірок
+  const starCount = 40;
 
-    function toggleTheme() {
-      document.body.classList.toggle('dark');
-    }
-  </script>
+  function createStar() {
+    const star = document.createElement('div');
+    star.classList.add('star');
+
+    // Рандомні розміри зірок
+    const size = Math.random() * 3 + 1;
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+
+    // Рандомна позиція по горизонталі
+    star.style.left = Math.random() * window.innerWidth + 'px';
+
+    // Рандомна тривалість падіння
+    star.style.animationDuration = (Math.random() * 5 + 5) + 's';
+
+    // Затримка анімації для рівномірності
+    star.style.animationDelay = (Math.random() * 10) + 's';
+
+    document.body.appendChild(star);
+
+    // Після завершення анімації видаляємо зірку, щоб не накопичувались
+    star.addEventListener('animationend', () => {
+      star.remove();
+      createStar(); // створюємо нову замість видаленої
+    });
+  }
+
+  for(let i=0; i < starCount; i++) {
+    createStar();
+  }
+</script>
+
 </body>
 </html>
