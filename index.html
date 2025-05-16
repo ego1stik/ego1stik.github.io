@@ -1,185 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ego1stik | Motion Designer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <title>ego1stik — Motion Designer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Orbitron', sans-serif;
-      color: white;
-      background: url('https://i.pinimg.com/originals/3b/38/8d/3b388dfc3cfb0979a5f03ad7a4b41075.gif') no-repeat center center fixed;
+      background-image: url('https://i.pinimg.com/originals/0a/30/e5/0a30e57f0c5ff3ac6f64c104b15b1043.jpg'); /* Зоряне небо фон */
       background-size: cover;
-      transition: background 1s;
+      background-attachment: fixed;
+      color: white;
+      padding: 20px;
     }
 
     .container {
-      padding: 2rem;
-      max-width: 1200px;
+      max-width: 1000px;
       margin: auto;
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
+      font-size: 3em;
+      color: #ff4081;
+      margin-bottom: 5px;
     }
 
     h2 {
-      font-size: 2rem;
-      margin-top: 3rem;
+      font-size: 2em;
+      margin-top: 40px;
+      color: #00e5ff;
     }
 
     .subtitle {
-      font-size: 1.2rem;
+      font-size: 1.2em;
       color: #ccc;
     }
 
-    .wallpapers img {
-      width: 100%;
-      max-width: 600px;
-      margin-bottom: 1rem;
-      border-radius: 12px;
+    .skills {
+      margin-top: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
     }
 
-    .skills {
-      background: black;
-      padding: 1rem;
-      border-radius: 12px;
-      margin-top: 1rem;
-      color: #00ffcc;
-      font-size: 1rem;
-      white-space: pre-line;
-      box-shadow: 0 0 20px #00ffcc;
+    .skills p {
+      color: #39ff14;
+      margin: 10px 0;
+      font-size: 1em;
     }
 
     .about {
+      margin-top: 40px;
       display: flex;
       align-items: center;
-      gap: 2rem;
-      margin-top: 2rem;
+      gap: 20px;
     }
 
     .about img {
-      width: 200px;
-      border-radius: 12px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
     }
 
-    .about p {
-      flex: 1;
+    .about-text {
+      max-width: 700px;
     }
 
-    .socials {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
+    .wallpapers, .youtube, .socials {
+      margin-top: 40px;
     }
 
-    .socials a {
-      text-decoration: none;
-      color: white;
-      font-size: 2rem;
+    .wallpapers a {
+      display: block;
+      margin: 10px 0;
+      color: #00bfff;
+      text-decoration: underline;
     }
 
     iframe {
       width: 100%;
-      max-width: 600px;
-      height: 340px;
-      margin-top: 2rem;
-      border-radius: 12px;
-    }
-
-    .toggle-btn {
-      background: #222;
-      color: #fff;
-      padding: 0.5rem 1rem;
+      max-width: 800px;
+      height: 450px;
       border: none;
-      cursor: pointer;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #fff;
-      margin-top: 1rem;
+      margin: 20px 0;
     }
 
-    @media (max-width: 768px) {
-      .about {
-        flex-direction: column;
-        text-align: center;
-      }
+    .social-icons a {
+      margin: 10px;
+      font-size: 2em;
+      text-decoration: none;
+    }
 
-      .about img {
-        width: 150px;
-      }
+    .social-icons i {
+      color: white;
+      transition: transform 0.3s;
+    }
+
+    .social-icons i:hover {
+      transform: scale(1.2);
+    }
+
+    .theme-toggle {
+      background: #00bcd4;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 10px;
+      margin-top: 30px;
+      cursor: pointer;
     }
   </style>
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      if (body.style.backgroundImage.includes('0a30e57f0c5ff3ac6f64c104b15b1043')) {
+        body.style.backgroundImage = "url('https://i.pinimg.com/originals/f8/15/7a/f8157a7d98c4d871f1b9d7f6a4b69333.gif')";
+      } else {
+        body.style.backgroundImage = "url('https://i.pinimg.com/originals/0a/30/e5/0a30e57f0c5ff3ac6f64c104b15b1043.jpg')";
+      }
+    }
+  </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
   <div class="container">
     <h1>ego1stik</h1>
-    <div class="subtitle">Motion Designer</div>
+    <p class="subtitle">Motion Designer</p>
 
-    <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
-
-    <h2>Wallpapers</h2>
     <div class="wallpapers">
-      <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3472694189" target="_blank">
-        <img src="https://steamuserimages-a.akamaihd.net/ugc/2411090669297469316/D9C07006AA47F6FF419A15B2411A1C891B36C62F/?imw=512&imh=288&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Wallpaper 1" />
-      </a>
-      <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3474665186" target="_blank">
-        <img src="https://steamuserimages-a.akamaihd.net/ugc/2411090669299683281/32E8C85B16D958760404FCDAF1F1465F4E36FAE5/?imw=512&imh=288&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Wallpaper 2" />
-      </a>
+      <h2>Wallpapers</h2>
+      <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3472694189" target="_blank">Wallpaper 1</a>
+      <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3474665186" target="_blank">Wallpaper 2</a>
     </div>
 
-    <h2>Skills</h2>
     <div class="skills">
-Motion Design (2D animation, kinetic typography, transitions)
-Character Animation (anime-style rigging, dynamic movement, facial animation)
-Anime Character Animation from games and fan art
-Animated wallpapers and loopable visual scenes
-Adobe After Effects (advanced level, rigging tools like DUIK/Joysticks'n Sliders)
-Adobe Premiere Pro (editing, syncing, effects)
-Figma (interface animation previews, design support)
-Beat-based editing and music synchronization
-Creative storytelling and visual rhythm
-Concept development and animation direction
-Adaptation for social media (TikTok, Reels, Shorts)
-Strong communication and feedback handling
-Deadline-oriented workflow
+      <h2>Skills</h2>
+      <p>Motion Design (2D animation, kinetic typography, transitions)</p>
+      <p>Character Animation (anime-style rigging, dynamic movement, facial animation)</p>
+      <p>Anime Character Animation from games and fan art</p>
+      <p>Animated wallpapers and loopable visual scenes</p>
+      <p>Adobe After Effects (advanced level, rigging tools like DUIK/Joysticks'n Sliders)</p>
+      <p>Adobe Premiere Pro (editing, syncing, effects)</p>
+      <p>Figma (interface animation previews, design support)</p>
+      <p>Beat-based editing and music synchronization</p>
+      <p>Creative storytelling and visual rhythm</p>
+      <p>Concept development and animation direction</p>
+      <p>Adaptation for social media (TikTok, Reels, Shorts)</p>
+      <p>Strong communication and feedback handling</p>
+      <p>Deadline-oriented workflow</p>
     </div>
 
-    <h2>About Me</h2>
     <div class="about">
-      <img src="https://i.pinimg.com/736x/4b/f3/ba/4bf3ba64ae9e370bacc8fdafc6b1b00b.jpg" alt="Avatar">
-      <p>
-        I'm a creative motion designer focused on anime-inspired animation, storytelling, and clean visual rhythm. I create animated wallpapers, character motion from fan art, and impactful social media edits. My goal is to deliver high-quality visuals that connect with emotion and energy.
-      </p>
+      <img src="https://i.pinimg.com/564x/6c/31/40/6c31402d56919f5b499e09d4ae76fdf0.jpg" alt="ego1stik" />
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>I’m a passionate 2D motion designer focused on anime-inspired animation and character-driven visuals. I enjoy bringing static artwork to life and creating emotional stories through movement.</p>
+        <p>Always open to new creative challenges, I’m constantly learning and exploring new tools to improve my craft.</p>
+      </div>
     </div>
 
-    <h2>Social Links</h2>
+    <div class="youtube">
+      <h2>My Work</h2>
+      <iframe src="https://www.youtube.com/embed/0MRRb2UnHT0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/_0Nze69gRWY" allowfullscreen></iframe>
+    </div>
+
     <div class="socials">
-      <a href="https://www.tiktok.com/@depressions.music" target="_blank">📱</a>
-      <a href="https://t.me/kostia19s" target="_blank">💬</a>
-      <a href="https://www.linkedin.com/in/kostiantin-mazurak-b34226363/" target="_blank">💼</a>
+      <h2>Social Media</h2>
+      <div class="social-icons">
+        <a href="https://www.tiktok.com/@depressions.music" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://t.me/kostia19s" target="_blank"><i class="fab fa-telegram"></i></a>
+        <a href="https://www.linkedin.com/in/kostiantin-mazurak-b34226363/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
     </div>
 
-    <h2>YouTube Portfolio</h2>
-    <iframe src="https://www.youtube.com/embed/_0Nze69gRWY" title="YouTube video"></iframe>
-    <iframe src="https://www.youtube.com/embed/0MRRb2UnHT0" title="YouTube short"></iframe>
+    <button class="theme-toggle" onclick="toggleTheme()">Switch Background</button>
   </div>
-
-  <script>
-    let toggled = false;
-    function toggleTheme() {
-      toggled = !toggled;
-      document.body.style.background = toggled
-        ? "url('https://i.pinimg.com/originals/9e/b1/c2/9eb1c2dc66d6b5f02cd77c45a18ad963.gif') no-repeat center center fixed"
-        : "url('https://i.pinimg.com/originals/3b/38/8d/3b388dfc3cfb0979a5f03ad7a4b41075.gif') no-repeat center center fixed";
-      document.body.style.backgroundSize = 'cover';
-    }
-  </script>
 </body>
-
 </html>
 
