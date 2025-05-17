@@ -12,7 +12,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #121212;
       color: #f1f1f1;
-      transition: background 0.3s, color 0.3s;
+      transition: all 0.5s ease;
     }
 
     body.light {
@@ -20,10 +20,27 @@
       color: #222;
     }
 
+    body.japanese-theme {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
     .container {
       max-width: 1200px;
       margin: auto;
       padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    body.light .container {
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    body.japanese-theme .container {
+      background-color: rgba(26, 26, 46, 0.9);
+      border: 1px solid #ff6b6b;
     }
 
     header {
@@ -36,6 +53,10 @@
     .title {
       font-size: 2.5rem;
       font-weight: bold;
+    }
+
+    body.japanese-theme .title {
+      color: #ff9e3d;
     }
 
     .socials {
@@ -52,6 +73,10 @@
 
     .socials a:hover {
       color: #00bcd4;
+    }
+
+    body.japanese-theme .socials a:hover {
+      color: #ff6b6b;
     }
 
     .btn-order,
@@ -77,6 +102,23 @@
       background: #000;
       color: #00ff00;
       box-shadow: 0 0 15px #00ff00;
+    }
+
+    body.japanese-theme .btn-order,
+    body.japanese-theme .btn-wallpaper,
+    body.japanese-theme .btn-view-wallpapers {
+      background: #e53e3e;
+      color: #fff;
+      box-shadow: 0 0 10px #e53e3e;
+      border: 1px solid #e53e3e;
+    }
+
+    body.japanese-theme .btn-order:hover,
+    body.japanese-theme .btn-wallpaper:hover,
+    body.japanese-theme .btn-view-wallpapers:hover {
+      background: #000;
+      color: #e53e3e;
+      box-shadow: 0 0 15px #e53e3e;
     }
 
     .btn-resume,
@@ -112,6 +154,16 @@
       box-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
     }
 
+    body.japanese-theme .btn-contact {
+      color: #9c27b0;
+      border-color: #9c27b0;
+    }
+
+    body.japanese-theme .btn-contact:hover {
+      background: rgba(156, 39, 176, 0.1);
+      box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
+    }
+
     .toggle-btn {
       padding: 0.5rem 1rem;
       background: #00bcd4;
@@ -126,6 +178,51 @@
       background: #008ba3;
     }
 
+    body.japanese-theme .toggle-btn {
+      background: #ff6b6b;
+    }
+
+    body.japanese-theme .toggle-btn:hover {
+      background: #e53e3e;
+    }
+
+    .language-btn {
+      padding: 0.5rem 1rem;
+      background: transparent;
+      color: #fff;
+      border: 2px solid #00bcd4;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: 1rem;
+    }
+
+    .language-btn:hover {
+      background: rgba(0, 188, 212, 0.1);
+      box-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+    }
+
+    body.light .language-btn {
+      color: #222;
+    }
+
+    body.japanese-theme .language-btn {
+      border-color: #ff6b6b;
+    }
+
+    body.japanese-theme .language-btn:hover {
+      background: rgba(255, 107, 107, 0.1);
+      box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+    }
+
+    .language-btn img {
+      width: 20px;
+      height: auto;
+    }
+
     .section {
       margin-top: 3rem;
     }
@@ -135,6 +232,10 @@
       margin-bottom: 1rem;
       border-left: 4px solid #00bcd4;
       padding-left: 1rem;
+    }
+
+    body.japanese-theme .section h2 {
+      border-left-color: #ff6b6b;
     }
 
     .skills,
@@ -200,6 +301,10 @@
       color: #000;
     }
 
+    body.japanese-theme .skill {
+      box-shadow: 0 0 15px rgba(255, 107, 107, 0.7);
+    }
+
     .exp-block {
       padding: 1rem 1.5rem;
       font-weight: bold;
@@ -220,6 +325,18 @@
       box-shadow: 0 0 10px #f67280;
     }
 
+    body.japanese-theme .exp-block:nth-child(odd) {
+      background: rgba(0, 43, 54, 0.8);
+      color: #ff9e3d;
+      box-shadow: 0 0 10px #ff9e3d;
+    }
+
+    body.japanese-theme .exp-block:nth-child(even) {
+      background: rgba(27, 27, 47, 0.8);
+      color: #ff6b6b;
+      box-shadow: 0 0 10px #ff6b6b;
+    }
+
     .portfolio {
       display: flex;
       flex-wrap: wrap;
@@ -231,6 +348,7 @@
       height: 300px;
       border: none;
       border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     }
 
     .about {
@@ -243,6 +361,11 @@
       box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
     }
 
+    body.japanese-theme .about {
+      border-left-color: #ff6b6b;
+      box-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
+    }
+
     .pricing-block {
       font-size: 1.1rem;
       line-height: 1.6;
@@ -252,6 +375,11 @@
       border-left: 4px solid #f39c12;
       box-shadow: 0 0 15px rgba(243, 156, 18, 0.2);
       margin-top: 2rem;
+    }
+
+    body.japanese-theme .pricing-block {
+      border-left-color: #ff9e3d;
+      box-shadow: 0 0 15px rgba(255, 158, 61, 0.3);
     }
 
     .buttons-container {
@@ -279,6 +407,34 @@
         align-items: center;
       }
     }
+
+    /* Аніме-елементи для японської теми */
+    .sakura {
+      position: fixed;
+      top: -10px;
+      z-index: 999;
+      opacity: 0;
+      animation: fall linear infinite;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    body.japanese-theme::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
   </style>
 </head>
 
@@ -286,21 +442,25 @@
   <div class="container">
     <header>
       <div>
-        <div class="title">ego1stik — Motion Designer</div>
-        <a href="https://t.me/kostia19s" target="_blank" class="btn-order">Order animation</a>
-        <a href="https://discord.com/users/1003000637564407940" target="_blank" class="btn-wallpaper">Buy wallpaper animation</a>
-        <a href="https://steamcommunity.com/profiles/76561199469322046/myworkshopfiles/" target="_blank" class="btn-view-wallpapers">View Wallpapers</a>
+        <div class="title" id="main-title">ego1stik — Motion Designer</div>
+        <a href="https://t.me/kostia19s" target="_blank" class="btn-order" id="order-btn">Order animation</a>
+        <a href="https://discord.com/users/1003000637564407940" target="_blank" class="btn-wallpaper" id="wallpaper-btn">Buy wallpaper animation</a>
+        <a href="https://steamcommunity.com/profiles/76561199469322046/myworkshopfiles/" target="_blank" class="btn-view-wallpapers" id="view-wallpapers-btn">View Wallpapers</a>
       </div>
       <div class="socials">
-        <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+        <button class="toggle-btn" onclick="toggleTheme()" id="theme-btn">Toggle Theme</button>
+        <button class="language-btn" id="languageBtn">
+          <img src="https://flagcdn.com/w20/ua.png" alt="Ukrainian flag">
+          <span>Ua</span>
+        </button>
         <a href="https://t.me/kostia19s" target="_blank"><i class="fab fa-telegram"></i></a>
         <a href="https://www.tiktok.com/@depressions.music" target="_blank"><i class="fab fa-tiktok"></i></a>
         <a href="https://www.linkedin.com/in/kostiantin-mazurak-b34226363/" target="_blank"><i class="fab fa-linkedin"></i></a>
       </div>
     </header>
 
-    <section class="section" id="skills">
-      <h2>Skills</h2>
+    <section class="section" id="skills-section">
+      <h2 id="skills-title">Skills</h2>
       <div class="skills">
         <div class="skill">Adobe After Effects</div>
         <div class="skill">Adobe Premiere Pro</div>
@@ -315,8 +475,8 @@
       </div>
     </section>
 
-    <section class="section" id="portfolio">
-      <h2>Portfolio</h2>
+    <section class="section" id="portfolio-section">
+      <h2 id="portfolio-title">Portfolio</h2>
       <div class="portfolio">
         <iframe class="video-embed" src="https://www.youtube.com/embed/_0Nze69gRWY" allowfullscreen></iframe>
         <iframe class="video-embed" src="https://www.youtube.com/embed/0MRRb2UnHT0" allowfullscreen></iframe>
@@ -325,9 +485,9 @@
       </div>
     </section>
 
-    <section class="section" id="experience">
-      <h2>Experience</h2>
-      <div class="experience-grid">
+    <section class="section" id="experience-section">
+      <h2 id="experience-title">Experience</h2>
+      <div class="experience-grid" id="experience-content">
         <div class="exp-block">Freelance Motion Designer & Animator (Sep 2022 – Present)</div>
         <div class="exp-block">• Created 2D animations using After Effects (DUIK, Joysticks'n Sliders)</div>
         <div class="exp-block">• Animated logos, wallpapers, UI elements</div>
@@ -338,31 +498,205 @@
       </div>
     </section>
 
-    <section class="section about" id="about">
-      <h2>About Me</h2>
-      <p>
+    <section class="section about" id="about-section">
+      <h2 id="about-title">About Me</h2>
+      <p id="about-text-1">
         I specialize in bringing anime characters and logos to life through dynamic animation. My expertise ranges from detailed rigging and fluid movement to expressive facial animation that captures the essence of each character. I also create impactful animated logos that enhance brand identity.
       </p>
-      <p>
+      <p id="about-text-2">
         Whether you need captivating character animations for games or fan projects, or a memorable animated logo, I deliver visually engaging results with a strong sense of rhythm and storytelling. I work efficiently, using tools like After Effects and Premiere Pro, and prioritize clear communication to ensure your specific needs are met.
       </p>
     </section>
 
-    <div class="section pricing-block">
-      <h2>Pricing</h2>
-      <p>Project costs vary depending on complexity, scope, and deadlines. To receive a personalized quote tailored to your specific animation needs, please get in touch with the details of your project. Let's discuss how I can bring your vision to life!</p>
+    <div class="section pricing-block" id="pricing-section">
+      <h2 id="pricing-title">Pricing</h2>
+      <p id="pricing-text">Project costs vary depending on complexity, scope, and deadlines. To receive a personalized quote tailored to your specific animation needs, please get in touch with the details of your project. Let's discuss how I can bring your vision to life!</p>
     </div>
 
     <div class="buttons-container">
-      <a href="https://drive.google.com/file/d/12AEtk5Ny1Au9ipA9jL4vMRwBYGHb3SnR/view?usp=sharing" target="_blank" class="btn-resume">View Full Resume</a>
-      <a href="https://t.me/kostia19s" target="_blank" class="btn-contact">Contact Me</a>
+      <a href="https://drive.google.com/file/d/12AEtk5Ny1Au9ipA9jL4vMRwBYGHb3SnR/view?usp=sharing" target="_blank" class="btn-resume" id="resume-btn">View Full Resume</a>
+      <a href="https://t.me/kostia19s" target="_blank" class="btn-contact" id="contact-btn">Contact Me</a>
     </div>
   </div>
 
   <script>
+    // Тексти для різних мов
+    const translations = {
+      en: {
+        title: "ego1stik — Motion Designer",
+        orderBtn: "Order animation",
+        wallpaperBtn: "Buy wallpaper animation",
+        viewWallpapersBtn: "View Wallpapers",
+        themeBtn: "Toggle Theme",
+        skillsTitle: "Skills",
+        portfolioTitle: "Portfolio",
+        experienceTitle: "Experience",
+        experienceContent: [
+          "Freelance Motion Designer & Animator (Sep 2022 – Present)",
+          "• Created 2D animations using After Effects (DUIK, Joysticks'n Sliders)",
+          "• Animated logos, wallpapers, UI elements",
+          "• TikTok/Instagram video content creation",
+          "• GEOlayers 3 animated map scenes",
+          "• Video/audio editing, color correction",
+          "• Client communication and feedback integration"
+        ],
+        aboutTitle: "About Me",
+        aboutText1: "I specialize in bringing anime characters and logos to life through dynamic animation. My expertise ranges from detailed rigging and fluid movement to expressive facial animation that captures the essence of each character. I also create impactful animated logos that enhance brand identity.",
+        aboutText2: "Whether you need captivating character animations for games or fan projects, or a memorable animated logo, I deliver visually engaging results with a strong sense of rhythm and storytelling. I work efficiently, using tools like After Effects and Premiere Pro, and prioritize clear communication to ensure your specific needs are met.",
+        pricingTitle: "Pricing",
+        pricingText: "Project costs vary depending on complexity, scope, and deadlines. To receive a personalized quote tailored to your specific animation needs, please get in touch with the details of your project. Let's discuss how I can bring your vision to life!",
+        resumeBtn: "View Full Resume",
+        contactBtn: "Contact Me"
+      },
+      ua: {
+        title: "ego1stik — Моушн Дизайнер",
+        orderBtn: "Замовити анімацію",
+        wallpaperBtn: "Купити анімацію шпалери",
+        viewWallpapersBtn: "Переглянути шпалери",
+        themeBtn: "Змінити тему",
+        skillsTitle: "Навички",
+        portfolioTitle: "Портфоліо",
+        experienceTitle: "Досвід",
+        experienceContent: [
+          "Фріланс Моушн Дизайнер & Аніматор (Вер 2022 – Зараз)",
+          "• Створення 2D анімацій у After Effects (DUIK, Joysticks'n Sliders)",
+          "• Анімація логотипів, шпалер, UI елементів",
+          "• Створення контенту для TikTok/Instagram",
+          "• Анімація карт у GEOlayers 3",
+          "• Редагування відео/аудіо, корекція кольору",
+          "• Спілкування з клієнтами та врахування їхніх побажань"
+        ],
+        aboutTitle: "Про мене",
+        aboutText1: "Я спеціалізуюся на оживленні аніме-персонажів та логотипів через динамічну анімацію. Мої навички включають детальну рігінгу, плавний рух та виразну міміку, яка передає сутність кожного персонажа. Я також створюю ефектні анімовані логотипи, які підсилюють бренд.",
+        aboutText2: "Чи потрібні вам захоплюючі анімації персонажів для ігор чи фан-проектів, чи незабутній анімований логотип - я створюю візуально привабливі результати з чітким почуттям ритму та історії. Я працюю ефективно, використовуючи такі інструменти як After Effects та Premiere Pro, та надаю пріоритет чіткому спілкуванню, щоб задовольнити ваші потреби.",
+        pricingTitle: "Ціни",
+        pricingText: "Вартість проекту залежить від складності, обсягу робіт та термінів. Щоб отримати індивідуальну пропозицію, відповідну до ваших потреб, будь ласка, зв'яжіться зі мною, надавши деталі вашого проекту. Обговоримо, як я можу втілити ваше бачення!",
+        resumeBtn: "Переглянути резюме",
+        contactBtn: "Зв'язатися"
+      },
+      jp: {
+        title: "ego1stik — モーションデザイナー",
+        orderBtn: "アニメーションを注文",
+        wallpaperBtn: "壁紙アニメーションを購入",
+        viewWallpapersBtn: "壁紙を見る",
+        themeBtn: "テーマを変更",
+        skillsTitle: "スキル",
+        portfolioTitle: "ポートフォリオ",
+        experienceTitle: "経験",
+        experienceContent: [
+          "フリーランスモーションデザイナー＆アニメーター（2022年9月～現在）",
+          "• After Effectsを使用した2Dアニメーションの作成（DUIK、Joysticks'n Sliders）",
+          "• ロゴ、壁紙、UI要素のアニメーション",
+          "• TikTok/Instagram向けコンテンツ作成",
+          "• GEOlayers 3を使用した地図アニメーション",
+          "• 動画/音声編集、カラーコレクション",
+          "• クライアントとのコミュニケーションとフィードバックの反映"
+        ],
+        aboutTitle: "私について",
+        aboutText1: "私はアニメキャラクターやロゴをダイナミックなアニメーションで生き生きと表現することを専門としています。詳細なリギング、滑らかな動き、キャラクターの本質を捉えた表情アニメーションなど、幅広い専門知識があります。また、ブランドアイデンティティを強化する印象的なアニメーションロゴも作成します。",
+        aboutText2: "ゲームやファンプロジェクトのための魅力的なキャラクターアニメーションが必要な場合でも、記憶に残るアニメーションロゴが必要な場合でも、リズム感とストーリーテリングを重視した視覚的に魅力的な作品を提供します。After EffectsやPremiere Proなどのツールを効率的に使用し、明確なコミュニケーションを重視して、お客様の特定のニーズを満たします。",
+        pricingTitle: "価格",
+        pricingText: "プロジェクトの費用は、複雑さ、範囲、納期によって異なります。アニメーションのニーズに合わせた個別の見積もりをご希望の場合は、プロジェクトの詳細をお知らせください。あなたのビジョンを実現する方法について話し合いましょう！",
+        resumeBtn: "履歴書を見る",
+        contactBtn: "連絡する"
+      }
+    };
+
     function toggleTheme() {
       document.body.classList.toggle('light');
+      if (document.body.classList.contains('japanese-theme')) {
+        document.body.classList.remove('japanese-theme');
+        stopSakura();
+      }
     }
+
+    function createSakura() {
+      const sakura = document.createElement('div');
+      sakura.className = 'sakura';
+      sakura.innerHTML = '🌸';
+      sakura.style.left = Math.random() * window.innerWidth + 'px';
+      sakura.style.animationDuration = Math.random() * 3 + 2 + 's';
+      sakura.style.fontSize = Math.random() * 10 + 10 + 'px';
+      sakura.style.opacity = Math.random() * 0.5 + 0.3;
+      document.body.appendChild(sakura);
+      
+      setTimeout(() => {
+        sakura.remove();
+      }, 5000);
+    }
+
+    function startSakura() {
+      // Створюємо 15 пелюсток сакури
+      for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+          createSakura();
+          setInterval(createSakura, 2000);
+        }, i * 200);
+      }
+    }
+
+    function stopSakura() {
+      const sakuraElements = document.querySelectorAll('.sakura');
+      sakuraElements.forEach(el => el.remove());
+    }
+
+    function changeLanguage(lang) {
+      // Змінюємо текст на сторінці
+      document.getElementById('main-title').textContent = translations[lang].title;
+      document.getElementById('order-btn').textContent = translations[lang].orderBtn;
+      document.getElementById('wallpaper-btn').textContent = translations[lang].wallpaperBtn;
+      document.getElementById('view-wallpapers-btn').textContent = translations[lang].viewWallpapersBtn;
+      document.getElementById('theme-btn').textContent = translations[lang].themeBtn;
+      document.getElementById('skills-title').textContent = translations[lang].skillsTitle;
+      document.getElementById('portfolio-title').textContent = translations[lang].portfolioTitle;
+      document.getElementById('experience-title').textContent = translations[lang].experienceTitle;
+      
+      const experienceItems = document.querySelectorAll('#experience-content .exp-block');
+      translations[lang].experienceContent.forEach((text, index) => {
+        if (experienceItems[index]) {
+          experienceItems[index].textContent = text;
+        }
+      });
+      
+      document.getElementById('about-title').textContent = translations[lang].aboutTitle;
+      document.getElementById('about-text-1').textContent = translations[lang].aboutText1;
+      document.getElementById('about-text-2').textContent = translations[lang].aboutText2;
+      document.getElementById('pricing-title').textContent = translations[lang].pricingTitle;
+      document.getElementById('pricing-text').textContent = translations[lang].pricingText;
+      document.getElementById('resume-btn').textContent = translations[lang].resumeBtn;
+      document.getElementById('contact-btn').textContent = translations[lang].contactBtn;
+      
+      // Змінюємо мову в html тегу
+      document.documentElement.lang = lang === 'ua' ? 'uk' : lang;
+    }
+
+    const languageBtn = document.getElementById('languageBtn');
+    let currentLanguage = 'en'; // Початкова мова - англійська
+
+    languageBtn.addEventListener('click', function() {
+      if (currentLanguage === 'en') {
+        // Перехід на українську
+        this.innerHTML = '<img src="https://flagcdn.com/w20/jp.png" alt="Japanese flag"><span>Jp</span>';
+        currentLanguage = 'ua';
+        document.body.classList.remove('japanese-theme');
+        stopSakura();
+        changeLanguage('ua');
+      } else if (currentLanguage === 'ua') {
+        // Перехід на японську
+        this.innerHTML = '<img src="https://flagcdn.com/w20/gb.png" alt="British flag"><span>Eng</span>';
+        currentLanguage = 'jp';
+        document.body.classList.add('japanese-theme');
+        startSakura();
+        changeLanguage('jp');
+      } else {
+        // Повернення до англійської
+        this.innerHTML = '<img src="https://flagcdn.com/w20/ua.png" alt="Ukrainian flag"><span>Ua</span>';
+        currentLanguage = 'en';
+        document.body.classList.remove('japanese-theme');
+        stopSakura();
+        changeLanguage('en');
+      }
+    });
   </script>
 </body>
 
