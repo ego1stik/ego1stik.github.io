@@ -4,50 +4,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ego1stik | Motion Designer</title>
+  <title>ego1stik — Motion Designer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap');
+    
+    :root {
+      --neon-blue: #00f0ff;
+      --neon-pink: #ff00a0;
+      --neon-purple: #6e00ff;
+      --neon-green: #00ff88;
+      --neon-yellow: #fff000;
+      --neon-orange: #ff6b00;
+      --neon-red: #ff2d54;
+      --neon-cyan: #00ffff;
+      --neon-magenta: #ff00ff;
+      --dark-bg: #0a0a14;
+      --light-bg: #1a1a2e;
+      --text-light: #f5f5ff;
+      --text-dark: #0a0a14;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #121212;
-      color: #f1f1f1;
-      transition: all 0.5s ease;
-    }
-
-    body.light {
-      background: #f1f1f1;
-      color: #222;
-    }
-
-    body.japanese-theme {
-      background: #1a1a2e;
-      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
     .container {
       max-width: 1200px;
-      margin: auto;
+      margin: 2rem auto;
       padding: 2rem;
-      background-color: rgba(0, 0, 0, 0.7);
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      position: relative;
     }
 
-    body.light .container {
-      background-color: rgba(255, 255, 255, 0.9);
-    }
-
-    body.japanese-theme .container {
-      background-color: rgba(26, 26, 46, 0.9);
-      border: 1px solid #ff6b6b;
-    }
-
+    /* Header styles */
     header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       flex-wrap: wrap;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      border-radius: 15px;
+      background: rgba(10, 10, 20, 0.7);
+      border: 2px solid var(--neon-purple);
+      box-shadow: 0 0 20px rgba(110, 0, 255, 0.4),
+                  inset 0 0 15px rgba(110, 0, 255, 0.2);
+      position: relative;
     }
 
     .header-left {
@@ -58,247 +69,224 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     .title {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+      letter-spacing: 2px;
     }
 
-    body.japanese-theme .title {
-      color: #ff9e3d;
-    }
-
+    /* Main buttons */
     .main-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
     }
 
-    .socials {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .socials a {
-      font-size: 1.5rem;
-      color: inherit;
-      transition: color 0.2s;
-    }
-
-    .socials a:hover {
-      color: #00bcd4;
-    }
-
-    body.japanese-theme .socials a:hover {
-      color: #ff6b6b;
-    }
-
-    .btn-order,
-    .btn-wallpaper,
-    .btn-view-wallpapers {
+    .btn-neon {
       display: inline-block;
-      padding: 0.7rem 1.4rem;
-      background: #00ff00;
-      color: #000;
-      font-weight: bold;
+      padding: 1rem 2rem;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
       text-decoration: none;
       border-radius: 8px;
-      transition: all 0.3s;
-      box-shadow: 0 0 10px #00ff00;
-      border: 1px solid #00ff00;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 1rem;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
     }
 
-    .btn-order:hover,
-    .btn-wallpaper:hover,
-    .btn-view-wallpapers:hover {
-      background: #000;
-      color: #00ff00;
-      box-shadow: 0 0 15px #00ff00;
+    .btn-order {
+      color: var(--neon-blue);
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.3),
+                  inset 0 0 10px rgba(0, 240, 255, 0.1);
     }
 
-    body.japanese-theme .btn-order,
-    body.japanese-theme .btn-wallpaper,
-    body.japanese-theme .btn-view-wallpapers {
-      background: #e53e3e;
-      color: #fff;
-      box-shadow: 0 0 10px #e53e3e;
-      border: 1px solid #e53e3e;
+    .btn-wallpaper {
+      color: var(--neon-pink);
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 15px rgba(255, 0, 160, 0.3),
+                  inset 0 0 10px rgba(255, 0, 160, 0.1);
     }
 
-    body.japanese-theme .btn-order:hover,
-    body.japanese-theme .btn-wallpaper:hover,
-    body.japanese-theme .btn-view-wallpapers:hover {
-      background: #000;
-      color: #e53e3e;
-      box-shadow: 0 0 15px #e53e3e;
+    .btn-view-wallpapers {
+      color: var(--neon-green);
+      border-color: var(--neon-green);
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.3),
+                  inset 0 0 10px rgba(0, 255, 136, 0.1);
     }
 
-    /* Оновлений toggle button */
+    .btn-neon:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px;
+    }
+
+    /* Theme and language controls at the top */
+    .top-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 1rem;
+      z-index: 100;
+    }
+
     .toggle-btn {
-      padding: 0.5rem 1rem;
-      background: #00bcd4;
-      color: #fff;
-      border: none;
+      padding: 0.7rem 1.5rem;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      background: transparent;
+      color: var(--neon-yellow);
+      border: 2px solid var(--neon-yellow);
       border-radius: 50px;
       cursor: pointer;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 2px 5px rgba(0, 188, 212, 0.3);
-    }
-
-    .toggle-btn i {
-      transition: all 0.3s;
-    }
-
-    body.light .toggle-btn i.fa-moon {
-      display: none;
-    }
-
-    body:not(.light) .toggle-btn i.fa-sun {
-      display: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 240, 0, 0.2);
+      letter-spacing: 1px;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+      z-index: 101;
     }
 
     .toggle-btn:hover {
-      background: #008ba3;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 188, 212, 0.4);
+      background: rgba(255, 240, 0, 0.1);
+      box-shadow: 0 0 20px var(--neon-yellow);
     }
 
-    body.japanese-theme .toggle-btn {
-      background: #ff6b6b;
-      box-shadow: 0 2px 5px rgba(255, 107, 107, 0.3);
-    }
-
-    body.japanese-theme .toggle-btn:hover {
-      background: #e53e3e;
-      box-shadow: 0 4px 8px rgba(255, 107, 107, 0.4);
-    }
-
-    /* Оновлений language button */
     .language-btn {
-      padding: 0.5rem 1rem;
+      padding: 0.7rem 1.5rem;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
       background: transparent;
-      color: #fff;
-      border: 2px solid #00bcd4;
+      color: var(--neon-orange);
+      border: 2px solid var(--neon-orange);
       border-radius: 50px;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 107, 0, 0.2);
+      letter-spacing: 1px;
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+      z-index: 101;
     }
 
     .language-btn:hover {
-      background: rgba(0, 188, 212, 0.1);
-      box-shadow: 0 2px 5px rgba(0, 188, 212, 0.3);
-      transform: translateY(-2px);
-    }
-
-    body.light .language-btn {
-      color: #222;
-    }
-
-    body.japanese-theme .language-btn {
-      border-color: #ff6b6b;
-    }
-
-    body.japanese-theme .language-btn:hover {
-      background: rgba(255, 107, 107, 0.1);
-      box-shadow: 0 2px 5px rgba(255, 107, 107, 0.3);
+      background: rgba(255, 107, 0, 0.1);
+      box-shadow: 0 0 20px var(--neon-orange);
     }
 
     .language-btn img {
       width: 20px;
       height: auto;
       border-radius: 50%;
-      transition: transform 0.3s;
     }
 
-    .language-btn:hover img {
-      transform: scale(1.1);
+    /* Social icons below theme buttons */
+    .socials {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
 
-    /* Оновлені кнопки в кінці сторінки */
-    .btn-resume,
-    .btn-contact,
-    .btn-fiverr {
-      display: inline-flex;
+    .social-icon {
+      font-size: 1.5rem;
+      color: var(--text-light);
+      transition: all 0.3s ease;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.8rem 1.5rem;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: all 0.3s;
-      margin: 0 0.5rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      border: none;
-      color: #fff;
+      border: 2px solid;
+      position: relative;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
     }
 
-    .btn-resume {
-      background: #00bcd4;
+    .social-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
     }
 
-    .btn-resume:hover {
-      background: #008ba3;
-      box-shadow: 0 6px 12px rgba(0, 188, 212, 0.3);
-      transform: translateY(-2px);
+    .social-icon:hover::before {
+      left: 100%;
     }
 
-    .btn-contact {
-      background: #e91e63;
+    .instagram {
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 15px rgba(255, 0, 160, 0.3);
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    .btn-contact:hover {
-      background: #c2185b;
-      box-shadow: 0 6px 12px rgba(233, 30, 99, 0.3);
-      transform: translateY(-2px);
+    .linkedin {
+      border-color: #0077b5;
+      box-shadow: 0 0 15px rgba(0, 119, 181, 0.3);
     }
 
-    .btn-fiverr {
-      background: #1dbf73;
-    }
-
-    .btn-fiverr:hover {
-      background: #19a463;
-      box-shadow: 0 6px 12px rgba(29, 191, 115, 0.3);
-      transform: translateY(-2px);
-    }
-
-    body.japanese-theme .btn-contact {
-      background: #9c27b0;
-    }
-
-    body.japanese-theme .btn-contact:hover {
-      background: #7b1fa2;
-    }
-
-    /* Решта стилів залишаються незмінними */
+    /* Sections */
     .section {
       margin-top: 3rem;
+      padding: 2rem;
+      border-radius: 15px;
+      background: rgba(10, 10, 20, 0.7);
+      border: 2px solid;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4),
+                  inset 0 0 15px rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--neon-blue), var(--neon-pink));
     }
 
     .section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      border-left: 4px solid #00bcd4;
-      padding-left: 1rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--neon-blue);
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+      letter-spacing: 2px;
     }
 
-    body.japanese-theme .section h2 {
-      border-left-color: #ff6b6b;
-    }
-
-    .skills,
-    .experience-grid {
+    /* Skills section */
+    .skills {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
@@ -306,247 +294,320 @@
 
     .skill {
       padding: 1rem 1.5rem;
-      font-weight: bold;
-      font-family: monospace;
+      font-weight: 700;
       font-size: 1.1rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px;
-      color: #fff;
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+      border-radius: 8px;
+      border: 2px solid;
+      box-shadow: 0 0 15px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(5px);
+      background: rgba(0, 0, 0, 0.3);
     }
 
-    .skill:nth-child(1) {
-      background: #ff0000;
-      box-shadow: 0 0 15px #ff0000;
-    }
-    .skill:nth-child(2) {
-      background: #00ff00;
-      box-shadow: 0 0 15px #00ff00;
-      color: #000;
-    }
-    .skill:nth-child(3) {
-      background: #0000ff;
-      box-shadow: 0 0 15px #0000ff;
-    }
-    .skill:nth-child(4) {
-      background: #ffff00;
-      box-shadow: 0 0 15px #ffff00;
-      color: #000;
-    }
-    .skill:nth-child(5) {
-      background: #ff00ff;
-      box-shadow: 0 0 15px #ff00ff;
-    }
-    .skill:nth-child(6) {
-      background: #00ffff;
-      box-shadow: 0 0 15px #00ffff;
-      color: #000;
-    }
-    .skill:nth-child(7) {
-      background: #ff9900;
-      box-shadow: 0 0 15px #ff9900;
-    }
-    .skill:nth-child(8) {
-      background: #9900ff;
-      box-shadow: 0 0 15px #9900ff;
-    }
-    .skill:nth-child(9) {
-      background: #ff0099;
-      box-shadow: 0 0 15px #ff0099;
-    }
-    .skill:nth-child(10) {
-      background: #00ff99;
-      box-shadow: 0 0 15px #00ff99;
-      color: #000;
+    .skill::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(255,255,255,0.1) 0%,
+        rgba(255,255,255,0) 60%
+      );
+      transform: rotate(30deg);
     }
 
-    body.japanese-theme .skill {
-      box-shadow: 0 0 15px rgba(255, 107, 107, 0.7);
+    .skill:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px;
     }
 
-    .exp-block {
-      padding: 1rem 1.5rem;
-      font-weight: bold;
-      font-family: monospace;
-      font-size: 1.1rem;
-      border-radius: 10px;
-    }
-
-    .exp-block:nth-child(odd) {
-      background: #002b36;
-      color: #2aa198;
-      box-shadow: 0 0 10px #2aa198;
-    }
-
-    .exp-block:nth-child(even) {
-      background: #1b1b2f;
-      color: #f67280;
-      box-shadow: 0 0 10px #f67280;
-    }
-
-    body.japanese-theme .exp-block:nth-child(odd) {
-      background: rgba(0, 43, 54, 0.8);
-      color: #ff9e3d;
-      box-shadow: 0 0 10px #ff9e3d;
-    }
-
-    body.japanese-theme .exp-block:nth-child(even) {
-      background: rgba(27, 27, 47, 0.8);
-      color: #ff6b6b;
-      box-shadow: 0 0 10px #ff6b6b;
-    }
-
+    /* Portfolio section */
     .portfolio {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
       gap: 2rem;
     }
 
     .video-embed {
-      flex: 1 1 45%;
-      height: 300px;
+      width: 100%;
+      height: 250px;
       border: none;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      border: 2px solid var(--neon-blue);
     }
 
-    .about {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      padding: 2rem;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-      border-left: 4px solid #00ff00;
-      box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+    .video-embed:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 30px var(--neon-blue);
     }
 
-    body.japanese-theme .about {
-      border-left-color: #ff6b6b;
-      box-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
+    /* Experience section */
+    .experience-container {
+      background: rgba(26, 26, 46, 0.8);
+      border-radius: 15px;
+      padding: 25px;
+      border: 2px solid var(--neon-purple);
+      box-shadow: 0 0 20px rgba(110, 0, 255, 0.4);
     }
 
-    .pricing-block {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      padding: 2rem;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-      border-left: 4px solid #f39c12;
-      box-shadow: 0 0 15px rgba(243, 156, 18, 0.2);
-      margin-top: 2rem;
+    .experience-item {
+      margin-bottom: 40px;
+      position: relative;
     }
 
-    body.japanese-theme .pricing-block {
-      border-left-color: #ff9e3d;
-      box-shadow: 0 0 15px rgba(255, 158, 61, 0.3);
-    }
-
-    .buttons-container {
+    .job-title {
+      font-weight: bold;
+      font-size: 1.4em;
+      color: var(--neon-blue);
+      margin-bottom: 5px;
       display: flex;
-      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .job-title::before {
+      content: '🔹';
+      font-size: 1.2em;
+    }
+
+    .company {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: var(--neon-green);
+      margin-bottom: 5px;
+    }
+
+    .date {
+      color: var(--neon-yellow);
+      font-style: italic;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .responsibilities {
+      list-style-type: none;
+      padding-left: 0;
+      display: flex;
+      flex-wrap: wrap;
       gap: 1rem;
-      margin-top: 3rem;
+    }
+
+    .responsibility {
+      padding: 1rem 1.5rem;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 2px solid;
+      box-shadow: 0 0 15px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(5px);
+      background: rgba(0, 0, 0, 0.3);
+      width: calc(50% - 0.5rem);
+    }
+
+    .responsibility:nth-child(odd) {
+      color: var(--neon-blue);
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    }
+
+    .responsibility:nth-child(even) {
+      color: var(--neon-pink);
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 15px rgba(255, 0, 160, 0.3);
+    }
+
+    .responsibility:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px;
+    }
+
+    /* Contact section */
+    .contact-options {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 20px;
+      display: flex;
+      gap: 1rem;
       flex-wrap: wrap;
     }
 
+    .contact-options li {
+      margin-bottom: 15px;
+      position: relative;
+      padding-left: 0;
+    }
+
+    .contact-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.2rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      border: 2px solid;
+      transition: all 0.3s ease;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+    }
+
+    .contact-option.instagram {
+      color: var(--neon-pink);
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 15px rgba(255, 0, 160, 0.3);
+    }
+
+    .contact-option.linkedin {
+      color: #0077b5;
+      border-color: #0077b5;
+      box-shadow: 0 0 15px rgba(0, 119, 181, 0.3);
+    }
+
+    .contact-option:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      padding: 12px 25px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      border: 2px solid;
+      position: relative;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-fiverr {
+      color: var(--neon-green);
+      border-color: var(--neon-green);
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+    }
+
+    .btn-resume {
+      color: var(--neon-pink);
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 15px rgba(255, 0, 160, 0.3);
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px;
+    }
+
+    /* Pricing section */
+    .pricing-block {
+      border-color: var(--neon-yellow);
+      box-shadow: 0 0 20px rgba(255, 240, 0, 0.2);
+    }
+
+    .pricing-block::before {
+      background: var(--neon-yellow);
+    }
+
+    /* Responsive design */
     @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+
+      header {
+        flex-direction: column;
+        padding: 1.5rem;
+      }
+
+      .title {
+        font-size: 2.5rem;
+      }
+
       .portfolio {
+        grid-template-columns: 1fr;
+      }
+
+      .video-embed {
+        height: 200px;
+      }
+
+      .contact-buttons {
         flex-direction: column;
       }
 
-      .main-buttons {
-        flex-direction: column;
+      .contact-btn {
+        width: 100%;
+        text-align: center;
       }
 
-      .btn-order,
-      .btn-wallpaper,
-      .btn-view-wallpapers {
-        display: block;
-        margin-bottom: 0.5rem;
+      .responsibility {
+        width: 100%;
       }
-
-      .buttons-container {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-
-    /* Аніме-елементи для японської теми */
-    .sakura {
-      position: fixed;
-      top: -10px;
-      z-index: 999;
-      opacity: 0;
-      animation: fall linear infinite;
-      pointer-events: none;
-      user-select: none;
-      filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.7));
-    }
-
-    @keyframes fall {
-      to {
-        transform: translateY(100vh) rotate(360deg);
-      }
-    }
-
-    body.japanese-theme::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     }
   </style>
 </head>
 
-<body class="dark">
+<body>
+  <!-- Theme and language controls at the very top -->
+  <div class="top-controls">
+    <button class="toggle-btn" onclick="toggleTheme()" id="theme-btn">
+      <i class="fas fa-moon"></i>
+      <span id="theme-btn-text">Theme</span>
+    </button>
+    <button class="language-btn" id="languageBtn">
+      <img src="https://flagcdn.com/w20/ua.png" alt="Ukrainian flag">
+      <span>Ua</span>
+    </button>
+  </div>
+
   <div class="container">
     <header>
       <div class="header-left">
         <div class="title" id="main-title">ego1stik — Motion Designer</div>
         <div class="main-buttons">
-          <a href="https://t.me/kostia19s" target="_blank" class="btn-order" id="order-btn">Order animation</a>
-          <a href="https://discord.com/users/1003000637564407940" target="_blank" class="btn-wallpaper" id="wallpaper-btn">Buy wallpaper animation</a>
-          <a href="https://steamcommunity.com/profiles/76561199469322046/myworkshopfiles/" target="_blank" class="btn-view-wallpapers" id="view-wallpapers-btn">View Wallpapers</a>
+          <a href="#contact" class="btn-neon btn-order" id="order-btn">Order animation</a>
+          <a href="https://www.fiverr.com/s/e61lGD3" target="_blank" class="btn-neon btn-wallpaper" id="wallpaper-btn">Buy wallpaper animation</a>
+          <a href="#portfolio" class="btn-neon btn-view-wallpapers" id="view-wallpapers-btn">View Portfolio</a>
         </div>
       </div>
       <div class="header-right">
-        <div style="display: flex; gap: 1rem;">
-          <button class="toggle-btn" onclick="toggleTheme()" id="theme-btn">
-            <i class="fas fa-moon"></i>
-            <i class="fas fa-sun"></i>
-            <span id="theme-btn-text">Toggle Theme</span>
-          </button>
-          <button class="language-btn" id="languageBtn">
-            <img src="https://flagcdn.com/w20/ua.png" alt="Ukrainian flag">
-            <span>Ua</span>
-          </button>
-        </div>
         <div class="socials">
-          <a href="https://t.me/kostia19s" target="_blank"><i class="fab fa-telegram"></i></a>
-          <a href="https://www.tiktok.com/@depressions.music" target="_blank"><i class="fab fa-tiktok"></i></a>
-          <a href="https://www.linkedin.com/in/kostiantin-mazurak-b34226363/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/kostiantyn_mazurak/" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin"></i></a>
         </div>
       </div>
     </header>
 
-    <!-- Решта коду залишається без змін -->
     <section class="section" id="skills-section">
       <h2 id="skills-title">Skills</h2>
       <div class="skills">
-        <div class="skill">Adobe After Effects</div>
-        <div class="skill">Adobe Premiere Pro</div>
-        <div class="skill">Adobe Photoshop</div>
-        <div class="skill">2D Motion Design</div>
-        <div class="skill">Video Editing & Montage</div>
-        <div class="skill">Kinetic Typography</div>
-        <div class="skill">YouTube Shorts</div>
-        <div class="skill">Social Media Content</div>
-        <div class="skill">Logo Animation</div>
-        <div class="skill">GEOlayers 3</div>
+        <div class="skill"><i class="fab fa-adobe"></i> Adobe After Effects</div>
+        <div class="skill"><i class="fab fa-adobe"></i> Adobe Premiere Pro</div>
+        <div class="skill"><i class="fab fa-adobe"></i> Adobe Photoshop</div>
+        <div class="skill"><i class="fas fa-film"></i> 2D Motion Design</div>
+        <div class="skill"><i class="fas fa-cut"></i> Video Editing & Montage</div>
+        <div class="skill"><i class="fas fa-text-height"></i> Kinetic Typography</div>
+        <div class="skill"><i class="fab fa-youtube"></i> YouTube Shorts</div>
+        <div class="skill"><i class="fas fa-hashtag"></i> Social Media Content</div>
+        <div class="skill"><i class="fas fa-signature"></i> Logo Animation</div>
+        <div class="skill"><i class="fas fa-map"></i> GEOlayers 3</div>
       </div>
     </section>
 
@@ -557,19 +618,58 @@
         <iframe class="video-embed" src="https://www.youtube.com/embed/0MRRb2UnHT0" allowfullscreen></iframe>
         <iframe class="video-embed" src="https://www.youtube.com/embed/wNAd77sUrEs" allowfullscreen></iframe>
         <iframe class="video-embed" src="https://www.youtube.com/embed/m2z46SmPQjw" allowfullscreen></iframe>
+        <iframe class="video-embed" src="https://www.youtube.com/embed/RuAe2ubVLYY" allowfullscreen></iframe>
+        <iframe class="video-embed" src="https://www.youtube.com/embed/oL44KxvafxY" allowfullscreen></iframe>
+        <iframe class="video-embed" src="https://www.youtube.com/embed/MURGdZZutjs" allowfullscreen></iframe>
       </div>
     </section>
 
     <section class="section" id="experience-section">
       <h2 id="experience-title">Experience</h2>
-      <div class="experience-grid" id="experience-content">
-        <div class="exp-block">Freelance Motion Designer & Animator (Sep 2022 – Present)</div>
-        <div class="exp-block">• Created 2D animations using After Effects (DUIK, Joysticks'n Sliders)</div>
-        <div class="exp-block">• Animated logos, wallpapers, UI elements</div>
-        <div class="exp-block">• TikTok/Instagram video content creation</div>
-        <div class="exp-block">• GEOlayers 3 animated map scenes</div>
-        <div class="exp-block">• Video/audio editing, color correction</div>
-        <div class="exp-block">• Client communication and feedback integration</div>
+      <div class="experience-container">
+        <div class="experience-item">
+          <div class="job-title">Motion Designer / Content Manager</div>
+          <div class="company">BetterMe — Health & Fitness App</div>
+          <span class="date">📍 May 2022 – June 2023</span>
+          
+          <ul class="responsibilities">
+            <li class="responsibility">🎞 Created animated content for social media and the mobile app (infographics, UI animations, Reels & TikTok videos)</li>
+            <li class="responsibility">🧠 Designed educational and motivational animations for wellness campaigns</li>
+            <li class="responsibility">✏ Collaborated with designers and copywriters to adapt scripts into engaging visual stories</li>
+            <li class="responsibility">📊 Analyzed content performance (retention, views, CTR) and participated in format testing</li>
+            <li class="responsibility">💬 Supported the community team: handled requests, provided feedback, and integrated insights into content</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-title">SMM Creator</div>
+          <div class="company">NESKORENA — Ukrainian Fashion Brand</div>
+          <span class="date">📍 September 2023 – May 2024</span>
+          
+          <ul class="responsibilities">
+            <li class="responsibility">🎥 Produced dynamic content for Instagram & TikTok: Reels, Stories, Posts</li>
+            <li class="responsibility">🧥 Built brand visual identity around the concept of the "perfect jacket"</li>
+            <li class="responsibility">🚀 Grew Instagram audience from 0 to 20,000 followers in the first month, peak — 40,000</li>
+            <li class="responsibility">👗 Created viral fashion content in collaborations with models, stylists, and photographers</li>
+            <li class="responsibility">📈 Leveraged trending formats, analytics, and UGC to boost engagement</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-title">Freelance | SMM Creator & Motion Designer</div>
+          <span class="date">📍 October 2022 – Present</span>
+          
+          <ul class="responsibilities">
+            <li class="responsibility">🖼 Managed Instagram & Twitter: created and published graphics, animations, and short videos</li>
+            <li class="responsibility">📆 Developed content plans aligned with trends and platform specifics</li>
+            <li class="responsibility">📊 Analyzed performance metrics and optimized content for reach & effectiveness</li>
+            <li class="responsibility">🌟 Produced visual content for personal branding</li>
+            <li class="responsibility">🎞 Worked with 2D character animation in anime/game style</li>
+            <li class="responsibility">✨ Used DUIK, Joysticks'n Sliders, Expressions in After Effects</li>
+            <li class="responsibility">💡 Animated logos, wallpapers, and UI elements for digital platforms</li>
+            <li class="responsibility">🛠 Tools: After Effects, Premiere Pro, Photoshop, Illustrator</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -583,152 +683,122 @@
       </p>
     </section>
 
-    <div class="section pricing-block" id="pricing-section">
+    <section class="section pricing-block" id="pricing-section">
       <h2 id="pricing-title">Pricing</h2>
       <p id="pricing-text">Project costs vary depending on complexity, scope, and deadlines. To receive a personalized quote tailored to your specific animation needs, please get in touch with the details of your project. Let's discuss how I can bring your vision to life!</p>
-    </div>
+    </section>
 
-    <div class="buttons-container">
-      <a href="https://drive.google.com/file/d/12AEtk5Ny1Au9ipA9jL4vMRwBYGHb3SnR/view?usp=sharing" target="_blank" class="btn-resume" id="resume-btn">
-        <i class="fas fa-file-alt" style="margin-right: 8px;"></i>View Full Resume
-      </a>
-      <a href="https://t.me/kostia19s" target="_blank" class="btn-contact" id="contact-btn">
-        <i class="fas fa-envelope" style="margin-right: 8px;"></i>Contact Me
-      </a>
-      <a href="https://www.fiverr.com/s/YRl29qK" target="_blank" class="btn-fiverr" id="fiverr-btn">
-        <i class="fab fa-fonticons-fi" style="margin-right: 8px;"></i>Fiverr
-      </a>
-    </div>
+    <section class="section" id="contact-section">
+      <h2 id="contact-title">Contact Me</h2>
+      <p id="contact-subtitle">Ready to start your project? Reach out through any of these channels:</p>
+      
+      <ul class="contact-options" id="contact-options-list">
+        <li>
+          <a href="https://www.instagram.com/kostiantyn_mazurak/" target="_blank" class="contact-option instagram">
+            <i class="fab fa-instagram"></i>
+            <span id="instagram-option">Instagram</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/" target="_blank" class="contact-option linkedin">
+            <i class="fab fa-linkedin"></i>
+            <span id="linkedin-option">LinkedIn</span>
+          </a>
+        </li>
+      </ul>
+      
+      <div class="contact-buttons">
+        <a href="https://www.fiverr.com/s/e61lGD3" target="_blank" class="contact-btn btn-fiverr" id="fiverr-btn">
+          <i class="fab fa-fonticons-fi"></i> <span class="btn-text">Fiverr</span>
+        </a>
+        <a href="https://drive.google.com/file/d/12AEtk5Ny1Au9ipA9jL4vMRwBYGHb3SnR/view?usp=sharing" target="_blank" class="contact-btn btn-resume" id="resume-btn">
+          <i class="fas fa-file-alt"></i> <span class="btn-text">Resume</span>
+        </a>
+      </div>
+    </section>
   </div>
 
   <script>
-    // Тексти для різних мов
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Translations
     const translations = {
       en: {
         title: "ego1stik — Motion Designer",
         orderBtn: "Order animation",
         wallpaperBtn: "Buy wallpaper animation",
-        viewWallpapersBtn: "View Wallpapers",
-        themeBtn: "Toggle Theme",
+        viewWallpapersBtn: "View Portfolio",
+        themeBtn: "Theme",
         skillsTitle: "Skills",
         portfolioTitle: "Portfolio",
         experienceTitle: "Experience",
-        experienceContent: [
-          "Freelance Motion Designer & Animator (Sep 2022 – Present)",
-          "• Created 2D animations using After Effects (DUIK, Joysticks'n Sliders)",
-          "• Animated logos, wallpapers, UI elements",
-          "• TikTok/Instagram video content creation",
-          "• GEOlayers 3 animated map scenes",
-          "• Video/audio editing, color correction",
-          "• Client communication and feedback integration"
+        jobTitle: "Freelance Motion Designer & Animator",
+        dateText: "Sep 2022 - Present",
+        responsibilities: [
+          "Created 2D animations using After Effects (DUIK, Joysticks'n Sliders)",
+          "TikTok/Instagram video content creation",
+          "Video/audio editing, color correction",
+          "GEOLayers 3 animated map scenes",
+          "Client communication and feedback integration"
         ],
         aboutTitle: "About Me",
         aboutText1: "I specialize in bringing anime characters and logos to life through dynamic animation. My expertise ranges from detailed rigging and fluid movement to expressive facial animation that captures the essence of each character. I also create impactful animated logos that enhance brand identity.",
         aboutText2: "Whether you need captivating character animations for games or fan projects, or a memorable animated logo, I deliver visually engaging results with a strong sense of rhythm and storytelling. I work efficiently, using tools like After Effects and Premiere Pro, and prioritize clear communication to ensure your specific needs are met.",
         pricingTitle: "Pricing",
         pricingText: "Project costs vary depending on complexity, scope, and deadlines. To receive a personalized quote tailored to your specific animation needs, please get in touch with the details of your project. Let's discuss how I can bring your vision to life!",
-        resumeBtn: "View Full Resume",
-        contactBtn: "Contact Me",
-        fiverrBtn: "Fiverr"
+        contactTitle: "Contact Me",
+        contactSubtitle: "Ready to start your project? Reach out through any of these channels:",
+        instagramOption: "Instagram",
+        linkedinOption: "LinkedIn",
+        fiverrBtn: "Fiverr",
+        resumeBtn: "Resume"
       },
       ua: {
         title: "ego1stik — Моушн Дизайнер",
         orderBtn: "Замовити анімацію",
         wallpaperBtn: "Купити анімацію шпалери",
-        viewWallpapersBtn: "Переглянути шпалери",
-        themeBtn: "Змінити тему",
+        viewWallpapersBtn: "Переглянути портфоліо",
+        themeBtn: "Тема",
         skillsTitle: "Навички",
         portfolioTitle: "Портфоліо",
         experienceTitle: "Досвід",
-        experienceContent: [
-          "Фріланс Моушн Дизайнер & Аніматор (Вер 2022 – Зараз)",
-          "• Створення 2D анімацій у After Effects (DUIK, Joysticks'n Sliders)",
-          "• Анімація логотипів, шпалер, UI елементів",
-          "• Створення контенту для TikTok/Instagram",
-          "• Анімація карт у GEOlayers 3",
-          "• Редагування відео/аудіо, корекція кольору",
-          "• Спілкування з клієнтами та врахування їхніх побажань"
+        jobTitle: "Фріланс Моушн Дизайнер & Аніматор",
+        dateText: "Вер 2022 - Зараз",
+        responsibilities: [
+          "Створення 2D анімацій у After Effects (DUIK, Joysticks'n Sliders)",
+          "Створення контенту для TikTok/Instagram",
+          "Редагування відео/аудіо, корекція кольору",
+          "Анімація карт у GEOlayers 3",
+          "Спілкування з клієнтами та врахування їхніх побажань"
         ],
         aboutTitle: "Про мене",
         aboutText1: "Я спеціалізуюся на оживленні аніме-персонажів та логотипів через динамічну анімацію. Мої навички включають детальну рігінгу, плавний рух та виразну міміку, яка передає сутність кожного персонажа. Я також створюю ефектні анімовані логотипи, які підсилюють бренд.",
         aboutText2: "Чи потрібні вам захоплюючі анімації персонажів для ігор чи фан-проектів, чи незабутній анімований логотип - я створюю візуально привабливі результати з чітким почуттям ритму та історії. Я працюю ефективно, використовуючи такі інструменти як After Effects та Premiere Pro, та надаю пріоритет чіткому спілкуванню, щоб задовольнити ваші потреби.",
         pricingTitle: "Ціни",
         pricingText: "Вартість проекту залежить від складності, обсягу робіт та термінів. Щоб отримати індивідуальну пропозицію, відповідну до ваших потреб, будь ласка, зв'яжіться зі мною, надавши деталі вашого проекту. Обговоримо, як я можу втілити ваше бачення!",
-        resumeBtn: "Переглянути резюме",
-        contactBtn: "Зв'язатися",
-        fiverrBtn: "Fiverr"
-      },
-      jp: {
-        title: "ego1stik — モーションデザイナー",
-        orderBtn: "アニメーションを注文",
-        wallpaperBtn: "壁紙アニメーションを購入",
-        viewWallpapersBtn: "壁紙を見る",
-        themeBtn: "テーマを変更",
-        skillsTitle: "スキル",
-        portfolioTitle: "ポートフォリオ",
-        experienceTitle: "経験",
-        experienceContent: [
-          "フリーランスモーションデザイナー＆アニメーター（2022年9月～現在）",
-          "• After Effectsを使用した2Dアニメーションの作成（DUIK、Joysticks'n Sliders）",
-          "• ロゴ、壁紙、UI要素のアニメーション",
-          "• TikTok/Instagram向けコンテンツ作成",
-          "• GEOlayers 3を使用した地図アニメーション",
-          "• 動画/音声編集、カラーコレクション",
-          "• クライアントとのコミュニケーションとフィードバックの反映"
-        ],
-        aboutTitle: "私について",
-        aboutText1: "私はアニメキャラクターやロゴをダイナミックなアニメーションで生き生きと表現することを専門としています。詳細なリギング、滑らかな動き、キャラクターの本質を捉えた表情アニメーションなど、幅広い専門知識があります。また、ブランドアイデンティティを強化する印象的なアニメーションロゴも作成します。",
-        aboutText2: "ゲームやファンプロジェクトのための魅力的なキャラクターアニメーションが必要な場合でも、記憶に残るアニメーションロゴが必要な場合でも、リズム感とストーリーテリングを重視した視覚的に魅力的な作品を提供します。After EffectsやPremiere Proなどのツールを効率的に使用し、明確なコミュニケーションを重視して、お客様の特定のニーズを満たします。",
-        pricingTitle: "価格",
-        pricingText: "プロジェクトの費用は、複雑さ、範囲、納期によって異なります。アニメーションのニーズに合わせた個別の見積もりをご希望の場合は、プロジェクトの詳細をお知らせください。あなたのビジョンを実現する方法について話し合いましょう！",
-        resumeBtn: "履歴書を見る",
-        contactBtn: "連絡する",
-        fiverrBtn: "Fiverr"
+        contactTitle: "Контакти",
+        contactSubtitle: "Готові розпочати проект? Зв'яжіться зі мною через будь-який з цих каналів:",
+        instagramOption: "Instagram",
+        linkedinOption: "LinkedIn",
+        fiverrBtn: "Fiverr",
+        resumeBtn: "Резюме"
       }
     };
 
     function toggleTheme() {
       document.body.classList.toggle('light');
-      if (document.body.classList.contains('japanese-theme')) {
-        document.body.classList.remove('japanese-theme');
-        stopSakura();
-      }
-    }
-
-    function createSakura() {
-      const sakura = document.createElement('div');
-      sakura.className = 'sakura';
-      sakura.innerHTML = '🌸';
-      sakura.style.left = Math.random() * window.innerWidth + 'px';
-      sakura.style.animationDuration = Math.random() * 3 + 2 + 's';
-      sakura.style.fontSize = Math.random() * 10 + 10 + 'px';
-      sakura.style.opacity = Math.random() * 0.5 + 0.3;
-      document.body.appendChild(sakura);
-      
-      setTimeout(() => {
-        sakura.remove();
-      }, 5000);
-    }
-
-    function startSakura() {
-      // Створюємо пелюстки сакури тільки для японської теми
-      if (document.body.classList.contains('japanese-theme')) {
-        for (let i = 0; i < 15; i++) {
-          setTimeout(() => {
-            createSakura();
-            setInterval(createSakura, 2000);
-          }, i * 200);
-        }
-      }
-    }
-
-    function stopSakura() {
-      const sakuraElements = document.querySelectorAll('.sakura');
-      sakuraElements.forEach(el => el.remove());
     }
 
     function changeLanguage(lang) {
-      // Змінюємо текст на сторінці
+      // Update all text elements
       document.getElementById('main-title').textContent = translations[lang].title;
       document.getElementById('order-btn').textContent = translations[lang].orderBtn;
       document.getElementById('wallpaper-btn').textContent = translations[lang].wallpaperBtn;
@@ -737,62 +807,48 @@
       document.getElementById('skills-title').textContent = translations[lang].skillsTitle;
       document.getElementById('portfolio-title').textContent = translations[lang].portfolioTitle;
       document.getElementById('experience-title').textContent = translations[lang].experienceTitle;
-      
-      const experienceItems = document.querySelectorAll('#experience-content .exp-block');
-      translations[lang].experienceContent.forEach((text, index) => {
-        if (experienceItems[index]) {
-          experienceItems[index].textContent = text;
-        }
-      });
-      
+      document.getElementById('job-title-text').textContent = translations[lang].jobTitle;
+      document.getElementById('date-text').textContent = translations[lang].dateText;
       document.getElementById('about-title').textContent = translations[lang].aboutTitle;
       document.getElementById('about-text-1').textContent = translations[lang].aboutText1;
       document.getElementById('about-text-2').textContent = translations[lang].aboutText2;
       document.getElementById('pricing-title').textContent = translations[lang].pricingTitle;
       document.getElementById('pricing-text').textContent = translations[lang].pricingText;
-      document.getElementById('resume-btn').innerHTML = `<i class="fas fa-file-alt" style="margin-right: 8px;"></i>${translations[lang].resumeBtn}`;
-      document.getElementById('contact-btn').innerHTML = `<i class="fas fa-envelope" style="margin-right: 8px;"></i>${translations[lang].contactBtn}`;
-      document.getElementById('fiverr-btn').innerHTML = `<i class="fab fa-fonticons-fi" style="margin-right: 8px;"></i>${translations[lang].fiverrBtn}`;
+      document.getElementById('contact-title').textContent = translations[lang].contactTitle;
+      document.getElementById('contact-subtitle').textContent = translations[lang].contactSubtitle;
       
-      // Змінюємо мову в html тегу
-      document.documentElement.lang = lang === 'ua' ? 'uk' : lang;
+      // Update contact options
+      document.getElementById('instagram-option').textContent = translations[lang].instagramOption;
+      document.getElementById('linkedin-option').textContent = translations[lang].linkedinOption;
       
-      // Оновлюємо сакуру при зміні мови
-      if (lang === 'jp') {
-        startSakura();
-      } else {
-        stopSakura();
-      }
+      // Update button texts
+      document.querySelector('#fiverr-btn .btn-text').textContent = translations[lang].fiverrBtn;
+      document.querySelector('#resume-btn .btn-text').textContent = translations[lang].resumeBtn;
+      
+      // Update experience list
+      const responsibilities = translations[lang].responsibilities;
+      const listItems = document.querySelectorAll('.responsibility');
+      responsibilities.forEach((item, index) => {
+        if (listItems[index]) {
+          listItems[index].textContent = item;
+        }
+      });
     }
 
     const languageBtn = document.getElementById('languageBtn');
-    let currentLanguage = 'en'; // Початкова мова - англійська
+    let currentLanguage = 'en';
 
     languageBtn.addEventListener('click', function() {
       if (currentLanguage === 'en') {
-        // Перехід на українську
-        this.innerHTML = '<img src="https://flagcdn.com/w20/jp.png" alt="Japanese flag"><span>Jp</span>';
-        currentLanguage = 'ua';
-        document.body.classList.remove('japanese-theme');
-        stopSakura();
-        changeLanguage('ua');
-      } else if (currentLanguage === 'ua') {
-        // Перехід на японську
         this.innerHTML = '<img src="https://flagcdn.com/w20/gb.png" alt="British flag"><span>Eng</span>';
-        currentLanguage = 'jp';
-        document.body.classList.add('japanese-theme');
-        startSakura();
-        changeLanguage('jp');
+        currentLanguage = 'ua';
+        changeLanguage('ua');
       } else {
-        // Повернення до англійської
         this.innerHTML = '<img src="https://flagcdn.com/w20/ua.png" alt="Ukrainian flag"><span>Ua</span>';
         currentLanguage = 'en';
-        document.body.classList.remove('japanese-theme');
-        stopSakura();
         changeLanguage('en');
       }
     });
   </script>
 </body>
-
 </html>
