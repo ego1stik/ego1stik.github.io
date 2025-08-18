@@ -10,6 +10,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap');
     
     :root {
+      /* Dark Theme Colors */
       --neon-blue: #00f0ff;
       --neon-pink: #ff00a0;
       --neon-purple: #6e00ff;
@@ -23,6 +24,12 @@
       --light-bg: #1a1a2e;
       --text-light: #f5f5ff;
       --text-dark: #0a0a14;
+      
+      /* Light Theme Colors */
+      --light-theme-bg: #f5f5ff;
+      --light-theme-text: #0a0a14;
+      --light-theme-card: #ffffff;
+      --light-theme-border: #e0e0e0;
     }
 
     html {
@@ -36,6 +43,12 @@
       color: var(--text-light);
       line-height: 1.6;
       overflow-x: hidden;
+      transition: all 0.5s ease;
+    }
+
+    body.light {
+      background: var(--light-theme-bg);
+      color: var(--light-theme-text);
     }
 
     .container {
@@ -59,6 +72,13 @@
       box-shadow: 0 0 20px rgba(110, 0, 255, 0.4),
                   inset 0 0 15px rgba(110, 0, 255, 0.2);
       position: relative;
+      transition: all 0.5s ease;
+    }
+
+    body.light header {
+      background: var(--light-theme-card);
+      border-color: var(--light-theme-border);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
 
     .header-left {
@@ -83,6 +103,15 @@
       color: transparent;
       text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
       letter-spacing: 2px;
+    }
+
+    /* Force title to stay the same in light mode */
+    body.light .title {
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink)) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      color: transparent !important;
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.3) !important;
     }
 
     /* Main buttons */
@@ -118,6 +147,12 @@
                   inset 0 0 10px rgba(0, 240, 255, 0.1);
     }
 
+    body.light .btn-order {
+      color: #0066cc;
+      border-color: #0066cc;
+      box-shadow: 0 0 15px rgba(0, 102, 204, 0.3);
+    }
+
     .btn-wallpaper {
       color: var(--neon-pink);
       border-color: var(--neon-pink);
@@ -125,11 +160,23 @@
                   inset 0 0 10px rgba(255, 0, 160, 0.1);
     }
 
+    body.light .btn-wallpaper {
+      color: #cc00cc;
+      border-color: #cc00cc;
+      box-shadow: 0 0 15px rgba(204, 0, 204, 0.3);
+    }
+
     .btn-view-wallpapers {
       color: var(--neon-green);
       border-color: var(--neon-green);
       box-shadow: 0 0 15px rgba(0, 255, 136, 0.3),
                   inset 0 0 10px rgba(0, 255, 136, 0.1);
+    }
+
+    body.light .btn-view-wallpapers {
+      color: #009933;
+      border-color: #009933;
+      box-shadow: 0 0 15px rgba(0, 153, 51, 0.3);
     }
 
     .btn-neon:hover {
@@ -164,9 +211,19 @@
       z-index: 101;
     }
 
+    body.light .toggle-btn {
+      color: #ff9900;
+      border-color: #ff9900;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
     .toggle-btn:hover {
       background: rgba(255, 240, 0, 0.1);
       box-shadow: 0 0 20px var(--neon-yellow);
+    }
+
+    body.light .toggle-btn:hover {
+      background: rgba(255, 153, 0, 0.1);
     }
 
     .language-btn {
@@ -189,9 +246,19 @@
       z-index: 101;
     }
 
+    body.light .language-btn {
+      color: #ff6600;
+      border-color: #ff6600;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
     .language-btn:hover {
       background: rgba(255, 107, 0, 0.1);
       box-shadow: 0 0 20px var(--neon-orange);
+    }
+
+    body.light .language-btn:hover {
+      background: rgba(255, 102, 0, 0.1);
     }
 
     .language-btn img {
@@ -209,8 +276,6 @@
 
     .social-icon {
       font-size: 1.5rem;
-      color: var(--text-light);
-      transition: all 0.3s ease;
       width: 45px;
       height: 45px;
       border-radius: 50%;
@@ -222,6 +287,10 @@
       overflow: hidden;
       background: rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(5px);
+    }
+
+    body.light .social-icon {
+      background: rgba(0, 0, 0, 0.3);
     }
 
     .social-icon::before {
@@ -242,15 +311,33 @@
     .instagram {
       border-color: var(--neon-pink);
       box-shadow: 0 0 15px rgba(255, 0, 160, 0.3);
+      color: transparent;
       background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
       -webkit-background-clip: text;
       background-clip: text;
-      color: transparent;
+    }
+
+    /* Force Instagram icon to stay the same in light mode */
+    body.light .social-icon.instagram {
+      color: transparent !important;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      border-color: var(--neon-pink) !important;
+      box-shadow: 0 0 15px rgba(255, 0, 160, 0.3) !important;
     }
 
     .linkedin {
       border-color: #0077b5;
       box-shadow: 0 0 15px rgba(0, 119, 181, 0.3);
+      color: #0077b5;
+    }
+
+    /* Force LinkedIn icon to stay the same in light mode */
+    body.light .social-icon.linkedin {
+      color: #0077b5 !important;
+      border-color: #0077b5 !important;
+      box-shadow: 0 0 15px rgba(0, 119, 181, 0.3) !important;
     }
 
     /* Sections */
@@ -264,6 +351,13 @@
                   inset 0 0 15px rgba(255, 255, 255, 0.05);
       position: relative;
       overflow: hidden;
+      transition: all 0.5s ease;
+    }
+
+    body.light .section {
+      background: var(--light-theme-card);
+      border-color: var(--light-theme-border);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
 
     .section::before {
@@ -274,6 +368,11 @@
       width: 5px;
       height: 100%;
       background: linear-gradient(to bottom, var(--neon-blue), var(--neon-pink));
+      transition: all 0.5s ease;
+    }
+
+    body.light .section::before {
+      background: linear-gradient(to bottom, #0066cc, #cc00cc);
     }
 
     .section h2 {
@@ -283,6 +382,12 @@
       color: var(--neon-blue);
       text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
       letter-spacing: 2px;
+      transition: all 0.5s ease;
+    }
+
+    body.light .section h2 {
+      color: #0066cc;
+      text-shadow: 0 0 10px rgba(0, 102, 204, 0.3);
     }
 
     /* Skills section */
@@ -304,6 +409,10 @@
       overflow: hidden;
       backdrop-filter: blur(5px);
       background: rgba(0, 0, 0, 0.3);
+    }
+
+    body.light .skill {
+      background: rgba(255, 255, 255, 0.3);
     }
 
     .skill::before {
@@ -344,9 +453,18 @@
       border: 2px solid var(--neon-blue);
     }
 
+    body.light .video-embed {
+      border-color: #0066cc;
+      box-shadow: 0 0 20px rgba(0, 102, 204, 0.2);
+    }
+
     .video-embed:hover {
       transform: scale(1.02);
       box-shadow: 0 0 30px var(--neon-blue);
+    }
+
+    body.light .video-embed:hover {
+      box-shadow: 0 0 30px #0066cc;
     }
 
     /* Experience section */
@@ -356,6 +474,13 @@
       padding: 25px;
       border: 2px solid var(--neon-purple);
       box-shadow: 0 0 20px rgba(110, 0, 255, 0.4);
+      transition: all 0.5s ease;
+    }
+
+    body.light .experience-container {
+      background: rgba(255, 255, 255, 0.8);
+      border-color: var(--light-theme-border);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
 
     .experience-item {
@@ -371,6 +496,11 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      transition: all 0.5s ease;
+    }
+
+    body.light .job-title {
+      color: #0066cc;
     }
 
     .job-title::before {
@@ -383,6 +513,11 @@
       font-size: 1.2em;
       color: var(--neon-green);
       margin-bottom: 5px;
+      transition: all 0.5s ease;
+    }
+
+    body.light .company {
+      color: #009933;
     }
 
     .date {
@@ -390,6 +525,11 @@
       font-style: italic;
       margin-bottom: 15px;
       display: block;
+      transition: all 0.5s ease;
+    }
+
+    body.light .date {
+      color: #ff9900;
     }
 
     .responsibilities {
@@ -415,16 +555,32 @@
       width: calc(50% - 0.5rem);
     }
 
+    body.light .responsibility {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
     .responsibility:nth-child(odd) {
       color: var(--neon-blue);
       border-color: var(--neon-blue);
       box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
     }
 
+    body.light .responsibility:nth-child(odd) {
+      color: #0066cc;
+      border-color: #0066cc;
+      box-shadow: 0 0 15px rgba(0, 102, 204, 0.3);
+    }
+
     .responsibility:nth-child(even) {
       color: var(--neon-pink);
       border-color: var(--neon-pink);
       box-shadow: 0 0 15px rgba(255, 0, 160, 0.3);
+    }
+
+    body.light .responsibility:nth-child(even) {
+      color: #cc00cc;
+      border-color: #cc00cc;
+      box-shadow: 0 0 15px rgba(204, 0, 204, 0.3);
     }
 
     .responsibility:hover {
@@ -461,10 +617,20 @@
       backdrop-filter: blur(5px);
     }
 
+    body.light .contact-option {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
     .contact-option.instagram {
       color: var(--neon-pink);
       border-color: var(--neon-pink);
       box-shadow: 0 0 15px rgba(255, 0, 160, 0.3);
+    }
+
+    body.light .contact-option.instagram {
+      color: #cc00cc;
+      border-color: #cc00cc;
+      box-shadow: 0 0 15px rgba(204, 0, 204, 0.3);
     }
 
     .contact-option.linkedin {
@@ -498,16 +664,32 @@
       background: rgba(0, 0, 0, 0.3);
     }
 
+    body.light .contact-btn {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
     .btn-fiverr {
       color: var(--neon-green);
       border-color: var(--neon-green);
       box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
     }
 
+    body.light .btn-fiverr {
+      color: #009933;
+      border-color: #009933;
+      box-shadow: 0 0 15px rgba(0, 153, 51, 0.3);
+    }
+
     .btn-resume {
       color: var(--neon-pink);
       border-color: var(--neon-pink);
       box-shadow: 0 0 15px rgba(255, 0, 160, 0.3);
+    }
+
+    body.light .btn-resume {
+      color: #cc00cc;
+      border-color: #cc00cc;
+      box-shadow: 0 0 15px rgba(204, 0, 204, 0.3);
     }
 
     .contact-btn:hover {
@@ -521,8 +703,17 @@
       box-shadow: 0 0 20px rgba(255, 240, 0, 0.2);
     }
 
+    body.light .pricing-block {
+      border-color: #ff9900;
+      box-shadow: 0 0 20px rgba(255, 153, 0, 0.2);
+    }
+
     .pricing-block::before {
       background: var(--neon-yellow);
+    }
+
+    body.light .pricing-block::before {
+      background: #ff9900;
     }
 
     /* Responsive design */
@@ -569,7 +760,7 @@
   <div class="top-controls">
     <button class="toggle-btn" onclick="toggleTheme()" id="theme-btn">
       <i class="fas fa-moon"></i>
-      <span id="theme-btn-text">Theme</span>
+      <span id="theme-btn-text">Dark Mode</span>
     </button>
     <button class="language-btn" id="languageBtn">
       <img src="https://flagcdn.com/w20/ua.png" alt="Ukrainian flag">
@@ -729,126 +920,56 @@
       });
     });
 
-    // Translations
-    const translations = {
-      en: {
-        title: "ego1stik — Motion Designer",
-        orderBtn: "Order animation",
-        wallpaperBtn: "Buy wallpaper animation",
-        viewWallpapersBtn: "View Portfolio",
-        themeBtn: "Theme",
-        skillsTitle: "Skills",
-        portfolioTitle: "Portfolio",
-        experienceTitle: "Experience",
-        jobTitle: "Freelance Motion Designer & Animator",
-        dateText: "Sep 2022 - Present",
-        responsibilities: [
-          "Created 2D animations using After Effects (DUIK, Joysticks'n Sliders)",
-          "TikTok/Instagram video content creation",
-          "Video/audio editing, color correction",
-          "GEOLayers 3 animated map scenes",
-          "Client communication and feedback integration"
-        ],
-        aboutTitle: "About Me",
-        aboutText1: "I specialize in bringing anime characters and logos to life through dynamic animation. My expertise ranges from detailed rigging and fluid movement to expressive facial animation that captures the essence of each character. I also create impactful animated logos that enhance brand identity.",
-        aboutText2: "Whether you need captivating character animations for games or fan projects, or a memorable animated logo, I deliver visually engaging results with a strong sense of rhythm and storytelling. I work efficiently, using tools like After Effects and Premiere Pro, and prioritize clear communication to ensure your specific needs are met.",
-        pricingTitle: "Pricing",
-        pricingText: "Project costs vary depending on complexity, scope, and deadlines. To receive a personalized quote tailored to your specific animation needs, please get in touch with the details of your project. Let's discuss how I can bring your vision to life!",
-        contactTitle: "Contact Me",
-        contactSubtitle: "Ready to start your project? Reach out through any of these channels:",
-        instagramOption: "Instagram",
-        linkedinOption: "LinkedIn",
-        fiverrBtn: "Fiverr",
-        resumeBtn: "Resume"
-      },
-      ua: {
-        title: "ego1stik — Моушн Дизайнер",
-        orderBtn: "Замовити анімацію",
-        wallpaperBtn: "Купити анімацію шпалери",
-        viewWallpapersBtn: "Переглянути портфоліо",
-        themeBtn: "Тема",
-        skillsTitle: "Навички",
-        portfolioTitle: "Портфоліо",
-        experienceTitle: "Досвід",
-        jobTitle: "Фріланс Моушн Дизайнер & Аніматор",
-        dateText: "Вер 2022 - Зараз",
-        responsibilities: [
-          "Створення 2D анімацій у After Effects (DUIK, Joysticks'n Sliders)",
-          "Створення контенту для TikTok/Instagram",
-          "Редагування відео/аудіо, корекція кольору",
-          "Анімація карт у GEOlayers 3",
-          "Спілкування з клієнтами та врахування їхніх побажань"
-        ],
-        aboutTitle: "Про мене",
-        aboutText1: "Я спеціалізуюся на оживленні аніме-персонажів та логотипів через динамічну анімацію. Мої навички включають детальну рігінгу, плавний рух та виразну міміку, яка передає сутність кожного персонажа. Я також створюю ефектні анімовані логотипи, які підсилюють бренд.",
-        aboutText2: "Чи потрібні вам захоплюючі анімації персонажів для ігор чи фан-проектів, чи незабутній анімований логотип - я створюю візуально привабливі результати з чітким почуттям ритму та історії. Я працюю ефективно, використовуючи такі інструменти як After Effects та Premiere Pro, та надаю пріоритет чіткому спілкуванню, щоб задовольнити ваші потреби.",
-        pricingTitle: "Ціни",
-        pricingText: "Вартість проекту залежить від складності, обсягу робіт та термінів. Щоб отримати індивідуальну пропозицію, відповідну до ваших потреб, будь ласка, зв'яжіться зі мною, надавши деталі вашого проекту. Обговоримо, як я можу втілити ваше бачення!",
-        contactTitle: "Контакти",
-        contactSubtitle: "Готові розпочати проект? Зв'яжіться зі мною через будь-який з цих каналів:",
-        instagramOption: "Instagram",
-        linkedinOption: "LinkedIn",
-        fiverrBtn: "Fiverr",
-        resumeBtn: "Резюме"
-      }
-    };
-
+    // Theme toggle function
     function toggleTheme() {
-      document.body.classList.toggle('light');
-    }
-
-    function changeLanguage(lang) {
-      // Update all text elements
-      document.getElementById('main-title').textContent = translations[lang].title;
-      document.getElementById('order-btn').textContent = translations[lang].orderBtn;
-      document.getElementById('wallpaper-btn').textContent = translations[lang].wallpaperBtn;
-      document.getElementById('view-wallpapers-btn').textContent = translations[lang].viewWallpapersBtn;
-      document.getElementById('theme-btn-text').textContent = translations[lang].themeBtn;
-      document.getElementById('skills-title').textContent = translations[lang].skillsTitle;
-      document.getElementById('portfolio-title').textContent = translations[lang].portfolioTitle;
-      document.getElementById('experience-title').textContent = translations[lang].experienceTitle;
-      document.getElementById('job-title-text').textContent = translations[lang].jobTitle;
-      document.getElementById('date-text').textContent = translations[lang].dateText;
-      document.getElementById('about-title').textContent = translations[lang].aboutTitle;
-      document.getElementById('about-text-1').textContent = translations[lang].aboutText1;
-      document.getElementById('about-text-2').textContent = translations[lang].aboutText2;
-      document.getElementById('pricing-title').textContent = translations[lang].pricingTitle;
-      document.getElementById('pricing-text').textContent = translations[lang].pricingText;
-      document.getElementById('contact-title').textContent = translations[lang].contactTitle;
-      document.getElementById('contact-subtitle').textContent = translations[lang].contactSubtitle;
+      const body = document.body;
+      const themeBtn = document.getElementById('theme-btn');
+      const themeBtnText = document.getElementById('theme-btn-text');
       
-      // Update contact options
-      document.getElementById('instagram-option').textContent = translations[lang].instagramOption;
-      document.getElementById('linkedin-option').textContent = translations[lang].linkedinOption;
+      body.classList.toggle('light');
       
-      // Update button texts
-      document.querySelector('#fiverr-btn .btn-text').textContent = translations[lang].fiverrBtn;
-      document.querySelector('#resume-btn .btn-text').textContent = translations[lang].resumeBtn;
-      
-      // Update experience list
-      const responsibilities = translations[lang].responsibilities;
-      const listItems = document.querySelectorAll('.responsibility');
-      responsibilities.forEach((item, index) => {
-        if (listItems[index]) {
-          listItems[index].textContent = item;
-        }
-      });
-    }
-
-    const languageBtn = document.getElementById('languageBtn');
-    let currentLanguage = 'en';
-
-    languageBtn.addEventListener('click', function() {
-      if (currentLanguage === 'en') {
-        this.innerHTML = '<img src="https://flagcdn.com/w20/gb.png" alt="British flag"><span>Eng</span>';
-        currentLanguage = 'ua';
-        changeLanguage('ua');
+      if (body.classList.contains('light')) {
+        themeBtn.innerHTML = '<i class="fas fa-sun"></i><span id="theme-btn-text">Light Mode</span>';
+        themeBtnText.textContent = 'Light Mode';
       } else {
-        this.innerHTML = '<img src="https://flagcdn.com/w20/ua.png" alt="Ukrainian flag"><span>Ua</span>';
-        currentLanguage = 'en';
-        changeLanguage('en');
+        themeBtn.innerHTML = '<i class="fas fa-moon"></i><span id="theme-btn-text">Dark Mode</span>';
+        themeBtnText.textContent = 'Dark Mode';
       }
+      
+      // Force title to stay the same
+      const title = document.querySelector('.title');
+      title.style.background = 'linear-gradient(90deg, var(--neon-blue), var(--neon-pink))';
+      title.style.webkitBackgroundClip = 'text';
+      title.style.backgroundClip = 'text';
+      title.style.color = 'transparent';
+      title.style.textShadow = '0 0 10px rgba(0, 240, 255, 0.3)';
+      
+      // Force social icons to stay the same
+      const instagramIcon = document.querySelector('.social-icon.instagram');
+      const linkedinIcon = document.querySelector('.social-icon.linkedin');
+      
+      if (instagramIcon) {
+        instagramIcon.style.color = 'transparent';
+        instagramIcon.style.background = 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)';
+        instagramIcon.style.webkitBackgroundClip = 'text';
+        instagramIcon.style.backgroundClip = 'text';
+        instagramIcon.style.borderColor = 'var(--neon-pink)';
+        instagramIcon.style.boxShadow = '0 0 15px rgba(255, 0, 160, 0.3)';
+      }
+      
+      if (linkedinIcon) {
+        linkedinIcon.style.color = '#0077b5';
+        linkedinIcon.style.borderColor = '#0077b5';
+        linkedinIcon.style.boxShadow = '0 0 15px rgba(0, 119, 181, 0.3)';
+      }
+    }
+
+    // Language toggle functionality
+    document.getElementById('languageBtn').addEventListener('click', function() {
+      // This would be where you implement language switching
+      alert('Language switching functionality would go here');
     });
   </script>
 </body>
+
 </html>
