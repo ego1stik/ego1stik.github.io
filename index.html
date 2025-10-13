@@ -13,14 +13,14 @@
         /* --- 0. PRELOADER & ANIMATED BACKGROUND --- */
         .preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #1a0a2e; /* Default to Vaporwave background */
+            background: #000000; /* Default to Crimson Ronin background */
             display: flex; align-items: center; justify-content: center;
             z-index: 2000; opacity: 1; transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
         }
         .preloader.hidden { opacity: 0; visibility: hidden; }
         .spinner {
-            width: 60px; height: 60px; border: 5px solid rgba(255, 107, 255, 0.3);
-            border-top-color: #00f0ff; border-radius: 50%; animation: spin 1s linear infinite;
+            width: 60px; height: 60px; border: 5px solid rgba(220, 20, 60, 0.3);
+            border-top-color: #ff4d4d; border-radius: 50%; animation: spin 1s linear infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -49,7 +49,16 @@
         }
 
         /* --- 1. THEME VARIABLES --- */
-        :root, body.vaporwave-sunset {
+        :root, body.crimson-ronin {
+            --bg-color-base: #000000;
+            --surface-color: rgba(10, 0, 0, 0.5);
+            --text-primary: #ffffff; --text-secondary: #b3b3b3;
+            --border-color: rgba(220, 20, 60, 0.4); --shadow-color: rgba(220, 20, 60, 0.2);
+            --neon-blue: #ff4d4d; --neon-pink: #ff2d54; --neon-green: #ffffff; --neon-yellow: #ff4d4d;
+            --blob-color1: #8b0000; --blob-color2: #dc143c; --blob-color3: #220000;
+        }
+        
+        body.vaporwave-sunset {
             --bg-color-base: #1a0a2e;
             --surface-color: rgba(26, 10, 46, 0.5);
             --text-primary: #ffffff; --text-secondary: #ffb8ff;
@@ -85,13 +94,49 @@
             --blob-color1: #008000; --blob-color2: #00ff00; --blob-color3: #32cd32;
         }
 
-        body.crimson-ronin {
-            --bg-color-base: #000000;
-            --surface-color: rgba(10, 0, 0, 0.5);
-            --text-primary: #ffffff; --text-secondary: #b3b3b3;
-            --border-color: rgba(220, 20, 60, 0.4); --shadow-color: rgba(220, 20, 60, 0.2);
-            --neon-blue: #ff4d4d; --neon-pink: #ff2d54; --neon-green: #ffffff; --neon-yellow: #ff4d4d;
-            --blob-color1: #8b0000; --blob-color2: #dc143c; --blob-color3: #220000;
+        body.oceanic-depths {
+            --bg-color-base: #030a1c;
+            --surface-color: rgba(3, 10, 28, 0.5);
+            --text-primary: #e0f7ff; --text-secondary: #80deea;
+            --border-color: rgba(0, 188, 212, 0.4); --shadow-color: rgba(0, 188, 212, 0.2);
+            --neon-blue: #00bcd4; --neon-pink: #4dd0e1; --neon-green: #a7ffeb; --neon-yellow: #84ffff;
+            --blob-color1: #005f73; --blob-color2: #0a9396; --blob-color3: #003440;
+        }
+
+        body.solar-flare {
+            --bg-color-base: #1c0a03;
+            --surface-color: rgba(28, 10, 3, 0.5);
+            --text-primary: #fff3e0; --text-secondary: #ffcc80;
+            --border-color: rgba(255, 111, 0, 0.4); --shadow-color: rgba(255, 111, 0, 0.2);
+            --neon-blue: #ff6f00; --neon-pink: #ff9800; --neon-green: #ffeb3b; --neon-yellow: #ffc107;
+            --blob-color1: #e65100; --blob-color2: #ff8f00; --blob-color3: #7f2700;
+        }
+
+        body.emerald-garden {
+            --bg-color-base: #031c0a;
+            --surface-color: rgba(3, 28, 10, 0.5);
+            --text-primary: #e8f5e9; --text-secondary: #a5d6a7;
+            --border-color: rgba(102, 187, 106, 0.4); --shadow-color: rgba(102, 187, 106, 0.2);
+            --neon-blue: #66bb6a; --neon-pink: #81c784; --neon-green: #c8e6c9; --neon-yellow: #fdd835;
+            --blob-color1: #1b5e20; --blob-color2: #388e3c; --blob-color3: #003300;
+        }
+        
+        body.amethyst-dream {
+            --bg-color-base: #1c031c;
+            --surface-color: rgba(28, 3, 28, 0.5);
+            --text-primary: #f3e5f5; --text-secondary: #ce93d8;
+            --border-color: rgba(171, 71, 188, 0.4); --shadow-color: rgba(171, 71, 188, 0.2);
+            --neon-blue: #ab47bc; --neon-pink: #ba68c8; --neon-green: #e1bee7; --neon-yellow: #f8bbd0;
+            --blob-color1: #4a148c; --blob-color2: #6a1b9a; --blob-color3: #300030;
+        }
+
+        body.cyberpunk-night {
+            --bg-color-base: #0a031c;
+            --surface-color: rgba(10, 3, 28, 0.5);
+            --text-primary: #e0e7ff; --text-secondary: #9fb5ff;
+            --border-color: rgba(71, 98, 255, 0.4); --shadow-color: rgba(71, 98, 255, 0.2);
+            --neon-blue: #4762ff; --neon-pink: #d900ff; --neon-green: #00ffc8; --neon-yellow: #f2ff00;
+            --blob-color1: #2a00d4; --blob-color2: #9d00c9; --blob-color3: #00234d;
         }
 
         /* --- 2. GLOBAL STYLES & LAYOUT --- */
@@ -195,15 +240,15 @@
             transform: translateY(-4px) scale(1.05);
             color: var(--neon-pink);
             border-color: var(--neon-pink);
-            box-shadow: 0 0 25px var(--neon-pink); /* NEW: GLOW EFFECT FOR ALL BUTTONS */
+            box-shadow: 0 0 25px var(--neon-pink);
         }
         body.light-mode .btn-neon { color: var(--text-secondary); border-color: var(--border-color); }
         body.light-mode .btn-neon:hover { box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: #c8237d; border-color: #c8237d;}
 
         .btn-primary { color: var(--neon-blue); border-color: var(--neon-blue); box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
         .btn-primary:hover {
-            color: var(--neon-blue); /* Keep original color */
-            border-color: var(--neon-blue); /* Keep original color */
+            color: var(--neon-blue);
+            border-color: var(--neon-blue);
             box-shadow: 0 0 30px var(--neon-blue), 0 0 40px var(--neon-blue);
         }
         body.light-mode .btn-primary { color: #0077b5; border-color: #0077b5; box-shadow: none; }
@@ -339,7 +384,7 @@
     </style>
 </head>
 
-<body class="vaporwave-sunset">
+<body class="crimson-ronin">
     <div class="background-container">
         <div class="blob blob1"></div>
         <div class="blob blob2"></div>
@@ -401,6 +446,7 @@
         <section class="section reveal" id="portfolio">
             <h2 class="section-title" data-lang-key="portfolio_title">Portfolio</h2>
             <div class="portfolio-grid">
+                <div class="portfolio-card"><iframe src="https://www.youtube.com/embed/8K7wk1J-dNk?si=BmZCqLyp4VOTcuUZ" allowfullscreen></iframe></div>
                 <div class="portfolio-card"><iframe src="https://www.youtube.com/embed/_0Nze69gRWY" allowfullscreen></iframe></div>
                 <div class="portfolio-card"><iframe src="https://www.youtube.com/embed/0MRRb2UnHT0" allowfullscreen></iframe></div>
                 <div class="portfolio-card"><iframe src="https://www.youtube.com/embed/wNAd77sUrEs" allowfullscreen></iframe></div>
@@ -522,7 +568,7 @@
     </div>
 
     <div class="floating-controls">
-        <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Theme"><i class="fas fa-mountain-sun"></i></button>
+        <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Theme"><i class="fas fa-torii-gate"></i></button>
         <button class="icon-btn" id="lang-toggle-btn" aria-label="Toggle Language"><i class="fas fa-globe"></i></button>
     </div>
     <button class="scroll-to-top" id="scrollToTopBtn" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
@@ -593,19 +639,60 @@
                 faq3_q: "始めるには何が必要ですか？", faq3_a: "開始するには、目標、対象者、ブランドガイドライン、および特定の成果物を概説した明確な概要が必要です。お持ちのビジュアルリファレンスやスクリプトも非常に役立ちます！",
                 about_title: "私について", about_text: "私はダイナミックなアニメーションを通じてキャラクターやロゴに命を吹き込むことを専門としています。ゲームやソーシャルメディア向けの魅力的なアニメーション、または記憶に残るアニメーションロゴが必要な場合でも、強いリズム感とストーリーテリングで視覚的に魅力的な結果を提供します。",
                 contact_title: "お問い合わせ", contact_text: "プロジェクトを始める準備はできましたか？あなたのビジョンをどう実現できるか話し合いましょう！", contact_btn_fiverr: "Fiverr", contact_btn_resume: "履歴書", contact_btn_linktree: "Linktree"
+            },
+            fr: {
+                nav_portfolio: "Portfolio", nav_skills: "Compétences", nav_experience: "Expérience", nav_contact: "Contact",
+                hero_title: "ego1stik — Motion Designer", hero_btn_portfolio: "Voir le Portfolio", hero_btn_order: "Commander une Animation",
+                skills_title: "Compétences", portfolio_title: "Portfolio",
+                workshop_title: "Steam Workshop", workshop_desc: "Découvrez ma collection de fonds d'écran animés pour Wallpaper Engine. Donnez vie à votre bureau !", workshop_btn: "Voir les Fonds d'écran",
+                experience_title: "Expérience",
+                exp3_title: "Motion Designer Freelance", exp3_date: "Oct 2022 – Présent", exp3_resp1: "Réalisé avec succès des centaines de commandes en freelance", exp3_resp2: "Spécialisé dans l'animation de personnages 2D et de logos", exp3_resp3: "Collaboré avec des clients du monde entier pour donner vie à leurs idées",
+                exp1_title: "Créateur SMM", exp1_resp1: "Produit du contenu dynamique pour Instagram & TikTok", exp1_resp2: "Augmenté l'audience Instagram de 0 à 40 000", exp1_resp3: "Créé du contenu de mode viral en collaboration",
+                exp2_title: "Motion Designer / Gestionnaire de Contenu", exp2_resp1: "Créé du contenu animé pour les réseaux sociaux", exp2_resp2: "Conçu des animations éducatives et motivantes", exp2_resp3: "Analysé les performances du contenu (rétention, CTR)",
+                workflow_title: "Mon Flux de Travail",
+                workflow1_title: "Découverte", workflow1_desc: "Comprendre vos objectifs, votre public et votre vision pour le projet.",
+                workflow2_title: "Concept", workflow2_desc: "Développer des storyboards et des styleframes pour visualiser l'animation finale.",
+                workflow3_title: "Animation", workflow3_desc: "Donner vie au concept avec des mouvements fluides, un timing et des effets.",
+                workflow4_title: "Livraison", workflow4_desc: "Finaliser, rendre et livrer des fichiers de haute qualité pour votre plateforme.",
+                faq_title: "FAQ",
+                faq1_q: "Quels sont vos tarifs ?", faq1_a: "Mes tarifs dépendent de la complexité, de la durée et de la portée du projet. Je préfère fournir un devis personnalisé après avoir discuté des détails. Connectons-nous pour trouver une solution adaptée à votre budget !",
+                faq2_q: "Combien de temps prend une animation ?", faq2_a: "Une simple animation de logo peut prendre quelques jours, tandis qu'une vidéo explicative complète peut prendre plusieurs semaines. Une fois que j'aurai le brief du projet, je pourrai fournir un calendrier plus précis.",
+                faq3_q: "De quoi avez-vous besoin pour commencer ?", faq3_a: "Pour commencer, j'aurai besoin d'un brief clair décrivant vos objectifs, votre public cible, les directives de votre marque et les livrables spécifiques. Toutes les références visuelles ou scripts que vous avez sont également très utiles !",
+                about_title: "À Propos de Moi", about_text: "Je me spécialise dans l'art de donner vie à des personnages et des logos grâce à une animation dynamique. Que vous ayez besoin d'animations captivantes pour des jeux et des médias sociaux, ou d'un logo animé mémorable, je fournis des résultats visuellement attrayants avec un fort sens du rythme et de la narration.",
+                contact_title: "Contactez-moi", contact_text: "Prêt à démarrer votre projet ? Discutons de la manière dont je peux donner vie à votre vision !", contact_btn_fiverr: "Fiverr", contact_btn_resume: "CV", contact_btn_linktree: "Linktree"
+            },
+            es: {
+                nav_portfolio: "Portafolio", nav_skills: "Habilidades", nav_experience: "Experiencia", nav_contact: "Contacto",
+                hero_title: "ego1stik — Diseñador de Movimiento", hero_btn_portfolio: "Ver Portafolio", hero_btn_order: "Pedir Animación",
+                skills_title: "Habilidades", portfolio_title: "Portafolio",
+                workshop_title: "Steam Workshop", workshop_desc: "Echa un vistazo a mi colección de fondos de pantalla animados para Wallpaper Engine. ¡Dale vida a tu escritorio!", workshop_btn: "Ver Fondos de Pantalla",
+                experience_title: "Experiencia",
+                exp3_title: "Diseñador de Movimiento Freelance", exp3_date: "Oct 2022 – Actualidad", exp3_resp1: "Completado con éxito cientos de pedidos como freelance", exp3_resp2: "Especializado en animación de personajes 2D y logotipos", exp3_resp3: "Colaborado con clientes de todo el mundo para dar vida a sus ideas",
+                exp1_title: "Creador SMM", exp1_resp1: "Produjo contenido dinámico para Instagram y TikTok", exp1_resp2: "Aumentó la audiencia de Instagram de 0 a 40,000", exp1_resp3: "Creó contenido de moda viral en colaboraciones",
+                exp2_title: "Diseñador de Movimiento / Gestor de Contenidos", exp2_resp1: "Creó contenido animado para redes sociales", exp2_resp2: "Diseñó animaciones educativas y motivacionales", exp2_resp3: "Analizó el rendimiento del contenido (retención, CTR)",
+                workflow_title: "Mi Flujo de Trabajo",
+                workflow1_title: "Descubrimiento", workflow1_desc: "Comprender sus objetivos, su audiencia y su visión para el proyecto.",
+                workflow2_title: "Concepto", workflow2_desc: "Desarrollar storyboards y styleframes para visualizar la animación final.",
+                workflow3_title: "Animación", workflow3_desc: "Dar vida al concepto con movimiento fluido, timing y efectos.",
+                workflow4_title: "Entrega", workflow4_desc: "Finalizar, renderizar y entregar archivos de alta calidad para su plataforma.",
+                faq_title: "Preguntas Frecuentes",
+                faq1_q: "¿Cuáles son sus tarifas?", faq1_a: "Mis tarifas dependen de la complejidad, duración y alcance del proyecto. Prefiero proporcionar una cotización personalizada después de discutir los detalles. ¡Conectémonos para encontrar una solución que se ajuste a su presupuesto!",
+                faq2_q: "¿Cuánto tiempo toma una animación?", faq2_a: "Una simple animación de logotipo puede tomar unos días, mientras que un video explicativo completo puede tomar varias semanas. Una vez que tenga el brief del proyecto, puedo proporcionar un cronograma más preciso.",
+                faq3_q: "¿Qué necesita de mí para empezar?", faq3_a: "Para empezar, necesitaré un brief claro que describa sus objetivos, público objetivo, cualquier directriz de marca y entregables específicos. ¡Cualquier referencia visual o guion que tenga también es muy útil!",
+                about_title: "Sobre Mí", about_text: "Me especializo en dar vida a personajes y logotipos a través de una animación dinámica. Ya sea que necesite animaciones cautivadoras para juegos y redes sociales, o un logotipo animado memorable, entrego resultados visualmente atractivos con un fuerte sentido del ritmo y la narración.",
+                contact_title: "Contáctame", contact_text: "¿Listo para comenzar tu proyecto? ¡Hablemos de cómo puedo dar vida a tu visión!", contact_btn_fiverr: "Fiverr", contact_btn_resume: "CV", contact_btn_linktree: "Linktree"
             }
         };
-
         const preloader = document.getElementById('preloader');
         window.addEventListener('load', () => { preloader.classList.add('hidden'); });
 
         const themeToggleBtn = document.getElementById('theme-toggle-btn');
-        const themes = ['vaporwave-sunset', 'dark-mode-neon', 'light-mode', 'dark-mode-matrix', 'crimson-ronin'];
-        const themeIcons = ['<i class="fas fa-mountain-sun"></i>', '<i class="fas fa-moon"></i>', '<i class="fas fa-sun"></i>', '<i class="fas fa-terminal"></i>', '<i class="fas fa-torii-gate"></i>'];
+        const themes = ['crimson-ronin', 'vaporwave-sunset', 'dark-mode-neon', 'light-mode', 'dark-mode-matrix', 'oceanic-depths', 'solar-flare', 'emerald-garden', 'amethyst-dream', 'cyberpunk-night'];
+        const themeIcons = ['<i class="fas fa-torii-gate"></i>', '<i class="fas fa-mountain-sun"></i>', '<i class="fas fa-moon"></i>', '<i class="fas fa-sun"></i>', '<i class="fas fa-terminal"></i>', '<i class="fas fa-water"></i>', '<i class="fas fa-fire"></i>', '<i class="fas fa-leaf"></i>', '<i class="fas fa-gem"></i>', '<i class="fas fa-building"></i>'];
         
         const setInitialTheme = () => {
-            let currentTheme = localStorage.getItem('theme') || 'vaporwave-sunset'; // Default to Vaporwave
-            if (!themes.includes(currentTheme)) currentTheme = 'vaporwave-sunset';
+            let currentTheme = localStorage.getItem('theme') || 'crimson-ronin';
+            if (!themes.includes(currentTheme)) currentTheme = 'crimson-ronin';
             document.body.className = currentTheme;
             themeToggleBtn.innerHTML = themeIcons[themes.indexOf(currentTheme)];
         };
@@ -619,7 +706,7 @@
         });
 
         const langToggleBtn = document.getElementById('lang-toggle-btn');
-        const languages = ['en', 'uk', 'ja'];
+        const languages = ['en', 'uk', 'ja', 'fr', 'es'];
         let currentLang = localStorage.getItem('language') || 'en';
 
         const setLanguage = (lang) => {
