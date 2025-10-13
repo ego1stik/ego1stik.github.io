@@ -13,20 +13,19 @@
         /* --- 0. PRELOADER & ANIMATED BACKGROUND --- */
         .preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000000; /* Default to Crimson Ronin background */
-            display: flex; align-items: center; justify-content: center;
+            background: #1c031c; display: flex; align-items: center; justify-content: center;
             z-index: 2000; opacity: 1; transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
         }
         .preloader.hidden { opacity: 0; visibility: hidden; }
         .spinner {
-            width: 60px; height: 60px; border: 5px solid rgba(220, 20, 60, 0.3);
-            border-top-color: #ff4d4d; border-radius: 50%; animation: spin 1s linear infinite;
+            width: 60px; height: 60px; border: 5px solid rgba(171, 71, 188, 0.3);
+            border-top-color: #ab47bc; border-radius: 50%; animation: spin 1s linear infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
         .background-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -2; overflow: hidden; background: var(--bg-color-base);
+            z-index: -3; overflow: hidden; background: var(--bg-color-base);
             transition: background 0.4s ease;
         }
         .blob {
@@ -41,6 +40,8 @@
         @keyframes move2 { from { transform: translate(90vw, 80vh); } to { transform: translate(20vw, 20vh); } }
         @keyframes move3 { from { transform: translate(40vw, 90vh); } to { transform: translate(10vw, 30vh); } }
         
+        #particles-js { position: fixed; width: 100%; height: 100%; z-index: -2; }
+
         .glass-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1; backdrop-filter: blur(5px);
@@ -49,7 +50,16 @@
         }
 
         /* --- 1. THEME VARIABLES --- */
-        :root, body.crimson-ronin {
+        :root, body.amethyst-dream {
+            --bg-color-base: #1c031c;
+            --surface-color: rgba(28, 3, 28, 0.5);
+            --text-primary: #f3e5f5; --text-secondary: #ce93d8;
+            --border-color: rgba(171, 71, 188, 0.4); --shadow-color: rgba(171, 71, 188, 0.2);
+            --neon-blue: #ab47bc; --neon-pink: #ba68c8; --neon-green: #e1bee7; --neon-yellow: #f8bbd0;
+            --blob-color1: #4a148c; --blob-color2: #6a1b9a; --blob-color3: #300030;
+        }
+
+        body.crimson-ronin {
             --bg-color-base: #000000;
             --surface-color: rgba(10, 0, 0, 0.5);
             --text-primary: #ffffff; --text-secondary: #b3b3b3;
@@ -121,15 +131,6 @@
             --blob-color1: #1b5e20; --blob-color2: #388e3c; --blob-color3: #003300;
         }
         
-        body.amethyst-dream {
-            --bg-color-base: #1c031c;
-            --surface-color: rgba(28, 3, 28, 0.5);
-            --text-primary: #f3e5f5; --text-secondary: #ce93d8;
-            --border-color: rgba(171, 71, 188, 0.4); --shadow-color: rgba(171, 71, 188, 0.2);
-            --neon-blue: #ab47bc; --neon-pink: #ba68c8; --neon-green: #e1bee7; --neon-yellow: #f8bbd0;
-            --blob-color1: #4a148c; --blob-color2: #6a1b9a; --blob-color3: #300030;
-        }
-
         body.cyberpunk-night {
             --bg-color-base: #0a031c;
             --surface-color: rgba(10, 3, 28, 0.5);
@@ -141,7 +142,7 @@
 
         /* --- 2. GLOBAL STYLES & LAYOUT --- */
         html { scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Rajdhani', sans-serif; color: var(--text-primary); line-height: 1.6; overflow-x: hidden; transition: color 0.4s ease; }
+        body { margin: 0; font-family: 'Rajdhani', sans-serif; color: var(--text-primary); line-height: 1.6; overflow-x: hidden; transition: color 0.4s ease; cursor: auto; }
         .container { max-width: 1100px; margin: 0 auto; padding: 8rem 2rem 2rem 2rem; }
 
         /* --- 3. HEADER & NAVIGATION --- */
@@ -221,13 +222,27 @@
         }
         body.light-mode .section-title { background: linear-gradient(90deg, #0077b5, #009933); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; }
 
-        .hero { text-align: center; padding: 4rem 1rem; margin-bottom: 4rem; }
+        .hero {
+            text-align: center; padding: 4rem 1rem; margin-bottom: 4rem;
+            transform-style: preserve-3d;
+            transition: transform 0.1s linear;
+        }
         .hero-title {
+            position: relative;
             font-size: clamp(2.8rem, 7vw, 4.5rem); font-weight: 900; margin-bottom: 1.5rem;
             background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
             -webkit-background-clip: text; background-clip: text; color: transparent;
             text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+            animation: glitch 5s infinite;
         }
+        @keyframes glitch {
+            0%, 20%, 22%, 25%, 53%, 55%, 100% { clip-path: inset(0 0 0 0); }
+            21% { clip-path: inset(10% 0 70% 0); transform: translate(-0.025em, 0.025em); }
+            23% { clip-path: inset(80% 0 5% 0); transform: translate(0.025em, -0.025em); }
+            24% { clip-path: inset(40% 0 40% 0); transform: translate(-0.025em, 0); }
+            54% { clip-path: inset(25% 0 50% 0); transform: translate(0.025em, 0.025em); }
+        }
+        
         .hero-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; }
         .btn-neon {
             padding: 0.8rem 2rem; font-family: 'Orbitron', sans-serif; font-weight: 700;
@@ -266,35 +281,36 @@
         .skill-tag {
             position: relative; padding: 0.8rem 1.8rem; font-weight: 700;
             font-size: 1rem; border-radius: 10px; background: transparent;
-            color: var(--text-secondary); border: 2px solid transparent;
-            transition: color 0.4s, transform 0.3s, box-shadow 0.3s;
+            color: var(--text-secondary); border: 1px solid var(--border-color);
+            transition: color 0.4s, transform 0.3s, box-shadow 0.3s, background 0.3s;
             overflow: hidden; display: flex; align-items: center; gap: 0.7rem; cursor: pointer;
         }
-        .skill-tag::before {
-            content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
-            z-index: -1; margin: -2px; border-radius: inherit;
-            background: linear-gradient(120deg, var(--border-color), var(--neon-pink));
-            transition: all 0.4s ease;
+        .skill-tag:hover {
+            color: var(--text-primary);
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 20px var(--shadow-color);
         }
-        .skill-tag:hover { color: var(--text-primary); transform: translateY(-3px); box-shadow: 0 0 20px var(--shadow-color); }
-        .skill-tag:hover::before { background: linear-gradient(120deg, var(--neon-blue), var(--neon-green)); }
         .skill-tag i { color: var(--neon-blue); font-size: 1.2rem; transition: color 0.4s, transform 0.3s; }
-        .skill-tag:hover i { color: var(--neon-green); transform: rotate(10deg); }
-        body.light-mode .skill-tag::before { background: linear-gradient(120deg, #ccc, #aaa); }
-        body.light-mode .skill-tag:hover { color: #000; box-shadow: none; }
-        body.light-mode .skill-tag:hover::before { background: linear-gradient(120deg, #0077b5, #009933); }
+        .skill-tag:hover i { color: var(--neon-green); transform: scale(1.2) rotate(-10deg); }
+        body.light-mode .skill-tag:hover { color: #000; background: rgba(0,0,0,0.03); box-shadow: none; }
         body.light-mode .skill-tag i { color: #0077b5; }
         body.light-mode .skill-tag:hover i { color: #009933; }
-
+        
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
         .portfolio-card {
             background: #000; border-radius: 15px; overflow: hidden;
             border: 2px solid var(--border-color); box-shadow: 0 0 10px rgba(0,0,0,0.5);
             transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
-            cursor: pointer;
+            cursor: pointer; position: relative;
+        }
+        .portfolio-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .portfolio-card .play-icon {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8);
+            font-size: 4rem; color: rgba(255,255,255,0.8); transition: transform 0.3s, color 0.3s;
         }
         .portfolio-card:hover { transform: scale(1.05); border-color: var(--neon-blue); box-shadow: 0 0 25px var(--neon-blue); }
-        .portfolio-card iframe { display: block; width: 100%; height: 210px; border: none; }
+        .portfolio-card:hover .play-icon { transform: translate(-50%, -50%) scale(1); color: #fff; }
         body.light-mode .portfolio-card:hover { box-shadow: 0 8px 25px rgba(0, 119, 181, 0.3); }
 
         .timeline { position: relative; padding: 2rem 0; }
@@ -335,6 +351,19 @@
         .faq-item.active .faq-question i { transform: rotate(180deg); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out; }
         .faq-answer p { padding-bottom: 1.5rem; color: var(--text-secondary); margin: 0; }
+        
+        .testimonials-slider { position: relative; overflow: hidden; }
+        .testimonials-wrapper { display: flex; transition: transform 0.5s ease-in-out; }
+        .testimonial-card { flex: 0 0 100%; padding: 2rem; text-align: center; box-sizing: border-box; }
+        .testimonial-text { font-style: italic; font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 1rem; }
+        .testimonial-author { font-weight: 700; font-family: 'Orbitron', sans-serif; color: var(--text-primary); }
+        .slider-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: none; border: none; color: var(--neon-blue);
+            font-size: 2rem; cursor: pointer; z-index: 10;
+        }
+        .slider-nav.prev { left: -1rem; }
+        .slider-nav.next { right: -1rem; }
 
         .about p, .contact p, .workshop p { max-width: 800px; margin: 0 auto 1.5rem auto; text-align: center; color: var(--text-secondary); font-size: 1.1rem;}
         .contact-buttons, .workshop-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; }
@@ -348,7 +377,8 @@
             backdrop-filter: blur(10px); z-index: 998;
             transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
         }
-        .icon-btn { font-size: 1.2rem; width: 40px; height: 40px; background: none; border: none; color: var(--text-secondary); cursor: pointer; transition: color 0.3s, transform 0.3s; }
+        .icon-btn { font-size: 1.2rem; width: 40px; height: 40px; background: none; border: none; color: var(--text-secondary); cursor: pointer; transition: color 0.3s, transform 0.3s; display: flex; align-items: center; justify-content: center;}
+        .icon-btn .lang-indicator { font-size: 0.8rem; font-weight: 700; font-family: 'Orbitron', sans-serif; }
         .icon-btn:hover { color: var(--neon-yellow); transform: scale(1.1); }
         
         .scroll-to-top {
@@ -365,13 +395,27 @@
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+
+        .video-lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+            z-index: 9998; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: opacity 0.4s, visibility 0.4s;
+        }
+        .video-lightbox.active { opacity: 1; visibility: visible; }
+        .video-lightbox-content { position: relative; width: 90%; max-width: 1200px; aspect-ratio: 16/9; }
+        .video-lightbox iframe { width: 100%; height: 100%; border: none; }
+        .lightbox-close {
+            position: absolute; top: -40px; right: 0; font-size: 2rem;
+            color: #fff; background: none; border: none; cursor: pointer;
+        }
         
         /* --- 6. RESPONSIVENESS --- */
         @media (max-width: 992px) { .nav-links { display: none; } .burger-btn { display: block; } }
         @media (max-width: 768px) {
             .container { padding: 7rem 1rem 1rem 1rem; }
             .section { padding: 2rem 1.5rem; }
-            .hero-title { font-size: 2.5rem; }
+            .hero-title { font-size: 2.5rem; animation: none; }
             .section-title { font-size: 2.2rem; }
             .portfolio-grid { grid-template-columns: 1fr; }
             .floating-controls { bottom: 1rem; left: 1rem; }
@@ -384,12 +428,13 @@
     </style>
 </head>
 
-<body class="crimson-ronin">
+<body class="amethyst-dream">
     <div class="background-container">
         <div class="blob blob1"></div>
         <div class="blob blob2"></div>
         <div class="blob blob3"></div>
     </div>
+    <div id="particles-js"></div>
     <div class="glass-overlay"></div>
 
     <div class="preloader" id="preloader"><div class="spinner"></div></div>
@@ -414,18 +459,18 @@
     </nav>
     
     <div class="container">
-        <section class="hero reveal">
+        <section class="hero reveal" id="hero-section">
             <h1 class="hero-title" data-lang-key="hero_title">ego1stik — Motion Designer</h1>
             <div class="hero-buttons">
                 <a href="#portfolio" class="btn-neon btn-primary" data-lang-key="hero_btn_portfolio">View Portfolio</a>
                 <a href="#contact" class="btn-neon" data-lang-key="hero_btn_order">Order Animation</a>
             </div>
             <div class="hero-socials">
-                <a href="https://www.instagram.com/kostiantyn_mazurak/" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.tiktok.com/@ego1stik_?is_from_webapp=1&sender_device=pc" target="_blank" class="social-icon tiktok"><i class="fab fa-tiktok"></i></a>
-                <a href="https://youtube.com/@ego1stik0?si=J0nDVnhuxUyq0wy4" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
-                <a href="https://linktr.ee/ego1stik" target="_blank" class="social-icon linktree"><i class="fas fa-tree"></i></a>
+                <a href="https://www.instagram.com/kostiantyn_mazurak/" target="_blank" class="social-icon instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank" class="social-icon linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.tiktok.com/@ego1stik_?is_from_webapp=1&sender_device=pc" target="_blank" class="social-icon tiktok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com/@ego1stik0?si=J0nDVnhuxUyq0wy4" target="_blank" class="social-icon youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://linktr.ee/ego1stik" target="_blank" class="social-icon linktree" aria-label="Linktree"><i class="fas fa-tree"></i></a>
             </div>
         </section>
 
@@ -446,14 +491,14 @@
         <section class="section reveal" id="portfolio">
             <h2 class="section-title" data-lang-key="portfolio_title">Portfolio</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-card"><iframe src="https://www.youtube.com/embed/8K7wk1J-dNk?si=BmZCqLyp4VOTcuUZ" allowfullscreen></iframe></div>
-                <div class="portfolio-card"><iframe src="https://www.youtube.com/embed/_0Nze69gRWY" allowfullscreen></iframe></div>
-                <div class="portfolio-card"><iframe src="https://www.youtube.com/embed/0MRRb2UnHT0" allowfullscreen></iframe></div>
-                <div class="portfolio-card"><iframe src="https://www.youtube.com/embed/wNAd77sUrEs" allowfullscreen></iframe></div>
-                <div class="portfolio-card"><iframe src="https://www.youtube.com/embed/m2z46SmPQjw" allowfullscreen></iframe></div>
-                <div class="portfolio-card"><iframe src="https://www.youtube.com/embed/RuAe2ubVLYY" allowfullscreen></iframe></div>
-                <div class="portfolio-card"><iframe src="https://www.youtube.com/embed/oL44KxvafxY" allowfullscreen></iframe></div>
-                <div class="portfolio-card"><iframe src="https://www.youtube.com/embed/MURGdZZutjs" allowfullscreen></iframe></div>
+                <div class="portfolio-card" data-video-id="8K7wk1J-dNk"><img src="https://i.ytimg.com/vi/8K7wk1J-dNk/hqdefault.jpg" alt="Portfolio video thumbnail"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+                <div class="portfolio-card" data-video-id="_0Nze69gRWY"><img src="https://i.ytimg.com/vi/_0Nze69gRWY/hqdefault.jpg" alt="Portfolio video thumbnail"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+                <div class="portfolio-card" data-video-id="0MRRb2UnHT0"><img src="https://i.ytimg.com/vi/0MRRb2UnHT0/hqdefault.jpg" alt="Portfolio video thumbnail"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+                <div class="portfolio-card" data-video-id="wNAd77sUrEs"><img src="https://i.ytimg.com/vi/wNAd77sUrEs/hqdefault.jpg" alt="Portfolio video thumbnail"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+                <div class="portfolio-card" data-video-id="m2z46SmPQjw"><img src="https://i.ytimg.com/vi/m2z46SmPQjw/hqdefault.jpg" alt="Portfolio video thumbnail"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+                <div class="portfolio-card" data-video-id="RuAe2ubVLYY"><img src="https://i.ytimg.com/vi/RuAe2ubVLYY/hqdefault.jpg" alt="Portfolio video thumbnail"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+                <div class="portfolio-card" data-video-id="oL44KxvafxY"><img src="https://i.ytimg.com/vi/oL44KxvafxY/hqdefault.jpg" alt="Portfolio video thumbnail"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+                <div class="portfolio-card" data-video-id="MURGdZZutjs"><img src="https://i.ytimg.com/vi/MURGdZZutjs/hqdefault.jpg" alt="Portfolio video thumbnail"><div class="play-icon"><i class="fas fa-play"></i></div></div>
             </div>
         </section>
 
@@ -528,26 +573,56 @@
                 </div>
             </div>
         </section>
+        
+        <section class="section reveal" id="testimonials">
+            <h2 class="section-title" data-lang-key="testimonials_title">Testimonials</h2>
+            <div class="testimonials-slider">
+                <div class="testimonials-wrapper">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text" data-lang-key="testimonial1_text">"Absolutely blown away by the quality and creativity. The animation exceeded all my expectations!"</p>
+                        <p class="testimonial-author" data-lang-key="testimonial1_author">- Alex, Tech Startup CEO</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text" data-lang-key="testimonial2_text">"Professional, fast, and incredibly talented. Understood the vision perfectly and delivered a masterpiece."</p>
+                        <p class="testimonial-author" data-lang-key="testimonial2_author">- Sarah, Marketing Manager</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text" data-lang-key="testimonial3_text">"The character animation was so fluid and full of life. It's rare to find a designer with such attention to detail."</p>
+                        <p class="testimonial-author" data-lang-key="testimonial3_author">- Kenji, Game Developer</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text" data-lang-key="testimonial4_text">"Turned my stream alerts into something truly special. My community loves the new animations!"</p>
+                        <p class="testimonial-author" data-lang-key="testimonial4_author">- 'Viper', Content Creator</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text" data-lang-key="testimonial5_text">"The animated visualizer for my music video was hypnotic. It perfectly captured the vibe of the track."</p>
+                        <p class="testimonial-author" data-lang-key="testimonial5_author">- Luna, Indie Artist</p>
+                    </div>
+                </div>
+                <button class="slider-nav prev" aria-label="Previous testimonial"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-nav next" aria-label="Next testimonial"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
 
         <section class="section reveal" id="faq">
             <h2 class="section-title" data-lang-key="faq_title">FAQ</h2>
             <div class="faq-container">
                 <div class="faq-item">
-                    <button class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         <span data-lang-key="faq1_q">What are your rates?</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer"><p data-lang-key="faq1_a">My rates depend on the project's complexity, duration, and scope. I prefer to provide a custom quote after we discuss the details. Let's connect to find a solution that fits your budget!</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         <span data-lang-key="faq2_q">How long does an animation take?</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer"><p data-lang-key="faq2_a">A simple logo animation might take a few days, while a full explainer video could take several weeks. Once I have the project brief, I can provide a more accurate timeline.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         <span data-lang-key="faq3_q">What do you need from me to start?</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
@@ -568,11 +643,19 @@
     </div>
 
     <div class="floating-controls">
-        <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Theme"><i class="fas fa-torii-gate"></i></button>
-        <button class="icon-btn" id="lang-toggle-btn" aria-label="Toggle Language"><i class="fas fa-globe"></i></button>
+        <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Theme"><i class="fas fa-gem"></i></button>
+        <button class="icon-btn" id="lang-toggle-btn" aria-label="Toggle Language"><span class="lang-indicator">EN</span></button>
     </div>
     <button class="scroll-to-top" id="scrollToTopBtn" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
     
+    <div class="video-lightbox" id="video-lightbox">
+        <div class="video-lightbox-content">
+            <iframe id="video-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
 
@@ -591,6 +674,12 @@
                 workflow2_title: "Concept", workflow2_desc: "Developing storyboards and styleframes to visualize the final animation.",
                 workflow3_title: "Animation", workflow3_desc: "Bringing the concept to life with fluid motion, timing, and effects.",
                 workflow4_title: "Delivery", workflow4_desc: "Finalizing, rendering, and delivering high-quality files for your platform.",
+                testimonials_title: "Testimonials",
+                testimonial1_text: "\"Absolutely blown away by the quality and creativity. The animation exceeded all my expectations!\"", testimonial1_author: "- Alex, Tech Startup CEO",
+                testimonial2_text: "\"Professional, fast, and incredibly talented. Understood the vision perfectly and delivered a masterpiece.\"", testimonial2_author: "- Sarah, Marketing Manager",
+                testimonial3_text: "\"The character animation was so fluid and full of life. It's rare to find a designer with such attention to detail.\"", testimonial3_author: "- Kenji, Game Developer",
+                testimonial4_text: "\"Turned my stream alerts into something truly special. My community loves the new animations!\"", testimonial4_author: "- 'Viper', Content Creator",
+                testimonial5_text: "\"The animated visualizer for my music video was hypnotic. It perfectly captured the vibe of the track.\"", testimonial5_author: "- Luna, Indie Artist",
                 faq_title: "FAQ",
                 faq1_q: "What are your rates?", faq1_a: "My rates depend on the project's complexity, duration, and scope. I prefer to provide a custom quote after we discuss the details. Let's connect to find a solution that fits your budget!",
                 faq2_q: "How long does an animation take?", faq2_a: "A simple logo animation might take a few days, while a full explainer video could take several weeks. Once I have the project brief, I can provide a more accurate timeline.",
@@ -612,6 +701,12 @@
                 workflow2_title: "Концепція", workflow2_desc: "Розробка розкадровок та стилів для візуалізації фінальної анімації.",
                 workflow3_title: "Анімація", workflow3_desc: "Втілення концепції в життя за допомогою плавного руху, таймінгу та ефектів.",
                 workflow4_title: "Результат", workflow4_desc: "Фіналізація, рендеринг та доставка високоякісних файлів для вашої платформи.",
+                testimonials_title: "Відгуки",
+                testimonial1_text: "\"Абсолютно вражений якістю та креативністю. Анімація перевершила всі мої очікування!\"", testimonial1_author: "- Олексій, CEO тех-стартапу",
+                testimonial2_text: "\"Професійно, швидко та неймовірно талановито. Ідеально зрозумів бачення і створив шедевр.\"", testimonial2_author: "- Сара, Маркетинг-менеджер",
+                testimonial3_text: "\"Анімація персонажа була такою плавною та живою. Рідко можна знайти дизайнера з такою увагою до деталей.\"", testimonial3_author: "- Кенджі, Розробник ігор",
+                testimonial4_text: "\"Перетворив мої сповіщення для стріму на щось справді особливе. Моя спільнота в захваті від нових анімацій!\"", testimonial4_author: "- 'Viper', Стример",
+                testimonial5_text: "\"Анімований візуалізатор для мого музичного кліпу був гіпнотичним. Він ідеально передав настрій треку.\"", testimonial5_author: "- Luna, Інді-виконавець",
                 faq_title: "Часті Питання",
                 faq1_q: "Які у вас ціни?", faq1_a: "Мої ціни залежать від складності, тривалості та обсягу проєкту. Я надаю індивідуальну пропозицію після обговорення деталей. Давайте зв'яжемося, щоб знайти рішення, яке відповідає вашому бюджету!",
                 faq2_q: "Скільки часу займає анімація?", faq2_a: "Проста анімація логотипу може зайняти кілька днів, тоді як повне відео-пояснення може тривати кілька тижнів. Як тільки я отримаю бриф проєкту, я зможу надати точніші терміни.",
@@ -633,6 +728,12 @@
                 workflow2_title: "コンセプト", workflow2_desc: "最終的なアニメーションを視覚化するためのストーリーボードとスタイルフレームを作成します。",
                 workflow3_title: "アニメーション", workflow3_desc: "流れるような動き、タイミング、エフェクトでコンセプトに命を吹き込みます。",
                 workflow4_title: "納品", workflow4_desc: "プラットフォーム向けに高品質のファイルを最終処理、レンダリング、納品します。",
+                testimonials_title: "お客様の声",
+                testimonial1_text: "「品質と創造性に完全に圧倒されました。アニメーションは私のすべての期待を上回りました！」", testimonial1_author: "- アレックス、技術系スタートアップCEO",
+                testimonial2_text: "「プロフェッショナルで、速く、そして信じられないほど才能があります。ビジョンを完璧に理解し、傑作を届けてくれました。」", testimonial2_author: "- サラ、マーケティングマネージャー",
+                testimonial3_text: "「キャラクターアニメーションはとても滑らかで生命感に溢れていました。これほど細部にこだわるデザイナーは稀です。」", testimonial3_author: "- ケンジ、ゲーム開発者",
+                testimonial4_text: "「私のストリームアラートを本当に特別なものに変えてくれました。コミュニティは新しいアニメーションが大好きです！」", testimonial4_author: "- 'Viper'、コンテンツクリエーター",
+                testimonial5_text: "「私のミュージックビデオ用のアニメーションビジュアライザーは催眠的でした。曲の雰囲気を完璧に捉えていました。」", testimonial5_author: "- ルナ、インディーズアーティスト",
                 faq_title: "よくある質問",
                 faq1_q: "料金はいくらですか？", faq1_a: "料金はプロジェクトの複雑さ、期間、範囲によって異なります。詳細を話し合った後、カスタム見積もりを提供することを好みます。ご予算に合った解決策を見つけるために、ぜひご連絡ください！",
                 faq2_q: "アニメーションにはどのくらい時間がかかりますか？", faq2_a: "シンプルなロゴアニメーションは数日かかる場合がありますが、完全な解説ビデオは何週間もかかることがあります。プロジェクトの概要をいただければ、より正確なタイムラインを提供できます。",
@@ -654,6 +755,12 @@
                 workflow2_title: "Concept", workflow2_desc: "Développer des storyboards et des styleframes pour visualiser l'animation finale.",
                 workflow3_title: "Animation", workflow3_desc: "Donner vie au concept avec des mouvements fluides, un timing et des effets.",
                 workflow4_title: "Livraison", workflow4_desc: "Finaliser, rendre et livrer des fichiers de haute qualité pour votre plateforme.",
+                testimonials_title: "Témoignages",
+                testimonial1_text: "\"Absolument époustouflé par la qualité et la créativité. L'animation a dépassé toutes mes attentes !\"", testimonial1_author: "- Alex, PDG de startup technologique",
+                testimonial2_text: "\"Professionnel, rapide et incroyablement talentueux. A parfaitement compris la vision et a livré un chef-d'œuvre.\"", testimonial2_author: "- Sarah, Responsable Marketing",
+                testimonial3_text: "\"L'animation du personnage était si fluide et pleine de vie. Il est rare de trouver un designer avec une telle attention aux détails.\"", testimonial3_author: "- Kenji, Développeur de jeux",
+                testimonial4_text: "\"A transformé mes alertes de stream en quelque chose de vraiment spécial. Ma communauté adore les nouvelles animations !\"", testimonial4_author: "- 'Viper', Créateur de contenu",
+                testimonial5_text: "\"Le visualiseur animé pour mon clip vidéo était hypnotique. Il a perfectly capturé l'ambiance du morceau.\"", testimonial5_author: "- Luna, Artiste indépendante",
                 faq_title: "FAQ",
                 faq1_q: "Quels sont vos tarifs ?", faq1_a: "Mes tarifs dépendent de la complexité, de la durée et de la portée du projet. Je préfère fournir un devis personnalisé après avoir discuté des détails. Connectons-nous pour trouver une solution adaptée à votre budget !",
                 faq2_q: "Combien de temps prend une animation ?", faq2_a: "Une simple animation de logo peut prendre quelques jours, tandis qu'une vidéo explicative complète peut prendre plusieurs semaines. Une fois que j'aurai le brief du projet, je pourrai fournir un calendrier plus précis.",
@@ -675,6 +782,12 @@
                 workflow2_title: "Concepto", workflow2_desc: "Desarrollar storyboards y styleframes para visualizar la animación final.",
                 workflow3_title: "Animación", workflow3_desc: "Dar vida al concepto con movimiento fluido, timing y efectos.",
                 workflow4_title: "Entrega", workflow4_desc: "Finalizar, renderizar y entregar archivos de alta calidad para su plataforma.",
+                testimonials_title: "Testimonios",
+                testimonial1_text: "\"Absolutamente impresionado por la calidad y la creatividad. ¡La animación superó todas mis expectativas!\"", testimonial1_author: "- Alex, CEO de startup tecnológica",
+                testimonial2_text: "\"Profesional, rápido e increíblemente talentoso. Entendió la visión perfectamente y entregó una obra maestra.\"", testimonial2_author: "- Sarah, Gerente de Marketing",
+                testimonial3_text: "\"La animación del personaje fue tan fluida y llena de vida. Es raro encontrar un diseñador con tanta atención al detalle.\"", testimonial3_author: "- Kenji, Desarrollador de juegos",
+                testimonial4_text: "\"Convirtió mis alertas de stream en algo realmente especial. ¡A mi comunidad le encantan las nuevas animaciones!\"", testimonial4_author: "- 'Viper', Creador de Contenido",
+                testimonial5_text: "\"El visualizador animado para mi video musical fue hipnótico. Capturó perfectamente la vibra de la canción.\"", testimonial5_author: "- Luna, Artista Indie",
                 faq_title: "Preguntas Frecuentes",
                 faq1_q: "¿Cuáles son sus tarifas?", faq1_a: "Mis tarifas dependen de la complejidad, duración y alcance del proyecto. Prefiero proporcionar una cotización personalizada después de discutir los detalles. ¡Conectémonos para encontrar una solución que se ajuste a su presupuesto!",
                 faq2_q: "¿Cuánto tiempo toma una animación?", faq2_a: "Una simple animación de logotipo puede tomar unos días, mientras que un video explicativo completo puede tomar varias semanas. Una vez que tenga el brief del proyecto, puedo proporcionar un cronograma más preciso.",
@@ -716,6 +829,7 @@
                 const key = el.getAttribute('data-lang-key');
                 if (translations[lang] && translations[lang][key]) { el.textContent = translations[lang][key]; }
             });
+            langToggleBtn.querySelector('.lang-indicator').textContent = lang.toUpperCase();
         };
 
         langToggleBtn.addEventListener('click', () => {
@@ -769,6 +883,84 @@
             });
         });
 
+        // Testimonials Slider Logic
+        const sliderWrapper = document.querySelector('.testimonials-wrapper');
+        const slides = document.querySelectorAll('.testimonial-card');
+        const prevBtn = document.querySelector('.slider-nav.prev');
+        const nextBtn = document.querySelector('.slider-nav.next');
+        let currentIndex = 0;
+
+        function updateSlider() {
+            sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSlider();
+        });
+        
+        // Video Lightbox Logic
+        const portfolioCards = document.querySelectorAll('.portfolio-card');
+        const lightbox = document.getElementById('video-lightbox');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const videoIframe = document.getElementById('video-iframe');
+
+        portfolioCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const videoId = card.getAttribute('data-video-id');
+                videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                lightbox.classList.add('active');
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            videoIframe.src = '';
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // 3D Tilt Effect on Hero Section
+        const heroSection = document.getElementById('hero-section');
+        heroSection.addEventListener('mousemove', (e) => {
+            const { left, top, width, height } = heroSection.getBoundingClientRect();
+            const x = (e.clientX - left) / width - 0.5;
+            const y = (e.clientY - top) / height - 0.5;
+
+            const rotateY = x * 10; // Max rotation 5 degrees
+            const rotateX = -y * 10; // Max rotation 5 degrees
+
+            heroSection.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+            heroSection.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        });
+
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                "size": { "value": 2, "random": true },
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 0.5, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
+            },
+            "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": false }, "onclick": { "enable": false } } }
+        });
+        
         setInitialTheme();
         setLanguage(currentLang);
     });
