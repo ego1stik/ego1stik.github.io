@@ -13,28 +13,29 @@
         /* --- 0. PRELOADER & ANIMATED BACKGROUND --- */
         .preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #0a0a14; display: flex; align-items: center; justify-content: center;
+            background: #1a0a2e; /* Default to Vaporwave background */
+            display: flex; align-items: center; justify-content: center;
             z-index: 2000; opacity: 1; transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
         }
         .preloader.hidden { opacity: 0; visibility: hidden; }
         .spinner {
-            width: 60px; height: 60px; border: 5px solid rgba(110, 0, 255, 0.3);
+            width: 60px; height: 60px; border: 5px solid rgba(255, 107, 255, 0.3);
             border-top-color: #00f0ff; border-radius: 50%; animation: spin 1s linear infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
         .background-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -2; overflow: hidden; background: #0a0a14;
+            z-index: -2; overflow: hidden; background: var(--bg-color-base);
             transition: background 0.4s ease;
         }
         .blob {
             position: absolute; border-radius: 50%;
             filter: blur(100px); opacity: 0.5; transition: background 0.4s ease, opacity 0.4s ease;
         }
-        .blob1 { width: 400px; height: 400px; background: var(--neon-purple, #6e00ff); animation: move1 25s infinite alternate; }
-        .blob2 { width: 300px; height: 300px; background: var(--neon-blue, #00f0ff); animation: move2 30s infinite alternate; }
-        .blob3 { width: 350px; height: 350px; background: var(--neon-pink, #ff00a0); animation: move3 20s infinite alternate; }
+        .blob1 { width: 400px; height: 400px; background: var(--blob-color1); animation: move1 25s infinite alternate; }
+        .blob2 { width: 300px; height: 300px; background: var(--blob-color2); animation: move2 30s infinite alternate; }
+        .blob3 { width: 350px; height: 350px; background: var(--blob-color3); animation: move3 20s infinite alternate; }
 
         @keyframes move1 { from { transform: translate(-10%, -10%); } to { transform: translate(70vw, 50vh); } }
         @keyframes move2 { from { transform: translate(90vw, 80vh); } to { transform: translate(20vw, 20vh); } }
@@ -48,32 +49,50 @@
         }
 
         /* --- 1. THEME VARIABLES --- */
-        :root { --neon-purple: #6e00ff; --neon-blue: #00f0ff; --neon-pink: #ff00a0; --neon-green: #00ff88; --neon-yellow: #fff000; }
+        :root, body.vaporwave-sunset {
+            --bg-color-base: #1a0a2e;
+            --surface-color: rgba(26, 10, 46, 0.5);
+            --text-primary: #ffffff; --text-secondary: #ffb8ff;
+            --border-color: rgba(255, 107, 255, 0.4); --shadow-color: rgba(255, 107, 255, 0.2);
+            --neon-blue: #00f0ff; --neon-pink: #ff6bff; --neon-green: #fff000; --neon-yellow: #ffb800;
+            --blob-color1: #ff3c83; --blob-color2: #ff9a4c; --blob-color3: #3c1a4c;
+        }
         
-        /* Default Theme: Dark Neon */
-        body, body.dark-mode-neon {
+        body.dark-mode-neon {
+            --bg-color-base: #0a0a14;
             --surface-color: rgba(16, 16, 32, 0.5);
             --text-primary: #f5f5ff; --text-secondary: #a9a9d4;
             --border-color: rgba(110, 0, 255, 0.4); --shadow-color: rgba(110, 0, 255, 0.2);
+            --neon-blue: #00f0ff; --neon-pink: #ff00a0; --neon-green: #00ff88; --neon-yellow: #fff000;
+            --blob-color1: #6e00ff; --blob-color2: #00f0ff; --blob-color3: #ff00a0;
         }
         
         body.light-mode {
+            --bg-color-base: #f0f2f5;
             --surface-color: rgba(255, 255, 255, 0.5);
             --text-primary: #0a0a14; --text-secondary: #5c5c7a;
             --border-color: #d9deee; --shadow-color: rgba(0, 0, 0, 0.05);
+            --blob-color1: #8a2be2; --blob-color2: #00bfff; --blob-color3: #ff69b4;
         }
-        body.light-mode .background-container { background: #f0f2f5; }
-        body.light-mode .blob1 { background: #8a2be2; } body.light-mode .blob2 { background: #00bfff; } body.light-mode .blob3 { background: #ff69b4; }
         body.light-mode .glass-overlay { background: linear-gradient(135deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.01)); }
         
         body.dark-mode-matrix {
+            --bg-color-base: #020a02;
             --surface-color: rgba(0, 20, 5, 0.5);
             --text-primary: #33ff33; --text-secondary: #00aa00;
             --border-color: rgba(0, 255, 0, 0.4); --shadow-color: rgba(0, 255, 0, 0.2);
             --neon-blue: #00ff88; --neon-pink: #33ff33; --neon-green: #00ff00; --neon-yellow: #ccff00;
+            --blob-color1: #008000; --blob-color2: #00ff00; --blob-color3: #32cd32;
         }
-        body.dark-mode-matrix .background-container { background: #020a02; }
-        body.dark-mode-matrix .blob1 { background: #008000; } body.dark-mode-matrix .blob2 { background: #00ff00; } body.dark-mode-matrix .blob3 { background: #32cd32; }
+
+        body.crimson-ronin {
+            --bg-color-base: #000000;
+            --surface-color: rgba(10, 0, 0, 0.5);
+            --text-primary: #ffffff; --text-secondary: #b3b3b3;
+            --border-color: rgba(220, 20, 60, 0.4); --shadow-color: rgba(220, 20, 60, 0.2);
+            --neon-blue: #ff4d4d; --neon-pink: #ff2d54; --neon-green: #ffffff; --neon-yellow: #ff4d4d;
+            --blob-color1: #8b0000; --blob-color2: #dc143c; --blob-color3: #220000;
+        }
 
         /* --- 2. GLOBAL STYLES & LAYOUT --- */
         html { scroll-behavior: smooth; }
@@ -115,12 +134,10 @@
         .burger-btn { display: none; background: none; border: none; color: var(--text-secondary); font-size: 1.5rem; cursor: pointer; }
         .mobile-nav {
             position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
-            background: rgba(10, 10, 20, 0.8); backdrop-filter: blur(15px); z-index: 999;
+            background: var(--surface-color); backdrop-filter: blur(15px); z-index: 999;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             gap: 2rem; transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
         }
-        body.light-mode .mobile-nav { background: rgba(255, 255, 255, 0.8); }
-        body.dark-mode-matrix .mobile-nav { background: rgba(0, 20, 5, 0.8); }
         .mobile-nav.active { right: 0; }
         .mobile-nav a { font-size: 1.5rem; }
 
@@ -128,15 +145,29 @@
         #progress-indicator {
             position: fixed; top: 0; left: 0; width: 0%; height: 4px;
             background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
-            z-index: 1001; transition: width 0.1s linear;
+            z-index: 1001; transition: width 0.1s linear, background 0.4s ease;
         }
 
         .section {
             margin-bottom: 4rem; padding: 3rem; border-radius: 20px;
-            background: var(--surface-color); border: 1px solid var(--border-color);
-            box-shadow: 0 0 25px var(--shadow-color); backdrop-filter: blur(10px);
-            transition: background 0.4s, border-color 0.4s, box-shadow 0.4s, backdrop-filter 0.4s;
+            background: var(--surface-color);
+            border: 1px solid transparent; /* Base border */
+            position: relative; /* For pseudo-element border */
+            box-shadow: 0 0 25px var(--shadow-color), inset 0 0 2px 1px rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            transition: background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s;
         }
+        .section::before { /* Gradient Border */
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -1;
+            margin: -1px; /* To make border appear outside */
+            border-radius: inherit;
+            background: linear-gradient(120deg, var(--border-color), transparent);
+            transition: background 0.4s ease;
+        }
+
         .section-title {
             font-family: 'Orbitron', sans-serif; font-size: 2.8rem; margin-bottom: 2.5rem;
             background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
@@ -158,34 +189,51 @@
             text-decoration: none; border-radius: 10px; border: 2px solid;
             transition: all 0.3s ease; text-transform: uppercase;
             letter-spacing: 1px; background: transparent; cursor: pointer;
+            color: var(--text-secondary); border-color: var(--border-color);
         }
-        .btn-neon:hover { transform: translateY(-4px) scale(1.05); }
+        .btn-neon:hover {
+            transform: translateY(-4px) scale(1.05);
+            color: var(--neon-pink);
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 25px var(--neon-pink); /* NEW: GLOW EFFECT FOR ALL BUTTONS */
+        }
+        body.light-mode .btn-neon { color: var(--text-secondary); border-color: var(--border-color); }
+        body.light-mode .btn-neon:hover { box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: #c8237d; border-color: #c8237d;}
+
         .btn-primary { color: var(--neon-blue); border-color: var(--neon-blue); box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
-        .btn-primary:hover { box-shadow: 0 0 30px var(--neon-blue), 0 0 40px var(--neon-blue); }
+        .btn-primary:hover {
+            color: var(--neon-blue); /* Keep original color */
+            border-color: var(--neon-blue); /* Keep original color */
+            box-shadow: 0 0 30px var(--neon-blue), 0 0 40px var(--neon-blue);
+        }
         body.light-mode .btn-primary { color: #0077b5; border-color: #0077b5; box-shadow: none; }
+        
         .hero-socials { display: flex; justify-content: center; gap: 1.5rem; }
         .social-icon { font-size: 1.8rem; color: var(--text-secondary); transition: color 0.3s, transform 0.3s, text-shadow 0.3s; }
         .social-icon:hover { transform: scale(1.2); }
         .social-icon.instagram:hover { color: #E1306C; text-shadow: 0 0 15px #E1306C; }
         .social-icon.linkedin:hover { color: #0077b5; text-shadow: 0 0 15px #0077b5; }
+        .social-icon.tiktok:hover { color: #00f2ea; text-shadow: 0 0 15px #00f2ea, 0 0 25px #ff0050; }
+        .social-icon.youtube:hover { color: #FF0000; text-shadow: 0 0 15px #FF0000; }
+        .social-icon.linktree:hover { color: #43b23c; text-shadow: 0 0 15px #43b23c; }
 
         .skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; }
         .skill-tag {
             position: relative; padding: 0.8rem 1.8rem; font-weight: 700;
             font-size: 1rem; border-radius: 10px; background: transparent;
             color: var(--text-secondary); border: 2px solid transparent;
-            transition: color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            transition: color 0.4s, transform 0.3s, box-shadow 0.3s;
             overflow: hidden; display: flex; align-items: center; gap: 0.7rem; cursor: pointer;
         }
         .skill-tag::before {
             content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
             z-index: -1; margin: -2px; border-radius: inherit;
-            background: linear-gradient(120deg, var(--neon-purple), var(--neon-pink));
+            background: linear-gradient(120deg, var(--border-color), var(--neon-pink));
             transition: all 0.4s ease;
         }
         .skill-tag:hover { color: var(--text-primary); transform: translateY(-3px); box-shadow: 0 0 20px var(--shadow-color); }
         .skill-tag:hover::before { background: linear-gradient(120deg, var(--neon-blue), var(--neon-green)); }
-        .skill-tag i { color: var(--neon-blue); font-size: 1.2rem; transition: color 0.4s ease, transform 0.3s ease; }
+        .skill-tag i { color: var(--neon-blue); font-size: 1.2rem; transition: color 0.4s, transform 0.3s; }
         .skill-tag:hover i { color: var(--neon-green); transform: rotate(10deg); }
         body.light-mode .skill-tag::before { background: linear-gradient(120deg, #ccc, #aaa); }
         body.light-mode .skill-tag:hover { color: #000; box-shadow: none; }
@@ -197,7 +245,7 @@
         .portfolio-card {
             background: #000; border-radius: 15px; overflow: hidden;
             border: 2px solid var(--border-color); box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
             cursor: pointer;
         }
         .portfolio-card:hover { transform: scale(1.05); border-color: var(--neon-blue); box-shadow: 0 0 25px var(--neon-blue); }
@@ -205,39 +253,46 @@
         body.light-mode .portfolio-card:hover { box-shadow: 0 8px 25px rgba(0, 119, 181, 0.3); }
 
         .timeline { position: relative; padding: 2rem 0; }
-        .timeline::after { content: ''; position: absolute; width: 3px; background: var(--border-color); top: 0; bottom: 0; left: 20px; }
+        .timeline::after { content: ''; position: absolute; width: 3px; background: var(--border-color); top: 0; bottom: 0; left: 20px; transition: background 0.4s; }
         .timeline-item { position: relative; margin-bottom: 2.5rem; padding-left: 50px; }
         .timeline-item:last-child { margin-bottom: 0; }
         .timeline-dot {
             content: ''; position: absolute; left: 9px; top: 5px;
             width: 25px; height: 25px; background: var(--surface-color);
             border: 3px solid var(--neon-blue); border-radius: 50%; z-index: 1;
+            transition: background 0.4s, border-color 0.4s;
         }
         .job-title { font-size: 1.4rem; font-weight: 700; color: var(--text-primary); }
         .company-date { display: block; margin-bottom: 1rem; color: var(--text-secondary); font-style: italic; }
         .responsibilities { display: flex; flex-direction: column; gap: 0.8rem; padding-left: 0; list-style: none; }
-        .responsibility { padding: 0.5rem 1rem; border-radius: 8px; background: rgba(0, 0, 0, 0.2); }
+        .responsibility { padding: 0.5rem 1rem; border-radius: 8px; background: rgba(0, 0, 0, 0.2); transition: background 0.4s; }
         body.light-mode .responsibility { background: #e9ecef; }
 
-        /* NEW: Workflow Section */
         .workflow-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-            text-align: center;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem; text-align: center;
         }
         .workflow-step { padding: 1.5rem; border: 1px solid transparent; border-radius: 15px; transition: all 0.3s ease; }
         .workflow-step:hover { transform: translateY(-5px); border-color: var(--border-color); background: rgba(0,0,0,0.1); }
-        .workflow-icon {
-            font-size: 2.5rem; color: var(--neon-blue);
-            margin-bottom: 1rem; transition: color 0.3s ease;
-        }
+        .workflow-icon { font-size: 2.5rem; color: var(--neon-blue); margin-bottom: 1rem; transition: color 0.3s; }
         .workflow-step:hover .workflow-icon { color: var(--neon-green); }
         .workflow-step h3 { font-family: 'Orbitron', sans-serif; margin-bottom: 0.5rem; color: var(--text-primary); }
         .workflow-step p { color: var(--text-secondary); font-size: 0.9rem; }
 
-        .about p, .contact p { max-width: 800px; margin: 0 auto 1.5rem auto; text-align: center; color: var(--text-secondary); font-size: 1.1rem;}
-        .contact-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; }
+        .faq-item { border-bottom: 1px solid var(--border-color); transition: border-color 0.4s; }
+        .faq-question {
+            width: 100%; background: none; border: none; padding: 1.5rem 0;
+            text-align: left; font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem; font-weight: 700; color: var(--text-primary);
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-question i { transition: transform 0.3s ease-out; color: var(--neon-blue); }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out; }
+        .faq-answer p { padding-bottom: 1.5rem; color: var(--text-secondary); margin: 0; }
+
+        .about p, .contact p, .workshop p { max-width: 800px; margin: 0 auto 1.5rem auto; text-align: center; color: var(--text-secondary); font-size: 1.1rem;}
+        .contact-buttons, .workshop-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; }
 
         /* --- 5. UTILITY & FLOATING ELEMENTS --- */
         .floating-controls {
@@ -253,13 +308,12 @@
         
         .scroll-to-top {
             position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px;
-            background: var(--neon-blue); color: #0a0a14;
+            background: var(--neon-blue); color: var(--bg-color-base, #0a0a14);
             border: none; border-radius: 50%; font-size: 1.5rem; cursor: pointer;
             display: flex; align-items: center; justify-content: center; z-index: 998;
             opacity: 0; visibility: hidden; transform: translateY(20px);
             transition: all 0.4s;
         }
-        body.light-mode .scroll-to-top { background: #0077b5; color: #fff; }
         .scroll-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
         .reveal {
             opacity: 0; transform: translateY(30px) scale(0.98);
@@ -285,7 +339,7 @@
     </style>
 </head>
 
-<body>
+<body class="vaporwave-sunset">
     <div class="background-container">
         <div class="blob blob1"></div>
         <div class="blob blob2"></div>
@@ -324,6 +378,9 @@
             <div class="hero-socials">
                 <a href="https://www.instagram.com/kostiantyn_mazurak/" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.linkedin.com/" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.tiktok.com/@ego1stik_?is_from_webapp=1&sender_device=pc" target="_blank" class="social-icon tiktok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com/@ego1stik0?si=J0nDVnhuxUyq0wy4" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+                <a href="https://linktr.ee/ego1stik" target="_blank" class="social-icon linktree"><i class="fas fa-tree"></i></a>
             </div>
         </section>
 
@@ -354,9 +411,29 @@
             </div>
         </section>
 
+        <section class="section reveal workshop" id="workshop">
+            <h2 class="section-title" data-lang-key="workshop_title">Steam Workshop</h2>
+            <p data-lang-key="workshop_desc">Check out my collection of animated wallpapers for Wallpaper Engine. Bring your desktop to life!</p>
+            <div class="workshop-buttons">
+                <a href="https://steamcommunity.com/profiles/76561199469322046/myworkshopfiles/" target="_blank" class="btn-neon btn-primary" data-lang-key="workshop_btn">
+                    <i class="fab fa-steam"></i> View Wallpapers
+                </a>
+            </div>
+        </section>
+        
         <section class="section reveal" id="experience">
             <h2 class="section-title" data-lang-key="experience_title">Experience</h2>
             <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3 class="job-title" data-lang-key="exp3_title">Freelance Motion Designer</h3>
+                    <span class="company-date" data-lang-key="exp3_date">Oct 2022 – Present</span>
+                    <ul class="responsibilities">
+                        <li class="responsibility" data-lang-key="exp3_resp1">Successfully completed hundreds of freelance orders</li>
+                        <li class="responsibility" data-lang-key="exp3_resp2">Specialized in 2D character and logo animation</li>
+                        <li class="responsibility" data-lang-key="exp3_resp3">Collaborated with clients worldwide to bring their ideas to life</li>
+                    </ul>
+                </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <h3 class="job-title" data-lang-key="exp1_title">SMM Creator</h3>
@@ -406,9 +483,31 @@
             </div>
         </section>
 
-        <section class="section about reveal" id="about">
-            <h2 class="section-title" data-lang-key="about_title">About Me</h2>
-            <p data-lang-key="about_text">I specialize in bringing characters and logos to life through dynamic animation. Whether you need captivating animations for games and social media, or a memorable animated logo, I deliver visually engaging results with a strong sense of rhythm and storytelling.</p>
+        <section class="section reveal" id="faq">
+            <h2 class="section-title" data-lang-key="faq_title">FAQ</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-lang-key="faq1_q">What are your rates?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer"><p data-lang-key="faq1_a">My rates depend on the project's complexity, duration, and scope. I prefer to provide a custom quote after we discuss the details. Let's connect to find a solution that fits your budget!</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-lang-key="faq2_q">How long does an animation take?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer"><p data-lang-key="faq2_a">A simple logo animation might take a few days, while a full explainer video could take several weeks. Once I have the project brief, I can provide a more accurate timeline.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-lang-key="faq3_q">What do you need from me to start?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer"><p data-lang-key="faq3_a">To get started, I'll need a clear brief outlining your goals, target audience, any branding guidelines, and specific deliverables. Any visual references or scripts you have are also very helpful!</p></div>
+                </div>
+            </div>
         </section>
         
         <section class="section reveal" id="contact">
@@ -417,12 +516,13 @@
             <div class="contact-buttons">
                 <a href="https://www.fiverr.com/s/e61lGD3" target="_blank" class="btn-neon btn-primary" data-lang-key="contact_btn_fiverr"><i class="fas fa-shopping-cart"></i> Fiverr</a>
                 <a href="https://drive.google.com/file/d/12AEtk5Ny1Au9ipA9jL4vMRwBYGHb3SnR/view?usp=sharing" target="_blank" class="btn-neon" data-lang-key="contact_btn_resume"><i class="fas fa-file-alt"></i> Resume</a>
+                <a href="https://linktr.ee/ego1stik" target="_blank" class="btn-neon" data-lang-key="contact_btn_linktree"><i class="fas fa-tree"></i> Linktree</a>
             </div>
         </section>
     </div>
 
     <div class="floating-controls">
-        <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+        <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Theme"><i class="fas fa-mountain-sun"></i></button>
         <button class="icon-btn" id="lang-toggle-btn" aria-label="Toggle Language"><i class="fas fa-globe"></i></button>
     </div>
     <button class="scroll-to-top" id="scrollToTopBtn" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
@@ -433,118 +533,111 @@
         const translations = {
             en: {
                 nav_portfolio: "Portfolio", nav_skills: "Skills", nav_experience: "Experience", nav_contact: "Contact",
-                nav_portfolio_mob: "Portfolio", nav_skills_mob: "Skills", nav_experience_mob: "Experience", nav_contact_mob: "Contact",
                 hero_title: "ego1stik — Motion Designer", hero_btn_portfolio: "View Portfolio", hero_btn_order: "Order Animation",
-                skills_title: "Skills", portfolio_title: "Portfolio", experience_title: "Experience",
-                exp1_title: "SMM Creator",
-                exp1_resp1: "Produced dynamic content for Instagram & TikTok", exp1_resp2: "Grew Instagram audience from 0 to 40,000", exp1_resp3: "Created viral fashion content in collaborations",
-                exp2_title: "Motion Designer / Content Manager",
-                exp2_resp1: "Created animated content for social media", exp2_resp2: "Designed educational and motivational animations", exp2_resp3: "Analyzed content performance (retention, CTR)",
+                skills_title: "Skills", portfolio_title: "Portfolio", 
+                workshop_title: "Steam Workshop", workshop_desc: "Check out my collection of animated wallpapers for Wallpaper Engine. Bring your desktop to life!", workshop_btn: "View Wallpapers",
+                experience_title: "Experience",
+                exp3_title: "Freelance Motion Designer", exp3_date: "Oct 2022 – Present", exp3_resp1: "Successfully completed hundreds of freelance orders", exp3_resp2: "Specialized in 2D character and logo animation", exp3_resp3: "Collaborated with clients worldwide to bring their ideas to life",
+                exp1_title: "SMM Creator", exp1_resp1: "Produced dynamic content for Instagram & TikTok", exp1_resp2: "Grew Instagram audience from 0 to 40,000", exp1_resp3: "Created viral fashion content in collaborations",
+                exp2_title: "Motion Designer / Content Manager", exp2_resp1: "Created animated content for social media", exp2_resp2: "Designed educational and motivational animations", exp2_resp3: "Analyzed content performance (retention, CTR)",
                 workflow_title: "My Workflow",
                 workflow1_title: "Discovery", workflow1_desc: "Understanding your goals, audience, and vision for the project.",
                 workflow2_title: "Concept", workflow2_desc: "Developing storyboards and styleframes to visualize the final animation.",
                 workflow3_title: "Animation", workflow3_desc: "Bringing the concept to life with fluid motion, timing, and effects.",
                 workflow4_title: "Delivery", workflow4_desc: "Finalizing, rendering, and delivering high-quality files for your platform.",
-                about_title: "About Me",
-                about_text: "I specialize in bringing characters and logos to life through dynamic animation. Whether you need captivating animations for games and social media, or a memorable animated logo, I deliver visually engaging results with a strong sense of rhythm and storytelling.",
-                contact_title: "Contact Me",
-                contact_text: "Ready to start your project? Let's discuss how I can bring your vision to life!",
-                contact_btn_fiverr: "Fiverr", contact_btn_resume: "Resume"
+                faq_title: "FAQ",
+                faq1_q: "What are your rates?", faq1_a: "My rates depend on the project's complexity, duration, and scope. I prefer to provide a custom quote after we discuss the details. Let's connect to find a solution that fits your budget!",
+                faq2_q: "How long does an animation take?", faq2_a: "A simple logo animation might take a few days, while a full explainer video could take several weeks. Once I have the project brief, I can provide a more accurate timeline.",
+                faq3_q: "What do you need from me to start?", faq3_a: "To get started, I'll need a clear brief outlining your goals, target audience, any branding guidelines, and specific deliverables. Any visual references or scripts you have are also very helpful!",
+                about_title: "About Me", about_text: "I specialize in bringing characters and logos to life through dynamic animation. Whether you need captivating animations for games and social media, or a memorable animated logo, I deliver visually engaging results with a strong sense of rhythm and storytelling.",
+                contact_title: "Contact Me", contact_text: "Ready to start your project? Let's discuss how I can bring your vision to life!", contact_btn_fiverr: "Fiverr", contact_btn_resume: "Resume", contact_btn_linktree: "Linktree"
             },
             uk: {
                 nav_portfolio: "Портфоліо", nav_skills: "Навички", nav_experience: "Досвід", nav_contact: "Контакти",
-                nav_portfolio_mob: "Портфоліо", nav_skills_mob: "Навички", nav_experience_mob: "Досвід", nav_contact_mob: "Контакти",
                 hero_title: "ego1stik — Моушн Дизайнер", hero_btn_portfolio: "Дивитись Портфоліо", hero_btn_order: "Замовити Анімацію",
-                skills_title: "Навички", portfolio_title: "Портфоліо", experience_title: "Досвід роботи",
-                exp1_title: "SMM Creator",
-                exp1_resp1: "Створював динамічний контент для Instagram та TikTok", exp1_resp2: "Збільшив аудиторію в Instagram з 0 до 40,000", exp1_resp3: "Створював вірусний фешн-контент у колабораціях",
-                exp2_title: "Моушн Дизайнер / Контент Менеджер",
-                exp2_resp1: "Створював анімований контент для соціальних мереж", exp2_resp2: "Розробляв освітні та мотиваційні анімації", exp2_resp3: "Аналізував ефективність контенту (утримання, CTR)",
+                skills_title: "Навички", portfolio_title: "Портфоліо",
+                workshop_title: "Майстерня Steam", workshop_desc: "Перегляньте мою колекцію анімованих шпалер для Wallpaper Engine. Оживіть свій робочий стіл!", workshop_btn: "Переглянути Шпалери",
+                experience_title: "Досвід роботи",
+                exp3_title: "Фріланс Моушн-Дизайнер", exp3_date: "Жовтень 2022 – по теперішній час", exp3_resp1: "Успішно виконав сотні замовлень на фрілансі", exp3_resp2: "Спеціалізація на 2D анімації персонажів та логотипів", exp3_resp3: "Співпрацював з клієнтами по всьому світу для втілення їхніх ідей",
+                exp1_title: "SMM Creator", exp1_resp1: "Створював динамічний контент для Instagram та TikTok", exp1_resp2: "Збільшив аудиторію в Instagram з 0 до 40,000", exp1_resp3: "Створював вірусний фешн-контент у колабораціях",
+                exp2_title: "Моушн Дизайнер / Контент Менеджер", exp2_resp1: "Створював анімований контент для соціальних мереж", exp2_resp2: "Розробляв освітні та мотиваційні анімації", exp2_resp3: "Аналізував ефективність контенту (утримання, CTR)",
                 workflow_title: "Мій Воркфлоу",
                 workflow1_title: "Дослідження", workflow1_desc: "Розуміння ваших цілей, аудиторії та бачення проєкту.",
                 workflow2_title: "Концепція", workflow2_desc: "Розробка розкадровок та стилів для візуалізації фінальної анімації.",
                 workflow3_title: "Анімація", workflow3_desc: "Втілення концепції в життя за допомогою плавного руху, таймінгу та ефектів.",
                 workflow4_title: "Результат", workflow4_desc: "Фіналізація, рендеринг та доставка високоякісних файлів для вашої платформи.",
-                about_title: "Про мене",
-                about_text: "Я спеціалізуюся на тому, щоб оживляти персонажів та логотипи за допомогою динамічної анімації. Незалежно від того, чи потрібна вам захоплююча анімація для ігор та соцмереж, чи пам'ятний анімований логотип, я створюю візуально привабливі результати з сильним почуттям ритму та сторітелінгу.",
-                contact_title: "Зв'яжіться зі мною",
-                contact_text: "Готові розпочати ваш проєкт? Давайте обговоримо, як я можу втілити ваше бачення в життя!",
-                contact_btn_fiverr: "Fiverr", contact_btn_resume: "Резюме"
+                faq_title: "Часті Питання",
+                faq1_q: "Які у вас ціни?", faq1_a: "Мої ціни залежать від складності, тривалості та обсягу проєкту. Я надаю індивідуальну пропозицію після обговорення деталей. Давайте зв'яжемося, щоб знайти рішення, яке відповідає вашому бюджету!",
+                faq2_q: "Скільки часу займає анімація?", faq2_a: "Проста анімація логотипу може зайняти кілька днів, тоді як повне відео-пояснення може тривати кілька тижнів. Як тільки я отримаю бриф проєкту, я зможу надати точніші терміни.",
+                faq3_q: "Що вам потрібно від мене для початку?", faq3_a: "Для початку мені потрібен чіткий бриф із описом ваших цілей, цільової аудиторії, будь-яких брендових рекомендацій та конкретних результатів. Будь-які візуальні референси або сценарії, які у вас є, також будуть дуже корисними!",
+                about_title: "Про мене", about_text: "Я спеціалізуюся на тому, щоб оживляти персонажів та логотипи за допомогою динамічної анімації. Незалежно від того, чи потрібна вам захоплююча анімація для ігор та соцмереж, чи пам'ятний анімований логотип, я створюю візуально привабливі результати з сильним почуттям ритму та сторітелінгу.",
+                contact_title: "Зв'яжіться зі мною", contact_text: "Готові розпочати ваш проєкт? Давайте обговоримо, як я можу втілити ваше бачення в життя!", contact_btn_fiverr: "Fiverr", contact_btn_resume: "Резюме", contact_btn_linktree: "Linktree"
             },
             ja: {
                 nav_portfolio: "ポートフォリオ", nav_skills: "スキル", nav_experience: "経験", nav_contact: "連絡先",
-                nav_portfolio_mob: "ポートフォリオ", nav_skills_mob: "スキル", nav_experience_mob: "経験", nav_contact_mob: "連絡先",
                 hero_title: "ego1stik — モーションデザイナー", hero_btn_portfolio: "ポートフォリオを見る", hero_btn_order: "アニメーションを依頼",
-                skills_title: "スキル", portfolio_title: "ポートフォリオ", experience_title: "職務経歴",
-                exp1_title: "SMMクリエーター",
-                exp1_resp1: "InstagramとTikTok向けの動的コンテンツを制作", exp1_resp2: "Instagramのフォロワーを0から4万人に増加", exp1_resp3: "コラボレーションでバイラルなファッションコンテンツを作成",
-                exp2_title: "モーションデザイナー / コンテンツマネージャー",
-                exp2_resp1: "ソーシャルメディア向けのアニメーションコンテンツを作成", exp2_resp2: "教育的および動機付けのアニメーションをデザイン", exp2_resp3: "コンテンツのパフォーマンスを分析（維持率、CTR）",
+                skills_title: "スキル", portfolio_title: "ポートフォリオ",
+                workshop_title: "Steamワークショップ", workshop_desc: "Wallpaper Engine用のアニメーション壁紙コレクションをご覧ください。デスクトップを生き生きとさせましょう！", workshop_btn: "壁紙を見る",
+                experience_title: "職務経歴",
+                exp3_title: "フリーランス・モーションデザイナー", exp3_date: "2022年10月 – 現在", exp3_resp1: "数百件のフリーランス案件を成功裏に完了", exp3_resp2: "2Dキャラクターとロゴアニメーションを専門", exp3_resp3: "世界中のクライアントと協力し、彼らのアイデアを実現",
+                exp1_title: "SMMクリエーター", exp1_resp1: "InstagramとTikTok向けの動的コンテンツを制作", exp1_resp2: "Instagramのフォロワーを0から4万人に増加", exp1_resp3: "コラボレーションでバイラルなファッションコンテンツを作成",
+                exp2_title: "モーションデザイナー / コンテンツマネージャー", exp2_resp1: "ソーシャルメディア向けのアニメーションコンテンツを作成", exp2_resp2: "教育的および動機付けのアニメーションをデザイン", exp2_resp3: "コンテンツのパフォーマンスを分析（維持率、CTR）",
                 workflow_title: "私のワークフロー",
                 workflow1_title: "発見", workflow1_desc: "プロジェクトの目標、対象者、ビジョンを理解します。",
                 workflow2_title: "コンセプト", workflow2_desc: "最終的なアニメーションを視覚化するためのストーリーボードとスタイルフレームを作成します。",
                 workflow3_title: "アニメーション", workflow3_desc: "流れるような動き、タイミング、エフェクトでコンセプトに命を吹き込みます。",
                 workflow4_title: "納品", workflow4_desc: "プラットフォーム向けに高品質のファイルを最終処理、レンダリング、納品します。",
-                about_title: "私について",
-                about_text: "私はダイナミックなアニメーションを通じてキャラクターやロゴに命を吹き込むことを専門としています。ゲームやソーシャルメディア向けの魅力的なアニメーション、または記憶に残るアニメーションロゴが必要な場合でも、強いリズム感とストーリーテリングで視覚的に魅力的な結果を提供します。",
-                contact_title: "お問い合わせ",
-                contact_text: "プロジェクトを始める準備はできましたか？あなたのビジョンをどう実現できるか話し合いましょう！",
-                contact_btn_fiverr: "Fiverr", contact_btn_resume: "履歴書"
+                faq_title: "よくある質問",
+                faq1_q: "料金はいくらですか？", faq1_a: "料金はプロジェクトの複雑さ、期間、範囲によって異なります。詳細を話し合った後、カスタム見積もりを提供することを好みます。ご予算に合った解決策を見つけるために、ぜひご連絡ください！",
+                faq2_q: "アニメーションにはどのくらい時間がかかりますか？", faq2_a: "シンプルなロゴアニメーションは数日かかる場合がありますが、完全な解説ビデオは何週間もかかることがあります。プロジェクトの概要をいただければ、より正確なタイムラインを提供できます。",
+                faq3_q: "始めるには何が必要ですか？", faq3_a: "開始するには、目標、対象者、ブランドガイドライン、および特定の成果物を概説した明確な概要が必要です。お持ちのビジュアルリファレンスやスクリプトも非常に役立ちます！",
+                about_title: "私について", about_text: "私はダイナミックなアニメーションを通じてキャラクターやロゴに命を吹き込むことを専門としています。ゲームやソーシャルメディア向けの魅力的なアニメーション、または記憶に残るアニメーションロゴが必要な場合でも、強いリズム感とストーリーテリングで視覚的に魅力的な結果を提供します。",
+                contact_title: "お問い合わせ", contact_text: "プロジェクトを始める準備はできましたか？あなたのビジョンをどう実現できるか話し合いましょう！", contact_btn_fiverr: "Fiverr", contact_btn_resume: "履歴書", contact_btn_linktree: "Linktree"
             }
         };
 
         const preloader = document.getElementById('preloader');
         window.addEventListener('load', () => { preloader.classList.add('hidden'); });
 
-        // --- THEME CYCLING LOGIC ---
         const themeToggleBtn = document.getElementById('theme-toggle-btn');
-        const themes = ['dark-mode-neon', 'dark-mode-matrix', 'light-mode'];
-        const themeIcons = ['<i class="fas fa-moon"></i>', '<i class="fas fa-terminal"></i>', '<i class="fas fa-sun"></i>'];
+        const themes = ['vaporwave-sunset', 'dark-mode-neon', 'light-mode', 'dark-mode-matrix', 'crimson-ronin'];
+        const themeIcons = ['<i class="fas fa-mountain-sun"></i>', '<i class="fas fa-moon"></i>', '<i class="fas fa-sun"></i>', '<i class="fas fa-terminal"></i>', '<i class="fas fa-torii-gate"></i>'];
         
         const setInitialTheme = () => {
-            let currentTheme = localStorage.getItem('theme') || 'dark-mode-neon';
-            if (!themes.includes(currentTheme)) currentTheme = 'dark-mode-neon'; // Fallback
-            
+            let currentTheme = localStorage.getItem('theme') || 'vaporwave-sunset'; // Default to Vaporwave
+            if (!themes.includes(currentTheme)) currentTheme = 'vaporwave-sunset';
             document.body.className = currentTheme;
-            const themeIndex = themes.indexOf(currentTheme);
-            themeToggleBtn.innerHTML = themeIcons[themeIndex];
+            themeToggleBtn.innerHTML = themeIcons[themes.indexOf(currentTheme)];
         };
 
         themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.body.className;
-            let currentIndex = themes.indexOf(currentTheme);
-            const nextIndex = (currentIndex + 1) % themes.length;
-            
+            const currentTheme = document.body.className.split(' ')[0];
+            const nextIndex = (themes.indexOf(currentTheme) + 1) % themes.length;
             document.body.className = themes[nextIndex];
             localStorage.setItem('theme', themes[nextIndex]);
             themeToggleBtn.innerHTML = themeIcons[nextIndex];
         });
 
-        // --- LANGUAGE CYCLING LOGIC ---
         const langToggleBtn = document.getElementById('lang-toggle-btn');
         const languages = ['en', 'uk', 'ja'];
         let currentLang = localStorage.getItem('language') || 'en';
 
         const setLanguage = (lang) => {
-            if (!languages.includes(lang)) lang = 'en'; // Fallback
+            if (!languages.includes(lang)) lang = 'en';
             document.documentElement.lang = lang;
             document.querySelectorAll('[data-lang-key]').forEach(el => {
                 const key = el.getAttribute('data-lang-key');
-                if (translations[lang] && translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
+                if (translations[lang] && translations[lang][key]) { el.textContent = translations[lang][key]; }
             });
         };
 
         langToggleBtn.addEventListener('click', () => {
-            let currentIndex = languages.indexOf(currentLang);
-            const nextIndex = (currentIndex + 1) % languages.length;
+            const nextIndex = (languages.indexOf(currentLang) + 1) % languages.length;
             currentLang = languages[nextIndex];
             localStorage.setItem('language', currentLang);
             setLanguage(currentLang);
         });
 
-        // --- MOBILE MENU ---
         const burgerBtn = document.getElementById('burger-btn');
         const mobileNav = document.getElementById('mobile-nav');
         const mobileNavLinks = mobileNav.querySelectorAll('a');
@@ -559,27 +652,36 @@
             });
         });
         
-        // --- SCROLL TO TOP & PROGRESS BAR ---
         const scrollToTopBtn = document.getElementById('scrollToTopBtn');
         const progressIndicator = document.getElementById('progress-indicator');
         window.addEventListener('scroll', () => {
             scrollToTopBtn.classList.toggle('visible', window.scrollY > 300);
-
             const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollProgress = (window.scrollY / totalHeight) * 100;
-            progressIndicator.style.width = scrollProgress + '%';
+            progressIndicator.style.width = `${(window.scrollY / totalHeight) * 100}%`;
         });
         scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-        // --- REVEAL ON SCROLL ---
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('active'); }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // --- INITIALIZATION ---
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const currentlyActive = document.querySelector('.faq-item.active');
+                if(currentlyActive && currentlyActive !== item) {
+                    currentlyActive.classList.remove('active');
+                    currentlyActive.querySelector('.faq-answer').style.maxHeight = 0;
+                }
+
+                item.classList.toggle('active');
+                const answer = item.querySelector('.faq-answer');
+                answer.style.maxHeight = item.classList.contains('active') ? `${answer.scrollHeight}px` : 0;
+            });
+        });
+
         setInitialTheme();
         setLanguage(currentLang);
     });
